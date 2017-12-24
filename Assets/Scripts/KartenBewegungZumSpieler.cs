@@ -21,11 +21,24 @@ public class KartenBewegungZumSpieler : MonoBehaviour
 
     GameObject cardInstance;
 
+	public GameObject HUD_Check;
+	public GameObject HUD_Fold;
+	public GameObject HUD_Raise;
+	public GameObject HUD_Raise_plus;
+	public GameObject HUD_Raise_minus;
+
 
     private void Start()
     {
         BewegeKarten();
         fuegeJetonsHinzu();
+
+		HUD_Check.SetActive(false);
+		HUD_Fold.SetActive(false);
+		HUD_Raise.SetActive(false);
+		HUD_Raise_plus.SetActive(false);
+		HUD_Raise_minus.SetActive(false);
+
     }
 
     public void fuegeJetonsHinzu()
@@ -123,6 +136,13 @@ public class KartenBewegungZumSpieler : MonoBehaviour
             buttonLeicht.SetActive(false);
             buttonMittel.SetActive(false);
             buttonSchwer.SetActive(false);
+
+			HUD_Check.SetActive(true);
+			HUD_Fold.SetActive(true);
+			HUD_Raise.SetActive(true);
+			HUD_Raise_plus.SetActive(true);
+			HUD_Raise_minus.SetActive(true);
+
 
             BewegeKarten();
             fuegeJetonsHinzu();
