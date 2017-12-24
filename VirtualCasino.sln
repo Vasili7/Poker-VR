@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{72D67A63-6600-3547-F473-65CFEB10107D}") = "VirtualCasino", "Assembly-CSharp.csproj", "{A38E0219-15D9-A789-F961-469144D310AF}"
+EndProject
+Project("{72D67A63-6600-3547-F473-65CFEB10107D}") = "VirtualCasino", "Assembly-CSharp-Editor.csproj", "{F8635EA5-665D-5DAD-86F2-2D2257387E24}"
+EndProject
+Project("{72D67A63-6600-3547-F473-65CFEB10107D}") = "VirtualCasino", "Assembly-UnityScript.unityproj", "{B3939EF9-6A24-0D15-3DDF-E265765CDC01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A38E0219-15D9-A789-F961-469144D310AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38E0219-15D9-A789-F961-469144D310AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38E0219-15D9-A789-F961-469144D310AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38E0219-15D9-A789-F961-469144D310AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8635EA5-665D-5DAD-86F2-2D2257387E24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8635EA5-665D-5DAD-86F2-2D2257387E24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8635EA5-665D-5DAD-86F2-2D2257387E24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8635EA5-665D-5DAD-86F2-2D2257387E24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3939EF9-6A24-0D15-3DDF-E265765CDC01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3939EF9-6A24-0D15-3DDF-E265765CDC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3939EF9-6A24-0D15-3DDF-E265765CDC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3939EF9-6A24-0D15-3DDF-E265765CDC01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

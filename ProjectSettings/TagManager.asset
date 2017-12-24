@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Spiel starten
+  - Collider um den Tisch
+  - Ausgang
+  - "Collider au\xDFerhalb Tisch"
+  - SpielSteinRot
+  - RayCastLinks
+  - Spiel abbrechen
+  - Gelber Spielstein
+  - Roter Spielstein
+  - Spalte
+  - Neustart
+  - "Men\xFC"
+  - card
+  - Jetons
+  - bc1
+  - bc2
+  - bc3
+  - bc4
+  - bc5
+  - p11
+  - p12
+  - Fold
+  - Raise minus
+  - Check
+  - Raise plus
+  - MyBank
+  - p21
+  - p22
+  - p31
+  - p32
+  - p41
+  - p42
+  - p51
+  - p52
+  - blue1
+  - black1
+  - red1
+  - green1
+  - white1
+  - blue2
+  - black2
+  - red2
+  - green2
+  - white2
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

@@ -1,0 +1,21 @@
+﻿using UnityEngine;
+using System.Collections;
+
+/* --------------------------------------------------------------------------------------------------------------------------
+ * ERSTELLT VON:
+ * Katarina Vrdoljak
+ * --------------------------------------------------------------------------------------------------------------------------
+ * BESCHREIBUNG:
+ * - Beendet die Applikation bei Berührung mit dem Ausgang
+ * --------------------------------------------------------------------------------------------------------------------------
+*/
+
+public class Exit : MonoBehaviour {
+
+	// Application wird beendet sobald der Controller den Ausgang berührt
+	void OnTriggerEnter (Collider other) {
+		if (other.gameObject.CompareTag ("MainCamera")) {
+			Application.Quit();
+		}
+	}
+}
