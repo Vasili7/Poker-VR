@@ -229,7 +229,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Maurice/Desktop/Vier gewinnt VR/key.keystore
+  AndroidKeystoreName: C:/Users/Mojdeh.aaz/CasinoVR2/team2/key.keystore
   AndroidKeyaliasName: key
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
@@ -281,6 +281,43 @@ PlayerSettings:
       m_Icon: {fileID: 2800000, guid: 9ab80fd61be86d9478d2efd28a6d6576, type: 3}
       m_Width: 36
       m_Height: 36
+      m_Kind: 0
+  - m_BuildTarget: Standalone
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
+      m_Width: 1024
+      m_Height: 1024
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
+      m_Width: 512
+      m_Height: 512
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
+      m_Width: 256
+      m_Height: 256
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
+      m_Width: 48
+      m_Height: 48
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
+      m_Width: 32
+      m_Height: 32
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
+      m_Width: 16
+      m_Height: 16
       m_Kind: 0
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
