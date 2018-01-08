@@ -84,7 +84,6 @@
      <Compile Include="Assets\Scripts\KartenBewegungZumSpieler.cs" />
      <Compile Include="Assets\Scripts\Main.cs" />
      <Compile Include="Assets\Scripts\NaturalOrientation.cs" />
-     <Compile Include="Assets\Scripts\neu.cs" />
      <Compile Include="Assets\Scripts\OffsetCenter.cs" />
      <Compile Include="Assets\Scripts\OpenDiveSensor.cs" />
      <Compile Include="Assets\Scripts\p1.cs" />
@@ -92,6 +91,7 @@
      <Compile Include="Assets\Scripts\RayCast.cs" />
      <Compile Include="Assets\Scripts\RaycastMenu.cs" />
      <Compile Include="Assets\Scripts\SpielSteinEinwurfLEAP.cs" />
+     <Compile Include="Assets\Scripts\Tisch.cs" />
      <None Include="Assets\Game Jam Template\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Textures &amp; Materials\Snack_machines\readme.txt" />
      <None Include="Assets\Retro Info Boxes\Fonts\KelmscottRoman\Nick&apos;s Fonts License.txt" />

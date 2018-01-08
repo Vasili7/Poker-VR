@@ -11,7 +11,7 @@ public class p1 : MonoBehaviour
     public int chipStack, amountInPot;
     public bool isBusted, folded;
 
-    public neu tisch;
+    public Tisch tisch;
 
     // Use this for initialization
     void Start () 

@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 278796837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7cc233ca0d545f98925145afdffc49, type: 3}
+  m_Script: {fileID: 11500000, guid: d7c887a9c832d4da8b73ae65a0432911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ca: {fileID: 1843845861}
@@ -2434,7 +2434,6 @@ MonoBehaviour:
   player4: {fileID: 614336825}
   player5: {fileID: 1045177880}
   pList: []
-  mainPot: {fileID: 564701399}
 --- !u!1001 &283932763
 Prefab:
   m_ObjectHideFlags: 0
@@ -5200,9 +5199,6 @@ MonoBehaviour:
   amountInPot: 0
   isBusted: 0
   folded: 0
-  dealer: 0
-  smallBlind: 0
-  bigBlind: 0
   tisch: {fileID: 278796841}
 --- !u!1001 &616373626
 Prefab:
@@ -5750,7 +5746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a559b5dcb81f4c928e3ad74fc63c290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ca: {fileID: 1843845866}
 --- !u!114 &650999090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5768,9 +5763,6 @@ MonoBehaviour:
   amountInPot: 0
   isBusted: 0
   folded: 0
-  dealer: 0
-  smallBlind: 0
-  bigBlind: 0
   tisch: {fileID: 278796841}
 --- !u!4 &659172105 stripped
 Transform:
@@ -7706,9 +7698,6 @@ MonoBehaviour:
   amountInPot: 0
   isBusted: 0
   folded: 0
-  dealer: 0
-  smallBlind: 0
-  bigBlind: 0
   tisch: {fileID: 278796841}
 --- !u!1 &897045813
 GameObject:
@@ -9290,9 +9279,6 @@ MonoBehaviour:
   amountInPot: 0
   isBusted: 0
   folded: 0
-  dealer: 0
-  smallBlind: 0
-  bigBlind: 0
   tisch: {fileID: 278796841}
 --- !u!1 &1050009613
 GameObject:
@@ -9681,9 +9667,6 @@ MonoBehaviour:
   amountInPot: 0
   isBusted: 0
   folded: 0
-  dealer: 0
-  smallBlind: 0
-  bigBlind: 0
   tisch: {fileID: 278796841}
 --- !u!1 &1084726591
 GameObject:
