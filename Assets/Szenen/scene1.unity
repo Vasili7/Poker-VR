@@ -2426,6 +2426,7 @@ MonoBehaviour:
   DealerBtn: {fileID: 1152294282}
   deck: []
   tableHand: []
+  amountInPot: 0
   spielEnde: 0
   player1: {fileID: 896028274}
   player2: {fileID: 1081359707}
@@ -2433,6 +2434,7 @@ MonoBehaviour:
   player4: {fileID: 614336825}
   player5: {fileID: 1045177880}
   pList: []
+  mainPot: {fileID: 564701399}
 --- !u!1001 &283932763
 Prefab:
   m_ObjectHideFlags: 0
@@ -4731,6 +4733,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 564701398}
+  - component: {fileID: 564701399}
   m_Layer: 0
   m_Name: Pot
   m_TagString: mainPot
@@ -4751,6 +4754,23 @@ Transform:
   m_Father: {fileID: 752906372}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564701399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 564701397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379f8daf52f074be2a381192ee97bb3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playersInPot: []
+  amountInPot: 0
+  minimumRaise: 0
+  maximumAmountPutIn: 0
+  smallBlind: 0
+  bigBlind: 0
 --- !u!1 &565298807 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 7640defeb12bbff45bcdf86ca9d4aee6, type: 3}
@@ -5174,20 +5194,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84cd945c4c254af4a9034d789bc93c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  j1: {fileID: 0}
-  j5: {fileID: 0}
-  j25: {fileID: 0}
-  j100: {fileID: 0}
   myJetons: []
   myHand: []
   chipStack: 0
   amountInPot: 0
+  isBusted: 0
   folded: 0
   dealer: 0
   smallBlind: 0
   bigBlind: 0
-  thisPlayer: {fileID: 0}
-  btn: {fileID: 0}
+  tisch: {fileID: 278796841}
 --- !u!1001 &616373626
 Prefab:
   m_ObjectHideFlags: 0
@@ -5746,20 +5762,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84cd945c4c254af4a9034d789bc93c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  j1: {fileID: 0}
-  j5: {fileID: 0}
-  j25: {fileID: 0}
-  j100: {fileID: 0}
   myJetons: []
   myHand: []
   chipStack: 0
   amountInPot: 0
+  isBusted: 0
   folded: 0
   dealer: 0
   smallBlind: 0
   bigBlind: 0
-  thisPlayer: {fileID: 0}
-  btn: {fileID: 0}
+  tisch: {fileID: 278796841}
 --- !u!4 &659172105 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fa6f1e79fe9c442acbd6a6b09dd22085, type: 2}
@@ -7688,20 +7700,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84cd945c4c254af4a9034d789bc93c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  j1: {fileID: 0}
-  j5: {fileID: 0}
-  j25: {fileID: 0}
-  j100: {fileID: 0}
   myJetons: []
   myHand: []
   chipStack: 0
   amountInPot: 0
+  isBusted: 0
   folded: 0
   dealer: 0
   smallBlind: 0
   bigBlind: 0
-  thisPlayer: {fileID: 0}
-  btn: {fileID: 0}
+  tisch: {fileID: 278796841}
 --- !u!1 &897045813
 GameObject:
   m_ObjectHideFlags: 0
@@ -9276,20 +9284,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84cd945c4c254af4a9034d789bc93c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  j1: {fileID: 0}
-  j5: {fileID: 0}
-  j25: {fileID: 0}
-  j100: {fileID: 0}
   myJetons: []
   myHand: []
   chipStack: 0
   amountInPot: 0
+  isBusted: 0
   folded: 0
   dealer: 0
   smallBlind: 0
   bigBlind: 0
-  thisPlayer: {fileID: 0}
-  btn: {fileID: 0}
+  tisch: {fileID: 278796841}
 --- !u!1 &1050009613
 GameObject:
   m_ObjectHideFlags: 0
@@ -9671,20 +9675,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84cd945c4c254af4a9034d789bc93c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  j1: {fileID: 0}
-  j5: {fileID: 0}
-  j25: {fileID: 0}
-  j100: {fileID: 0}
   myJetons: []
   myHand: []
   chipStack: 0
   amountInPot: 0
+  isBusted: 0
   folded: 0
   dealer: 0
   smallBlind: 0
   bigBlind: 0
-  thisPlayer: {fileID: 0}
-  btn: {fileID: 0}
+  tisch: {fileID: 278796841}
 --- !u!1 &1084726591
 GameObject:
   m_ObjectHideFlags: 0

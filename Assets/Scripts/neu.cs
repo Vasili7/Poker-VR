@@ -19,7 +19,7 @@ public class neu : MonoBehaviour
     //public GameObject[] list;
     public List<GameObject> deck = new List<GameObject>();
     public List<GameObject> tableHand = new List<GameObject>();
-    protected int amountInPot;
+    public int amountInPot;
 
     public bool spielEnde = false;
 
@@ -32,12 +32,14 @@ public class neu : MonoBehaviour
     // Liste von allen Spielern, von der Klasse p1 
     public List<p1> pList = new List<p1>();
 
+    //public Pot mainPot;
+    List<Pot> sidePots;
+
     public void Start()
     {
-		// alle 52 Karten als GameObject in eine Liste hinzufügen
-		// diese kann man dann mischen, und mit transform.position bewegen!
-		// kann man Elemente einer Liste in eine Andere übergeben ?
-		//AddJetons("p3");
+        // alle 52 Karten als GameObject in eine Liste hinzufügen
+        // diese kann man dann mischen, und mit transform.position bewegen!
+        // kann man Elemente einer Liste in eine Andere übergeben ?
         AddFirstJetons();
 
 		StartNewMatch();
@@ -46,15 +48,27 @@ public class neu : MonoBehaviour
         DealTurn();
         DealRiver();
 
-        MoveDealerBtn();
+        // MoveDealerBtn(); MoveSmallBlindBtn(); MoveBigBlindBtn();
 
-        ca.GetComponent<Cards>().rank = 200;
+        //ca.GetComponent<Cards>().rank = 200;
 
-        if(player1.folded == true)
+        /*
+        if(player1.isBusted == true)
         {
             // do something
         }
+        */
 
+        // das sind alle Spieler die noch mitspielen
+        //mainPot.playersInPot = pList;
+
+        /*
+        amountInPot = 999;
+        Pot mainPot = new Pot(amountInPot, pList);
+        */
+
+        // so könnte ein fold oder call aussehen
+        //player1.Fold(mainPot);  oder  player3.Call(mainPot);  oder  player5.Reset();
     }
 
     public void Update()
@@ -235,7 +249,7 @@ public class neu : MonoBehaviour
     public void AddPlayer(p1 player)
     {
        
-        if (!pList.Contains(player) && player.folded == false)
+        if (!pList.Contains(player) && player.isBusted == false)
         {
             pList.Add(player);
         }
@@ -402,6 +416,9 @@ public class neu : MonoBehaviour
         if (!deck.Contains(card))
             deck.Add(card);
     }
+
+    // Showdown
+    public void ShowDown(){}
 
     /*
     private class Blind
