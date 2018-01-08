@@ -142,6 +142,8 @@ public class KartenBewegungZumSpieler : MonoBehaviour
 			HUD_Raise.SetActive(true);
 			HUD_Raise_plus.SetActive(true);
 			HUD_Raise_minus.SetActive(true);
+
+
         }
     }
 

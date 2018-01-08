@@ -18,15 +18,13 @@ public class neu : MonoBehaviour
 
     //public GameObject[] list;
     public List<GameObject> deck = new List<GameObject>();
-    public List<GameObject> myHand = new List<GameObject>();
     public List<GameObject> tableHand = new List<GameObject>();
-    public List<GameObject> playerList = new List<GameObject>();
-    public int chipStack;
     protected int amountInPot;
 
     public bool spielEnde = false;
 
-    public GameObject p1, p2, p3, p4, p5, pot;
+    // Brauche ich das ? public GameObject p1, p2, p3, p4, p5, pot;
+
     // Positions-Tags für die HoleCards der Spieler
     string p11 = "p11", p12 = "p12", p21 = "p21", p22 = "p22", p31 = "p31", p32 = "p32", p41 = "p41", p42 = "p42", p51 = "p51", p52 = "p52";
 
@@ -92,28 +90,24 @@ public class neu : MonoBehaviour
         for (int i = 0; i< 10; i++)
         {
             goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("1j1").transform.position, j1.transform.rotation);
-            chipStack++;
             player1.chipStack++;
             player1.myJetons.Add(j1);
         }
         for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("1j5").transform.position, j5.transform.rotation);
-            chipStack = chipStack + 5;
             player1.chipStack = player1.chipStack + 5;
             player1.myJetons.Add(j5);
         }
         for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("1j25").transform.position, j25.transform.rotation);
-            chipStack = chipStack + 25;
             player1.chipStack = player1.chipStack + 25;
             player1.myJetons.Add(j25);
         }
         for (int i = 0; i< 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("1j100").transform.position, j100.transform.rotation);
-            chipStack = chipStack + 100; 
             player1.chipStack = player1.chipStack + 100;
             player1.myJetons.Add(j100);
         }   
@@ -121,28 +115,24 @@ public class neu : MonoBehaviour
         for (int i = 0; i< 10; i++)
         {
             goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("2j1").transform.position, j1.transform.rotation);
-            chipStack++;
             player2.chipStack++;
             player2.myJetons.Add(j1);
         }
         for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("2j5").transform.position, j5.transform.rotation);
-            chipStack = chipStack + 5;
             player2.chipStack = player2.chipStack + 5;
             player2.myJetons.Add(j5);
         }
         for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("2j25").transform.position, j25.transform.rotation);
-            chipStack = chipStack + 25;
             player2.chipStack = player2.chipStack + 25;
             player2.myJetons.Add(j25);
         }
         for (int i = 0; i< 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("2j100").transform.position, j100.transform.rotation);
-            chipStack = chipStack + 100; 
             player2.chipStack = player2.chipStack + 100;
             player2.myJetons.Add(j100);
         } 
@@ -150,28 +140,24 @@ public class neu : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("3j1").transform.position, j1.transform.rotation);
-            chipStack++;
             player3.chipStack++;
             player3.myJetons.Add(j1);
         }
         for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("3j5").transform.position, j5.transform.rotation);
-            chipStack = chipStack + 5;
             player3.chipStack = player3.chipStack + 5;
             player3.myJetons.Add(j5);
         }
         for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("3j25").transform.position, j25.transform.rotation);
-            chipStack = chipStack + 25;
             player3.chipStack = player3.chipStack + 25;
             player3.myJetons.Add(j25);
         }
         for (int i = 0; i < 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("3j100").transform.position, j100.transform.rotation);
-            chipStack = chipStack + 100;
             player3.chipStack = player3.chipStack + 100;
             player3.myJetons.Add(j100);
         }
@@ -179,28 +165,24 @@ public class neu : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("4j1").transform.position, j1.transform.rotation);
-            chipStack++;
             player4.chipStack++;
             player4.myJetons.Add(j1);
         }
         for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("4j5").transform.position, j5.transform.rotation);
-            chipStack = chipStack + 5;
             player4.chipStack = player4.chipStack + 5;
             player4.myJetons.Add(j5);
         }
         for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("4j25").transform.position, j25.transform.rotation);
-            chipStack = chipStack + 25;
             player4.chipStack = player4.chipStack + 25;
             player4.myJetons.Add(j25);
         }
         for (int i = 0; i < 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("4j100").transform.position, j100.transform.rotation);
-            chipStack = chipStack + 100;
             player4.chipStack = player4.chipStack + 100;
             player4.myJetons.Add(j100);
         }
@@ -208,28 +190,24 @@ public class neu : MonoBehaviour
         for (int i = 0; i < 10; i++)
         {
             goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("5j1").transform.position, j1.transform.rotation);
-            chipStack++;
             player5.chipStack++;
             player5.myJetons.Add(j1);
         }
         for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("5j5").transform.position, j5.transform.rotation);
-            chipStack = chipStack + 5;
             player5.chipStack = player5.chipStack + 5;
             player5.myJetons.Add(j5);
         }
         for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("5j25").transform.position, j25.transform.rotation);
-            chipStack = chipStack + 25;
             player5.chipStack = player5.chipStack + 25;
             player5.myJetons.Add(j25);
         }
         for (int i = 0; i < 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("5j100").transform.position, j100.transform.rotation);
-            chipStack = chipStack + 100;
             player5.chipStack = player5.chipStack + 100;
             player5.myJetons.Add(j100);
         }
@@ -245,26 +223,12 @@ public class neu : MonoBehaviour
 
         AddAllPlayers();
 
-        if (pList.Contains(player1))
-        {
-            DealHoleCards(p11, p12, player1);
-        }
-        if (pList.Contains(player2))
-        {
-            DealHoleCards(p21, p22, player2);
-        }
-        if (pList.Contains(player3))
-        {
-            DealHoleCards(p31, p32, player3);
-        }
-        if (pList.Contains(player4))
-        {
-            DealHoleCards(p41, p42, player4);
-        }
-        if (pList.Contains(player5))
-        {
-            DealHoleCards(p51, p52, player5);
-        }
+        DealHoleCards(p11, p12, player1);
+        DealHoleCards(p21, p22, player2);
+        DealHoleCards(p31, p32, player3);
+        DealHoleCards(p41, p42, player4);
+        DealHoleCards(p51, p52, player5);
+        
 
     }
 
@@ -365,7 +329,8 @@ public class neu : MonoBehaviour
 
     public void DealHoleCards(string a, string b, p1 p)
     {
-
+        if (pList.Contains(p))
+        {
             for (int i = 0; i < deck.Count; i++)
             {
                 if (i == 0)
@@ -383,70 +348,52 @@ public class neu : MonoBehaviour
                     //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);
                     deck.RemoveAt(i);
-                
+
+                }
             }
         }
     }
     public void DealFlop()
     { 
-        deck[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
-        deck[0].transform.Rotate(0, 0, 0);
-        deck.RemoveAt(0);
+        BurnCard();
+        DealBoardCard("bc1");
+        DealBoardCard("bc2");
+        DealBoardCard("bc3");
+    }
+    public void DealTurn()
+    {
+        BurnCard();
+        DealBoardCard("bc4");
+    }
+    public void DealRiver()
+    {
+        BurnCard();
+        DealBoardCard("bc5");
+    }
+
+    public void DealBoardCard(string bc)
+    {
         for (int i = 0; i < deck.Count; i++)
         {
             if (i == 0)
             {
-                deck[i].transform.position = GameObject.FindGameObjectWithTag("bc1").transform.position;
+                deck[i].transform.position = GameObject.FindGameObjectWithTag(bc).transform.position;
                 deck[i].transform.Rotate(180, 0, 0);
                 tableHand.Add(deck[i]);
-                //player1.myHand.Add(deck[i]);
-                deck.RemoveAt(i);
-                deck[i].transform.position = GameObject.FindGameObjectWithTag("bc2").transform.position;
-                deck[i].transform.Rotate(180, 0, 0);
-                tableHand.Add(deck[i]);
-                //player1.myHand.Add(deck[i]);
-                deck.RemoveAt(i);
-                deck[i].transform.position = GameObject.FindGameObjectWithTag("bc3").transform.position;
-                deck[i].transform.Rotate(180, 0, 0);
-                tableHand.Add(deck[i]);
-                //player1.myHand.Add(deck[i]);
+                // bc werden den Spieler zugeordnet, die noch in der Liste sind
+                for (int a = 0; a < pList.Count(); a++)
+                {
+                    pList[a].myHand.Add(deck[i]);
+                }
                 deck.RemoveAt(i);
             }
         }
     }
-    public void DealTurn()
+    public void BurnCard()
     {
         deck[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
         deck[0].transform.Rotate(0, 0, 0);
         deck.RemoveAt(0);
-        for (int i = 0; i < deck.Count; i++)
-        {
-            if (i == 0)
-            {
-                deck[i].transform.position = GameObject.FindGameObjectWithTag("bc4").transform.position;
-                deck[i].transform.Rotate(180, 0, 0);
-                tableHand.Add(deck[i]);
-                //player1.myHand.Add(deck[i]);
-                deck.RemoveAt(i);
-            }
-        }
-    }
-    public void DealRiver()
-    { 
-        deck[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
-        deck[0].transform.Rotate(0, 0, 0);
-        deck.RemoveAt(0);
-        for (int i = 0; i < deck.Count; i++)
-        {
-            if (i == 0)
-            {
-                deck[i].transform.position = GameObject.FindGameObjectWithTag("bc5").transform.position;
-                deck[i].transform.Rotate(180, 0, 0);
-                tableHand.Add(deck[i]);
-                //player1.myHand.Add(deck[i]);
-                deck.RemoveAt(i);
-            }
-        }
     }
 
     void AddCardToDeck(GameObject card)
@@ -468,40 +415,6 @@ public class neu : MonoBehaviour
         }
     }
     Blind smallBlind, bigBlind;
-    */
-
-
-    /// könnte ich später noch brauche
-    /*
-
-    public GameObject[] list;
-    public List<GameObject> goList = new List<GameObject>();
-    KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();    
-    GameObject x = new GameObject();        
-    x = kbzs.ca;
-    goList.Add(x);
-    addCard(x);
-
-
-        list[0] = ca;
-        c2 = list[1];
-
-
-    public void addCard(GameObject a)
-    {
-        // nimmt sich von goList die Elemente und überträgt sie in list
-        for (int i = 0; i < list.Count(); i++)
-        {
-            if (list[i] == null)
-            {
-                list[i] = a;
-                break;
-            }
-        }
-    }
-
-
-
     */
 }
 

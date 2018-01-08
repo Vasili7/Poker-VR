@@ -25,7 +25,10 @@ public class p1 : MonoBehaviour
         
     }
 
-    public void Fold() { }
+    public void Fold() 
+    {
+        folded = true;
+    }
     public void Check() { }
     public void Raise() { }
     public void Call() { }

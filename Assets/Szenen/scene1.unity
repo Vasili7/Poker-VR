@@ -2350,6 +2350,89 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: f904923df51dd439b9bea6f1f138be48, type: 2}
   m_PrefabInternal: {fileID: 277445319}
+--- !u!1 &278796837 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 152800, guid: 2688a4005c306294bb4a65faf6fff888, type: 2}
+  m_PrefabInternal: {fileID: 401995278}
+--- !u!114 &278796841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 278796837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7cc233ca0d545f98925145afdffc49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ca: {fileID: 1843845861}
+  c2: {fileID: 299164549}
+  c3: {fileID: 376035745}
+  c4: {fileID: 889560199}
+  c5: {fileID: 1084726591}
+  c6: {fileID: 1307134587}
+  c7: {fileID: 2100022426}
+  c8: {fileID: 1931529970}
+  c9: {fileID: 1219018084}
+  c10: {fileID: 1827373887}
+  cj: {fileID: 1191784853}
+  cq: {fileID: 977519762}
+  ck: {fileID: 1409096138}
+  ha: {fileID: 1145266030}
+  h2: {fileID: 1950209743}
+  h3: {fileID: 233302578}
+  h4: {fileID: 1050009613}
+  h5: {fileID: 1036104175}
+  h6: {fileID: 1385522911}
+  h7: {fileID: 291783841}
+  h8: {fileID: 1839061339}
+  h9: {fileID: 822859284}
+  h10: {fileID: 1134563904}
+  hj: {fileID: 590079436}
+  hq: {fileID: 1940925733}
+  hk: {fileID: 1696021437}
+  da: {fileID: 240427944}
+  d2: {fileID: 250827362}
+  d3: {fileID: 385869085}
+  d4: {fileID: 1129246133}
+  d5: {fileID: 1792888643}
+  d6: {fileID: 1566095761}
+  d7: {fileID: 1593920677}
+  d8: {fileID: 924042536}
+  d9: {fileID: 1288667062}
+  d10: {fileID: 590626273}
+  dj: {fileID: 2110956826}
+  dq: {fileID: 1430735459}
+  dk: {fileID: 1740872835}
+  sa: {fileID: 15466721}
+  s2: {fileID: 158982251}
+  s3: {fileID: 1320878423}
+  s4: {fileID: 427645531}
+  s5: {fileID: 1014410568}
+  s6: {fileID: 166317462}
+  s7: {fileID: 131733866}
+  s8: {fileID: 1125959235}
+  s9: {fileID: 703826728}
+  s10: {fileID: 452106734}
+  sj: {fileID: 837729679}
+  sq: {fileID: 1215261611}
+  sk: {fileID: 644455816}
+  j1: {fileID: 100000, guid: f32d96d1681024fc98a5a3421dab456a, type: 2}
+  j5: {fileID: 100000, guid: 064a08975040049cf8a349c4a996585a, type: 2}
+  j25: {fileID: 100000, guid: 3cbd83697b3644d3b89ddc37220585ac, type: 2}
+  j100: {fileID: 100000, guid: f1d0bf49134c543799d8f10ced82d841, type: 2}
+  bigBlindBtn: {fileID: 1516626051}
+  smallBlindBtn: {fileID: 1839655165}
+  DealerBtn: {fileID: 1152294282}
+  deck: []
+  tableHand: []
+  spielEnde: 0
+  player1: {fileID: 896028274}
+  player2: {fileID: 1081359707}
+  player3: {fileID: 650999090}
+  player4: {fileID: 614336825}
+  player5: {fileID: 1045177880}
+  pList: []
 --- !u!1001 &283932763
 Prefab:
   m_ObjectHideFlags: 0
@@ -5677,94 +5760,6 @@ MonoBehaviour:
   bigBlind: 0
   thisPlayer: {fileID: 0}
   btn: {fileID: 0}
---- !u!114 &650999101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 650999078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7cc233ca0d545f98925145afdffc49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ca: {fileID: 1843845861}
-  c2: {fileID: 299164549}
-  c3: {fileID: 376035745}
-  c4: {fileID: 889560199}
-  c5: {fileID: 1084726591}
-  c6: {fileID: 1307134587}
-  c7: {fileID: 2100022426}
-  c8: {fileID: 1931529970}
-  c9: {fileID: 1219018084}
-  c10: {fileID: 1827373887}
-  cj: {fileID: 1191784853}
-  cq: {fileID: 977519762}
-  ck: {fileID: 1409096138}
-  ha: {fileID: 1145266030}
-  h2: {fileID: 1950209743}
-  h3: {fileID: 233302578}
-  h4: {fileID: 1050009613}
-  h5: {fileID: 1036104175}
-  h6: {fileID: 1385522911}
-  h7: {fileID: 291783841}
-  h8: {fileID: 1839061339}
-  h9: {fileID: 822859284}
-  h10: {fileID: 1134563904}
-  hj: {fileID: 590079436}
-  hq: {fileID: 1940925733}
-  hk: {fileID: 1696021437}
-  da: {fileID: 240427944}
-  d2: {fileID: 250827362}
-  d3: {fileID: 385869085}
-  d4: {fileID: 1129246133}
-  d5: {fileID: 1792888643}
-  d6: {fileID: 1566095761}
-  d7: {fileID: 1593920677}
-  d8: {fileID: 924042536}
-  d9: {fileID: 1288667062}
-  d10: {fileID: 590626273}
-  dj: {fileID: 2110956826}
-  dq: {fileID: 1430735459}
-  dk: {fileID: 1740872835}
-  sa: {fileID: 15466721}
-  s2: {fileID: 158982251}
-  s3: {fileID: 1320878423}
-  s4: {fileID: 427645531}
-  s5: {fileID: 1014410568}
-  s6: {fileID: 166317462}
-  s7: {fileID: 131733866}
-  s8: {fileID: 1125959235}
-  s9: {fileID: 703826728}
-  s10: {fileID: 452106734}
-  sj: {fileID: 837729679}
-  sq: {fileID: 1215261611}
-  sk: {fileID: 644455816}
-  j1: {fileID: 100000, guid: f32d96d1681024fc98a5a3421dab456a, type: 2}
-  j5: {fileID: 100000, guid: 064a08975040049cf8a349c4a996585a, type: 2}
-  j25: {fileID: 100000, guid: 3cbd83697b3644d3b89ddc37220585ac, type: 2}
-  j100: {fileID: 100000, guid: f1d0bf49134c543799d8f10ced82d841, type: 2}
-  bigBlindBtn: {fileID: 1516626051}
-  smallBlindBtn: {fileID: 1839655165}
-  DealerBtn: {fileID: 1152294282}
-  deck: []
-  myHand: []
-  tableHand: []
-  playerList: []
-  chipStack: 0
-  spielEnde: 0
-  p1: {fileID: 896028271}
-  p2: {fileID: 1081359704}
-  p3: {fileID: 650999078}
-  p4: {fileID: 614336822}
-  p5: {fileID: 1045177877}
-  pot: {fileID: 564701397}
-  player1: {fileID: 896028274}
-  player2: {fileID: 1081359707}
-  player3: {fileID: 650999090}
-  player4: {fileID: 614336825}
-  player5: {fileID: 1045177880}
-  pList: []
 --- !u!4 &659172105 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fa6f1e79fe9c442acbd6a6b09dd22085, type: 2}
