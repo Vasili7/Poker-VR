@@ -87,9 +87,10 @@ public class SpielSteinEinwurfLEAP : MonoBehaviour {
 
 		if (neuesSpiel) {
 
-
+            /*
             kbzs.BewegeKarten();
             kbzs.fuegeJetonsHinzu();
+            */
 
 			neuesSpiel = false;
 			spielende = false;

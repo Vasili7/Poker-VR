@@ -1,11 +1,48 @@
 fileFormatVersion: 2
 guid: f12c2e63c549249f7a571bb09625385f
-timeCreated: 1512656455
+timeCreated: 1514999338
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - buttonEnd: {instanceID: 0}
+  - buttonRestart: {instanceID: 0}
+  - buttonLeicht: {instanceID: 0}
+  - buttonMittel: {instanceID: 0}
+  - buttonSchwer: {instanceID: 0}
+  - Player: {instanceID: 0}
+  - schwierigkeit_txt: {instanceID: 0}
+  - ca: {instanceID: 0}
+  - c2: {instanceID: 0}
+  - c3: {instanceID: 0}
+  - c4: {instanceID: 0}
+  - c5: {instanceID: 0}
+  - c6: {instanceID: 0}
+  - c7: {instanceID: 0}
+  - c8: {instanceID: 0}
+  - c9: {instanceID: 0}
+  - c10: {instanceID: 0}
+  - cj: {instanceID: 0}
+  - cq: {instanceID: 0}
+  - ha: {instanceID: 0}
+  - h2: {instanceID: 0}
+  - h3: {instanceID: 0}
+  - h4: {instanceID: 0}
+  - h5: {instanceID: 0}
+  - h6: {instanceID: 0}
+  - h7: {instanceID: 0}
+  - blueChip: {instanceID: 0}
+  - redChip: {instanceID: 0}
+  - blackChip: {instanceID: 0}
+  - whiteChip: {instanceID: 0}
+  - greenChip: {instanceID: 0}
+  - ck: {instanceID: 0}
+  - HUD_Check: {instanceID: 0}
+  - HUD_Fold: {instanceID: 0}
+  - HUD_Raise: {instanceID: 0}
+  - HUD_Raise_plus: {instanceID: 0}
+  - HUD_Raise_minus: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

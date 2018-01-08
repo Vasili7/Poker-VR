@@ -14,10 +14,10 @@ public class KartenBewegungZumSpieler : MonoBehaviour
     public GameObject Player;
     public TextMesh schwierigkeit_txt;
     //public GameObject ca, c2, c3, c4, c5, c6, c7, c8, c9, c10, cj, cq, ha, h2, h3, h4, h5, h6, h7;
-    public Rigidbody ca, c2, c3, c4, c5, c6, c7, c8, c9, c10, cj, cq, ha, h2, h3, h4, h5, h6, h7;
-    public GameObject blueChip, redChip, blackChip, whiteChip, greenChip;
+    //public Rigidbody ca, c2, c3, c4, c5, c6, c7, c8, c9, c10, cj, cq, ha, h2, h3, h4, h5, h6, h7;
+    //public GameObject blueChip, redChip, blackChip, whiteChip, greenChip;
     // public Rigidbody redChip;
-    public Rigidbody ck;
+    //public Rigidbody ck;
 
     GameObject cardInstance;
 
@@ -27,11 +27,11 @@ public class KartenBewegungZumSpieler : MonoBehaviour
 	public GameObject HUD_Raise_plus;
 	public GameObject HUD_Raise_minus;
 
-
     private void Start()
     {
-        BewegeKarten();
-        fuegeJetonsHinzu();
+
+        //BewegeKarten();
+        //FuegeJetonsHinzu();
 
 		HUD_Check.SetActive(false);
 		HUD_Fold.SetActive(false);
@@ -40,8 +40,8 @@ public class KartenBewegungZumSpieler : MonoBehaviour
 		HUD_Raise_minus.SetActive(false);
 
     }
-
-    public void fuegeJetonsHinzu()
+    /*
+    public void FuegeJetonsHinzu()
     {
         // Instantiate, Problem: Skalierung
         // Rigidbody redChipClone = (Rigidbody)Instantiate(redChip, GameObject.FindGameObjectWithTag("removed1").transform.position, redChip.transform.rotation);
@@ -68,7 +68,8 @@ public class KartenBewegungZumSpieler : MonoBehaviour
         
 
     }
-
+    */
+    /*
     public void BewegeKarten()
     {
         ca.transform.position = GameObject.FindGameObjectWithTag("bc1").transform.position;
@@ -93,6 +94,8 @@ public class KartenBewegungZumSpieler : MonoBehaviour
         c6.useGravity = true;
         c7.useGravity = true;
     }
+    */
+
 
 
 
@@ -106,9 +109,6 @@ public class KartenBewegungZumSpieler : MonoBehaviour
             switch (schwierigkeit)
             {
                 case 1:
-                    BewegeKarten();
-                    fuegeJetonsHinzu();
-
                     schwierigkeit_txt.text = "Spielstärke: Einfach";
                     SpielSteinEinwurfLEAP.schwierigkeit = "Einfach";
                     schwierigkeit_txt.transform.localPosition = new Vector3(16.092f, 0.355f, -9.414f);
@@ -142,12 +142,7 @@ public class KartenBewegungZumSpieler : MonoBehaviour
 			HUD_Raise.SetActive(true);
 			HUD_Raise_plus.SetActive(true);
 			HUD_Raise_minus.SetActive(true);
-
-
-            BewegeKarten();
-            fuegeJetonsHinzu();
         }
     }
-
 
 }

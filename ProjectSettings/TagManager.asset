@@ -38,16 +38,35 @@ TagManager:
   - p42
   - p51
   - p52
-  - blue1
-  - black1
-  - red1
-  - green1
-  - white1
-  - blue2
-  - black2
-  - red2
-  - green2
-  - white2
+  - 1j5
+  - 1j1
+  - 1j25
+  - 1j100
+  - bb1
+  - sb1
+  - d1
+  - mainPot
+  - 2j5
+  - 2j100
+  - 2j1
+  - 2j25
+  - 2j2
+  - 2j10
+  - 2j50
+  - burnedCard
+  - 3j5
+  - 3j100
+  - 3j1
+  - 3j25
+  - 3j2
+  - 4j5
+  - 4j100
+  - 4j1
+  - 4j25
+  - 5j5
+  - 5j100
+  - 5j1
+  - 5j25
   layers:
   - Default
   - TransparentFX
