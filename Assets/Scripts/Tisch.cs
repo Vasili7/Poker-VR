@@ -41,13 +41,14 @@ public class Tisch : MonoBehaviour
         // alle 52 Karten als GameObject in eine Liste hinzufügen
         // diese kann man dann mischen, und mit transform.position bewegen!
         // kann man Elemente einer Liste in eine Andere übergeben ?
+
+        /*
         AddFirstJetons();
-
 		StartNewMatch();
-
         DealFlop();
         DealTurn();
         DealRiver();
+        */
 
         // MoveDealerBtn(); MoveSmallBlindBtn(); MoveBigBlindBtn();
 
@@ -351,14 +352,14 @@ public class Tisch : MonoBehaviour
                 if (i == 0)
                 {
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(a).transform.position;
-                    deck[i].transform.Rotate(180, 0, 0);
+                    deck[i].transform.Rotate(0, 0, 0);
                     //myHand.Add(deck[i]);
                     //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);
                     deck.RemoveAt(i);
 
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(b).transform.position;
-                    deck[i].transform.Rotate(180, 0, 0);
+                    deck[i].transform.Rotate(0, 0, 0);
                     //myHand.Add(deck[i]);
                     //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);

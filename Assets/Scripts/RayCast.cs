@@ -69,6 +69,7 @@ public class RayCast : MonoBehaviour {
 
 
     KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
+    public Tisch t = new Tisch();
 
 
 	void Start(){
@@ -186,6 +187,17 @@ public class RayCast : MonoBehaviour {
 					Player.transform.position = new Vector3 (15.673f, 0.177f, -7.725f);
 
 					ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+
+                    buttonLeicht.SetActive(false); 
+                    buttonMittel.SetActive(false); 
+                    buttonSchwierig.SetActive(false);
+
+                    t.AddFirstJetons();
+                    t.StartNewMatch();
+                    t.DealFlop();
+                    t.DealTurn();
+                    t.DealRiver();
+
 				}
 					
 			// SPIELABBRUCH
@@ -460,7 +472,6 @@ public class RayCast : MonoBehaviour {
 	// + Computer setzt einen Stein in eine zufällig ausgewählte Spalte
 	// --------------------------------------------------------------------------------------------------------------------------
 	public void einfach(){
-		
 		// Prüft Gewinnmöglichkeit des Computers
 		pruefeSiegNaechstenZug (2);
 		if (sieger == 2) {

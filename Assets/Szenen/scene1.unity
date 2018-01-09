@@ -5646,7 +5646,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 650999078}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dec1a22b4943949bcb3ef6b1b2100c95, type: 3}
   m_Name: 
@@ -5672,6 +5672,7 @@ MonoBehaviour:
   gelb: {fileID: 2100000, guid: 4f7066863a73440d090d568a6b8c5c25, type: 2}
   rot: {fileID: 2100000, guid: e680ab86c711b4c4abc86b429857f925, type: 2}
   blau: {fileID: 2100000, guid: 0cb8cb8e5fef34143aab02ae2c7a5fad, type: 2}
+  t: {fileID: 278796841}
 --- !u!114 &650999082
 MonoBehaviour:
   m_ObjectHideFlags: 0
