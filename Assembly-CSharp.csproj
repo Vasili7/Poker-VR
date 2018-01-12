@@ -6,8 +6,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{E16AFF02-8AE6-E962-67A5-E2F805F00927}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -38,94 +39,99 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Game Jam Template\Scripts\DontDestroy.cs" />
-    <Compile Include="Assets\Game Jam Template\Scripts\EventSystemChecker.cs" />
-    <Compile Include="Assets\Game Jam Template\Scripts\Pause.cs" />
-    <Compile Include="Assets\Game Jam Template\Scripts\PlayMusic.cs" />
-    <Compile Include="Assets\Game Jam Template\Scripts\QuitApplication.cs" />
-    <Compile Include="Assets\Game Jam Template\Scripts\SetAudioLevels.cs" />
-    <Compile Include="Assets\Game Jam Template\Scripts\ShowPanels.cs" />
-    <Compile Include="Assets\Game Jam Template\Scripts\StartOptions.cs" />
-    <Compile Include="Assets\Modern People\Demo\Scripts\Presentation.cs" />
-    <Compile Include="Assets\Scripts\Bewegung.cs" />
-    <Compile Include="Assets\Scripts\Cards.cs" />
-    <Compile Include="Assets\Scripts\ConnectFour_Quit.cs" />
-    <Compile Include="Assets\Scripts\ConnectFour_Quit_No.cs" />
-    <Compile Include="Assets\Scripts\ConnectFour_Quit_Yes.cs" />
-    <Compile Include="Assets\Scripts\ConnectFour_Restart.cs" />
-    <Compile Include="Assets\Scripts\ConnectFour_Start.cs" />
-    <Compile Include="Assets\Scripts\DiveJava.cs" />
-    <Compile Include="Assets\Scripts\DiveMouseLook.cs" />
-    <Compile Include="Assets\Scripts\Drehen.cs" />
-    <Compile Include="Assets\Scripts\Exit.cs" />
-    <Compile Include="Assets\Scripts\KartenBewegungZumSpieler.cs" />
-    <Compile Include="Assets\Scripts\Main.cs" />
-    <Compile Include="Assets\Scripts\NaturalOrientation.cs" />
-    <Compile Include="Assets\Scripts\OffsetCenter.cs" />
-    <Compile Include="Assets\Scripts\OpenDiveSensor.cs" />
-    <Compile Include="Assets\Scripts\p1.cs" />
-    <Compile Include="Assets\Scripts\Pot.cs" />
-    <Compile Include="Assets\Scripts\RayCast.cs" />
-    <Compile Include="Assets\Scripts\RaycastMenu.cs" />
-    <Compile Include="Assets\Scripts\SpielSteinEinwurfLEAP.cs" />
-    <Compile Include="Assets\Scripts\Tisch.cs" />
-    <None Include="Assets\Plugins\donotdelete.txt" />
-    <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
-    <None Include="Assets\Game Jam Template\Fonts\OpenSans\License!.txt" />
-    <None Include="Assets\Textures &amp; Materials\Snack_machines\readme.txt" />
-    <None Include="Assets\Plugins\SystemWipeRecognizerDll.bundle\Contents\MacOS\version.txt" />
-    <None Include="Assets\Game Jam Template\GameJamTemplateReadMe.txt" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\TestRunner\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\TestRunner\net35\unity-custom\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Timeline">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\Timeline\RuntimeEditor\UnityEngine.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIAutomation">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\UIAutomation\UnityEngine.UIAutomation.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GoogleAudioSpatializer">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\UnityGoogleAudioSpatializer\RuntimeEditor\UnityEngine.GoogleAudioSpatializer.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.HoloLens">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\UnityHoloLens\RuntimeEditor\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\UnitySpatialTracking\RuntimeEditor\UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:\Users\Mojdeh.aaz\AppData\LocalLow\Unity\cache\packages\packages.unity.com\com.unity.analytics%401.0.1\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:\Users\Mojdeh.aaz\AppData\LocalLow\Unity\cache\packages\packages.unity.com\com.unity.purchasing%401.0.1\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
-    <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly %28FREE%29\DisplayFrameWork\Scripts\AspectRatioScreen.cs" />
-    <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly %28FREE%29\DisplayFrameWork\Scripts\DisplayObjects.cs" />
-    <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly %28FREE%29\DisplayFrameWork\Scripts\ItemInfo.cs" />
-    <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly %28FREE%29\DisplayFrameWork\Scripts\RepositionObject.cs" />
-    <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly %28FREE%29\DisplayFrameWork\Scripts\RotateItem.cs" />
-    <None Include="Assets\Retro Info Boxes\Fonts\KelmscottRoman\Nick%27s Fonts License.txt" />
+     <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly (FREE)\DisplayFrameWork\Scripts\AspectRatioScreen.cs" />
+     <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly (FREE)\DisplayFrameWork\Scripts\DisplayObjects.cs" />
+     <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly (FREE)\DisplayFrameWork\Scripts\ItemInfo.cs" />
+     <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly (FREE)\DisplayFrameWork\Scripts\RepositionObject.cs" />
+     <Compile Include="Assets\Futuristic Bar Metal Drinks Pack Mobile Friendly (FREE)\DisplayFrameWork\Scripts\RotateItem.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\DontDestroy.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\Pause.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\PlayMusic.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\QuitApplication.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\SetAudioLevels.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\ShowPanels.cs" />
+     <Compile Include="Assets\Game Jam Template\Scripts\StartOptions.cs" />
+     <Compile Include="Assets\Modern People\Demo\Scripts\Presentation.cs" />
+     <Compile Include="Assets\Scripts\Bewegung.cs" />
+     <Compile Include="Assets\Scripts\Cards.cs" />
+     <Compile Include="Assets\Scripts\ConnectFour_Quit.cs" />
+     <Compile Include="Assets\Scripts\ConnectFour_Quit_No.cs" />
+     <Compile Include="Assets\Scripts\ConnectFour_Quit_Yes.cs" />
+     <Compile Include="Assets\Scripts\ConnectFour_Restart.cs" />
+     <Compile Include="Assets\Scripts\ConnectFour_Start.cs" />
+     <Compile Include="Assets\Scripts\DiveJava.cs" />
+     <Compile Include="Assets\Scripts\DiveMouseLook.cs" />
+     <Compile Include="Assets\Scripts\Drehen.cs" />
+     <Compile Include="Assets\Scripts\Exit.cs" />
+     <Compile Include="Assets\Scripts\HUD_Check.cs" />
+     <Compile Include="Assets\Scripts\HUD_Fold.cs" />
+     <Compile Include="Assets\Scripts\HUD_Raise_Confirm.cs" />
+     <Compile Include="Assets\Scripts\HUD_Raise_Minus.cs" />
+     <Compile Include="Assets\Scripts\HUD_Raise_Plus.cs" />
+     <Compile Include="Assets\Scripts\KartenBewegungZumSpieler.cs" />
+     <Compile Include="Assets\Scripts\Main.cs" />
+     <Compile Include="Assets\Scripts\NaturalOrientation.cs" />
+     <Compile Include="Assets\Scripts\OffsetCenter.cs" />
+     <Compile Include="Assets\Scripts\OpenDiveSensor.cs" />
+     <Compile Include="Assets\Scripts\p1.cs" />
+     <Compile Include="Assets\Scripts\Pot.cs" />
+     <Compile Include="Assets\Scripts\RayCast.cs" />
+     <Compile Include="Assets\Scripts\RaycastMenu.cs" />
+     <Compile Include="Assets\Scripts\SpielSteinEinwurfLEAP.cs" />
+     <Compile Include="Assets\Scripts\Tisch.cs" />
+     <None Include="Assets\Plugins\donotdelete.txt" />
+     <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
+     <None Include="Assets\Game Jam Template\Fonts\OpenSans\License!.txt" />
+     <None Include="Assets\Textures &amp; Materials\Snack_machines\readme.txt" />
+     <None Include="Assets\Retro Info Boxes\Fonts\KelmscottRoman\Nick&apos;s Fonts License.txt" />
+     <None Include="Assets\Plugins\SystemWipeRecognizerDll.bundle\Contents\MacOS\version.txt" />
+     <None Include="Assets\Game Jam Template\GameJamTemplateReadMe.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIAutomation">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GoogleAudioSpatializer">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Users/Mojdeh.aaz/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Users/Mojdeh.aaz/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -135,4 +141,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

@@ -8,9 +8,9 @@ public class KartenBewegungZumSpieler : MonoBehaviour
     public int schwierigkeit;
     public GameObject buttonEnd;
     public GameObject buttonRestart;
- //   public GameObject buttonLeicht;
- //   public GameObject buttonMittel;
-   // public GameObject buttonSchwer;
+    public GameObject buttonLeicht;
+    public GameObject buttonMittel;
+    public GameObject buttonSchwer;
     public GameObject Player;
     public TextMesh schwierigkeit_txt;
     //public GameObject ca, c2, c3, c4, c5, c6, c7, c8, c9, c10, cj, cq, ha, h2, h3, h4, h5, h6, h7;
@@ -32,13 +32,12 @@ public class KartenBewegungZumSpieler : MonoBehaviour
 
         //BewegeKarten();
         //FuegeJetonsHinzu();
-		/*
+
 		HUD_Check.SetActive(false);
 		HUD_Fold.SetActive(false);
 		HUD_Raise.SetActive(false);
 		HUD_Raise_plus.SetActive(false);
 		HUD_Raise_minus.SetActive(false);
-		*/
 
     }
     /*
@@ -107,7 +106,7 @@ public class KartenBewegungZumSpieler : MonoBehaviour
         if (col.gameObject.name == "bone3")
         {
             Debug.Log("START BUTTON PRESSED");
-           /* switch (schwierigkeit)
+            switch (schwierigkeit)
             {
                 case 1:
                     schwierigkeit_txt.text = "Spielstärke: Einfach";
@@ -125,7 +124,7 @@ public class KartenBewegungZumSpieler : MonoBehaviour
                     SpielSteinEinwurfLEAP.schwierigkeit = "Schwer";
                     schwierigkeit_txt.transform.localPosition = new Vector3(16.092f, 0.355f, -9.414f);
                     break;
-            }*/
+            }
 
             Bewegung.spielstart = true;
             Bewegung.geschwindigkeit = 0;
@@ -134,10 +133,9 @@ public class KartenBewegungZumSpieler : MonoBehaviour
             SpielSteinEinwurfLEAP.neuesSpiel = true;
             buttonEnd.SetActive(true);
             buttonRestart.SetActive(true);
-          /*  buttonLeicht.SetActive(false);
+            buttonLeicht.SetActive(false);
             buttonMittel.SetActive(false);
             buttonSchwer.SetActive(false);
-			*/
 
 			HUD_Check.SetActive(true);
 			HUD_Fold.SetActive(true);

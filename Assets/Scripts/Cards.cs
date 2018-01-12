@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cards : MonoBehaviour {
 
     public int suit, rank;
- //   public GameObject thisCard = new GameObject();
+    public GameObject thisCard = new GameObject();
 
 	// Klasse benutzt um den Wert einer einzelnen Karte zu definieren
 	void Start () {
@@ -14,8 +14,7 @@ public class Cards : MonoBehaviour {
 
     public void SetAmountOfThisCard()
     {
-      /*  
-		switch(thisCard.name)
+        switch(thisCard.name)
         {
             case "CA":
                 suit = 2;
@@ -25,9 +24,7 @@ public class Cards : MonoBehaviour {
                 suit = 2;
                 rank = 2;
                 return;
-      
         }
-        */
     }
 }
 
