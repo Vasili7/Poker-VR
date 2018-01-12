@@ -15,6 +15,10 @@ using UnityEngine.UI;
 
 public class HUD_Raise_Plus : MonoBehaviour {
 
+	private int Bet_Change=1;
+	public Text Bet;
+	private int Set_Bet=0;
+
 //	public GameObject HUD_Bet;
 	public Text NewBet;
 

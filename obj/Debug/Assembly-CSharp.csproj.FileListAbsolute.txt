@@ -281,3 +281,6 @@ C:/Users/Maurice/Desktop/VirtualCasino - Spielbrett verschieben (4)/obj/Debug/As
 /Users/vsli/VRCasino_Main/team2/Temp/bin/Debug/UnityEngine.StandardEvents.dll.mdb
 /Users/vsli/VRCasino_Main/team2/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
 /Users/vsli/VRCasino_Main/team2/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+C:\Users\Mojdeh.aaz\Casino2\team2\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Mojdeh.aaz\Casino2\team2\obj\Debug\Assembly-CSharp.dll
+C:\Users\Mojdeh.aaz\Casino2\team2\obj\Debug\Assembly-CSharp.pdb
