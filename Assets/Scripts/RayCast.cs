@@ -73,6 +73,8 @@ public class RayCast : MonoBehaviour {
 	public Text Bet;
 	private int Set_Bet=0;
 
+	public TextMesh Bank_amount;
+	private static int bank = 1000;
 
     KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch t = new Tisch();
@@ -97,6 +99,9 @@ public class RayCast : MonoBehaviour {
 
 		Bet.text = Set_Bet.ToString ();
 
+	//	Bank_amount = GetComponent<TextMesh> ();
+		Bank_amount.text = bank.ToString ();
+
 	}
 
 
@@ -113,6 +118,8 @@ public class RayCast : MonoBehaviour {
 		buttonLeicht.SetActive (false);
 		buttonMittel.SetActive (false);
 		buttonSchwierig.SetActive (false);
+
+		Bank_amount.text = bank.ToString ();
 
 		// ------------------------------------------------------------
 		// Spielstart, Spielabbruch, Spielerzug & Gegnerzug
@@ -214,8 +221,8 @@ public class RayCast : MonoBehaviour {
 					buttonStart.SetActive (false);
 
 					buttonEnd.SetActive (true);
-					buttonEndJa.SetActive (true);
-					buttonEndNein.SetActive (true);
+					buttonEndJa.SetActive (false);
+					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
 					t.AddFirstJetons();
@@ -259,12 +266,12 @@ public class RayCast : MonoBehaviour {
 					HUD_Raise.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
-					buttonStart.SetActive (false);
+	//				buttonStart.SetActive (false);
 
-					buttonEnd.SetActive (true);
-					buttonEndJa.SetActive (true);
-					buttonEndNein.SetActive (true);
-					buttonRestart.SetActive (true);
+	//				buttonEnd.SetActive (true);
+	//				buttonEndJa.SetActive (false);
+	//				buttonEndNein.SetActive (false);
+	//				buttonRestart.SetActive (true);
 
                     t.AddFirstJetons();
                     t.StartNewMatch();
@@ -311,10 +318,10 @@ public class RayCast : MonoBehaviour {
 							niederlage_txt.text = "";
 
 							// Buttons ein- und ausblenden
-							buttonEnd.SetActive (false);
+					//		buttonEnd.SetActive (false);
 							buttonEndJa.SetActive (false);
 							buttonEndNein.SetActive (false);
-							buttonRestart.SetActive (false);
+					//		buttonRestart.SetActive (false);
 
 							buttonStart.SetActive (true);
 
@@ -391,7 +398,12 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-					HUD_Raise.SetActive (false);
+				//	HUD_Raise.SetActive (false);
+
+					bank -= int.Parse (Bet.text);
+			
+					Bank_amount.text = bank.ToString();
+
 				}
 				//RAISE MINUS
 			}else if(hit.collider.gameObject.tag=="Raise minus"){
