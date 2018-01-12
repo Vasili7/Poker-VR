@@ -316,11 +316,6 @@ public class RayCast : MonoBehaviour {
 							buttonEndNein.SetActive (false);
 							buttonRestart.SetActive (false);
 
-							HUD_Check.SetActive (false);
-							HUD_Fold.SetActive (false);
-							HUD_Raise.SetActive (false);
-							HUD_Raise_minus.SetActive (false);
-							HUD_Raise_plus.SetActive (false);
 							buttonStart.SetActive (true);
 
 							// Spielsteine löschen
@@ -334,6 +329,14 @@ public class RayCast : MonoBehaviour {
 							buttonEndJa.SetActive (false);
 							buttonEndNein.SetActive (false);
 							buttonRestart.SetActive (true);
+							HUD_Check.SetActive (true);
+							HUD_Fold.SetActive (true);
+							HUD_Check.SetActive (true);
+							HUD_Fold.SetActive (true);
+							HUD_Raise.SetActive (true);
+							HUD_Raise_minus.SetActive (true);
+							HUD_Raise_plus.SetActive (true);
+
 							break;
 						}
 							

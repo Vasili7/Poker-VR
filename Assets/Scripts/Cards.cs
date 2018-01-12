@@ -5,13 +5,13 @@ using UnityEngine;
 public class Cards : MonoBehaviour {
 
     public int suit, rank;
-    public GameObject thisCard = new GameObject();
+//    public GameObject thisCard = new GameObject();		<--------------------	Das Problem war hier!!!
 
 	// Klasse benutzt um den Wert einer einzelnen Karte zu definieren
 	void Start () {
-        SetAmountOfThisCard();
+  //      SetAmountOfThisCard();
 	}
-
+	/*
     public void SetAmountOfThisCard()
     {
         switch(thisCard.name)
@@ -26,6 +26,7 @@ public class Cards : MonoBehaviour {
                 return;
         }
     }
+	*/
 }
 
 /*
