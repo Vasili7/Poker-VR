@@ -69,9 +69,8 @@ public class RayCast : MonoBehaviour {
 	private bool wechsel = true;
 	private float timer2 = 0f;
 
-	private int Bet_Change=1;
 	public Text Bet;
-	private int Set_Bet=0;
+	private static int Set_Bet=0;
 
 	public TextMesh Bank_amount;
 	private static int bank = 1000;
@@ -129,68 +128,7 @@ public class RayCast : MonoBehaviour {
 			// SPIELSTART
 			if (hit.collider.gameObject.tag == "Spiel starten") 
             {
-/*				if (hit.collider.gameObject.name == fokusiertesObjekt) {
-					aktiviert = true;
-					timer = timer + Time.deltaTime;
-					this.lastHit = hit;
-					angeseheneObjekte.Add (lastHit.transform.gameObject);
-					ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-					if (timer >= 2f) {
-						timer = 0f;
-						Bewegung.spielstart = true;
-						Bewegung.geschwindigkeit = 0;
-
-
-						// Angaben für das HUD
-						switch (hit.collider.gameObject.name) {
-						case "Spiel starten(LEICHT)":
-							schwierigkeit = "Einfach";
-							schwierigkeit_txt.transform.localPosition = new Vector3 (-1.5f, 6f, 8f);
-							break;
-						case "Spiel starten(MITTEL)":
-							schwierigkeit = "Mittel";
-							schwierigkeit_txt.transform.localPosition = new Vector3 (-1.65f, 6f, 8f);
-							break;
-						case "Spiel starten(SCHWER)":
-							schwierigkeit = "Schwer";
-							schwierigkeit_txt.transform.localPosition = new Vector3 (-1.55f, 6f, 8f);
-							break;
-						case "Dk":
-							print ("hit1");
-							cardOne.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							cardTwo.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							break;
-						case "C2":
-							print ("hit");
-							cardOne.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							cardTwo.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							break;
-
-						}
-						schwierigkeit_txt.text = "Spielstärke: " + schwierigkeit;
-						siege_txt.text = "Siege: " + siege;
-						niederlage_txt.text = "Niederlagen: " + niederlagen;
-
-
-						// Buttons ein- und ausblenden
-						buttonLeicht.SetActive (false);
-						buttonMittel.SetActive (false);
-						buttonSchwierig.SetActive (false);
-						buttonEnd.SetActive (true);
-						buttonRestart.SetActive (true);
-
-
-						// Einstellungen für den Spielstart
-						neuesSpiel = true;
-						spielende = false;
-						Player.transform.position = new Vector3 (15.673f, 0.177f, -7.725f);
-					}
-				} else {
-					fokusiertesObjekt = hit.collider.gameObject.name;
-					timer = 0f;
-				}
-*/			
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
 				this.lastHit = hit;
@@ -246,7 +184,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 					siegsteineHervorheben = false;
 
-					// Spielsteine löschen
+					// Tisch löschen
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
@@ -261,17 +199,9 @@ public class RayCast : MonoBehaviour {
 
 					HUD_Check.SetActive (true);
 					HUD_Fold.SetActive (true);
-					HUD_Check.SetActive (true);
-					HUD_Fold.SetActive (true);
 					HUD_Raise.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
-	//				buttonStart.SetActive (false);
-
-	//				buttonEnd.SetActive (true);
-	//				buttonEndJa.SetActive (false);
-	//				buttonEndNein.SetActive (false);
-	//				buttonRestart.SetActive (true);
 
                     t.AddFirstJetons();
                     t.StartNewMatch();
@@ -310,25 +240,14 @@ public class RayCast : MonoBehaviour {
 							Bewegung.spielstart = false;
 							Bewegung.geschwindigkeit = 2;
 
-
-							// Angaben für das HUD
-							schwierigkeit_txt.text = "";
-							werIstDran_txt.text = "";
-							siege_txt.text = "";
-							niederlage_txt.text = "";
-
 							// Buttons ein- und ausblenden
-					//		buttonEnd.SetActive (false);
 							buttonEndJa.SetActive (false);
 							buttonEndNein.SetActive (false);
-					//		buttonRestart.SetActive (false);
-
 							buttonStart.SetActive (true);
 
-							// Spielsteine löschen
+							// Tisch löschen
 
 							// Einstellungen für das Spielende
-							Player.transform.position = new Vector3 (6F, -0.5F, 6F);
 							spielstart = false;
 							break;
 						case "Spiel abbrechen (NEIN)":
@@ -401,8 +320,9 @@ public class RayCast : MonoBehaviour {
 				//	HUD_Raise.SetActive (false);
 
 					bank -= int.Parse (Bet.text);
-			
 					Bank_amount.text = bank.ToString();
+					Bet.text = "0";
+					Set_Bet = 0;
 
 				}
 				//RAISE MINUS
@@ -419,7 +339,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					if (int.Parse (Bet.text) > 0)
-						Set_Bet -= Bet_Change;
+						Set_Bet--;
 
 					Bet.text = Set_Bet.ToString ();
 				}
@@ -434,10 +354,32 @@ public class RayCast : MonoBehaviour {
 
 
 				if (timer >= 2f) {
+
+/*					int new_bet = int.Parse (Bet.text);
+					if (timer > 5f) {
+						if (timer > 10f) {
+							Set_Bet += 20;
+						} else
+							Set_Bet += 5;
+					} else
+						Set_Bet++;
+					Bet.text = Set_Bet.ToString ();
+*/
 					timer = 0f;
 
-					Set_Bet += Bet_Change;
-
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet >= 5) {
+						if (new_bet >= 40) {
+							if (new_bet >= 70)
+								Set_Bet += 100;
+							else
+								Set_Bet += 10;
+						} else
+							Set_Bet += 5;
+					} else
+						Set_Bet++;
+					
+					//Set_Bet++;
 					Bet.text = Set_Bet.ToString ();
 				}
 			// SPIELERZUG
