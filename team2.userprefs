@@ -1,15 +1,17 @@
-﻿<Properties StartupConfiguration="{E16AFF02-8AE6-E962-67A5-E2F805F00927}|Komponententests">
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RayCast.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/p1.cs">
     <Files>
       <File FileName="Assets/Scripts/ConnectFour_Start.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SpielSteinEinwurfLEAP.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/RaycastMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RayCast.cs" Line="188" Column="21" />
-      <File FileName="Assets/Scripts/Tisch.cs" Line="45" Column="11" />
+      <File FileName="Assets/Scripts/RayCast.cs" Line="125" Column="14" />
+      <File FileName="Assets/Scripts/Tisch.cs" Line="427" Column="34" />
       <File FileName="Assets/Scripts/Pot.cs" Line="22" Column="5" />
       <File FileName="Assets/Scripts/Cards.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/p1.cs" Line="25" Column="6" />
+      <File FileName="Assets/Scripts/p1.cs" Line="17" Column="5" />
+      <File FileName="Assets/Scripts/HUD_Check.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HUD_Fold.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HUD_Raise_Confirm.cs" Line="7" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

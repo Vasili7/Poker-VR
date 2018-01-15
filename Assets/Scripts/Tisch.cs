@@ -36,6 +36,7 @@ public class Tisch : MonoBehaviour
     //public Pot mainPot;
     List<Pot> sidePots;
 
+
     public void Start()
     {
         // alle 52 Karten als GameObject in eine Liste hinzufügen
@@ -420,7 +421,11 @@ public class Tisch : MonoBehaviour
     }
 
     // Showdown
-    public void ShowDown(){}
+    public void ShowDown()
+    {
+        // wenn gewonnen
+        player3.gewonnenRunden++;
+    }
 
     /*
     private class Blind

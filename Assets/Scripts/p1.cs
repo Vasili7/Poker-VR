@@ -13,6 +13,9 @@ public class p1 : MonoBehaviour
 
     public Tisch tisch;
 
+    public int gewonnenRunden;
+
+
     // Use this for initialization
     void Start () 
     {
