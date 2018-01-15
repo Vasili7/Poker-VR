@@ -41,13 +41,13 @@ public class Tisch : MonoBehaviour
     public void Start()
     {
         // Zum testen der Positionen geeignet
-        /*
         AddFirstJetons();
 		StartNewMatch();
-		BettingRound();
-        DealFlop();
-        DealTurn();
-        DealRiver();
+        BettingRound();
+        //BettingRound();
+        //BettingRound();
+        /*
+
         for (int i = 0; i < pList.Count(); i++)
         { GetChoice(pList[i]); }
         */
@@ -59,7 +59,7 @@ public class Tisch : MonoBehaviour
         //{
 
         //}
-
+        // false!
         while(player3.isBusted == true)
         {
             amountInPot = mainPot.amountInPot;
@@ -77,28 +77,7 @@ public class Tisch : MonoBehaviour
             player3.isBusted = true;
         }
     }
-    public void MoveBigBlindBtn()
-    {
-        //if (playerList.Contains(p1))
-        //{
-        //    bigBlindBtn.transform.position = GameObject.FindGameObjectWithTag("bb1").transform.position;
-        //}
-    }
-    public void MoveSmallBlindBtn()
-    {
-        //if (playerList.Contains(p1))
-        //{
-        //    smallBlindBtn.transform.position = GameObject.FindGameObjectWithTag("sb1").transform.position;
-        //}
-    }
-    public void MoveDealerBtn()
-    {
-////        if (playerList.Contains(p1))
-        //if (p3.gameObject.name == "Dive_Camera" && playerList.Contains(p3))
-        //{
-        //    DealerBtn.transform.position = GameObject.FindGameObjectWithTag("d1").transform.position;
-        //}
-    }
+
 	// Position-Tag is needed to instatiate jetons
     public void AddFirstJetons()
     {
@@ -253,32 +232,39 @@ public class Tisch : MonoBehaviour
 	// Betting Round
 	public void BettingRound() 
 	{
-        int count = 1;
-        if (count == 1)
+        for (int count = 1; count < 5; count++)
         {
-            // PRE FLOP
-            player1.PaySmallBlind(5, mainPot);
-            player2.PaySmallBlind(10, mainPot);
-            player3.Raise(150, mainPot);
-            player4.Call(mainPot);
-            player5.Call(mainPot);
-            player1.Call(mainPot);
-            player2.Call(mainPot);
-            count++;
+            if (count == 1)
+            {
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    // PRE FLOP
+                    player1.PaySmallBlind(5, mainPot);
+                    player2.PaySmallBlind(10, mainPot);
+                    player3.Call(mainPot);
+                    player4.Call(mainPot);
+                    player5.Call(mainPot);
+                    player1.Call(mainPot);
+                    player2.Call(mainPot);
+                }
+            }
+            else if (count == 2)
+            {
+                // FLOP 
+                DealFlop();
+            }
+            else if (count == 3)
+            {
+                // TURN
+                DealTurn();
+            }
+            else if (count == 4)
+            {
+                // RIVER
+                DealRiver();
+            }
         }
-        else if (count == 2) 
-        {
-            // FLOP 
-        }
-        else if (count == 3) 
-        {
-            // TURN
-        }
-        else if (count == 4) 
-        {
-            // RIVER
-        }
-	}
+    }
 
     public void AddPlayer(p1 player)
     {
@@ -470,6 +456,30 @@ public class Tisch : MonoBehaviour
         }
     }
     Blind smallBlind, bigBlind;
+
+    public void MoveBigBlindBtn()
+    {
+        //if (playerList.Contains(p1))
+        //{
+        //    bigBlindBtn.transform.position = GameObject.FindGameObjectWithTag("bb1").transform.position;
+        //}
+    }
+    public void MoveSmallBlindBtn()
+    {
+        //if (playerList.Contains(p1))
+        //{
+        //    smallBlindBtn.transform.position = GameObject.FindGameObjectWithTag("sb1").transform.position;
+        //}
+    }
+    public void MoveDealerBtn()
+    {
+////        if (playerList.Contains(p1))
+        //if (p3.gameObject.name == "Dive_Camera" && playerList.Contains(p3))
+        //{
+        //    DealerBtn.transform.position = GameObject.FindGameObjectWithTag("d1").transform.position;
+        //}
+    }
+
     */
 
 
