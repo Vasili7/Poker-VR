@@ -3,7 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
-
+/// <summary>
+/// Ray cast.
+/// </summary>
 /* --------------------------------------------------------------------------------------------------------------------------
  * ERSTELLT VON:
  * Imran Mirza
@@ -74,7 +76,7 @@ public class RayCast : MonoBehaviour {
 	private int Set_Bet=0;
 
 
-    KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
+   // KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch t = new Tisch();
 
 
@@ -218,11 +220,12 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (true);
 					buttonRestart.SetActive (true);
 
-					t.AddFirstJetons();
-					t.StartNewMatch();
-					t.DealFlop();
-					t.DealTurn();
-					t.DealRiver();
+					//t.AddFirstJetons();
+					//t.StartNewMatch();
+					//t.BettingRound();
+					//t.DealFlop();
+					//t.DealTurn();
+					//t.DealRiver();
 
 				}
 
@@ -265,13 +268,6 @@ public class RayCast : MonoBehaviour {
 					buttonEndJa.SetActive (true);
 					buttonEndNein.SetActive (true);
 					buttonRestart.SetActive (true);
-
-                    t.AddFirstJetons();
-                    t.StartNewMatch();
-                    t.DealFlop();
-                    t.DealTurn();
-                    t.DealRiver();
-
 				}
 					
 			// SPIELABBRUCH

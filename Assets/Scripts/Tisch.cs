@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tisch : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class Tisch : MonoBehaviour
     public List<GameObject> tableHand = new List<GameObject>();
     public int amountInPot;
 
-    public bool spielEnde = false;
+    public bool spielEnde, neuesSpiel, spielStart;
 
     // Brauche ich das ? public GameObject p1, p2, p3, p4, p5, pot;
 
@@ -33,49 +34,47 @@ public class Tisch : MonoBehaviour
     // Liste von allen Spielern, von der Klasse p1 
     public List<p1> pList = new List<p1>();
 
-    //public Pot mainPot;
+    public Pot mainPot;
     List<Pot> sidePots;
 
     public void Start()
     {
-        // alle 52 Karten als GameObject in eine Liste hinzufügen
-        // diese kann man dann mischen, und mit transform.position bewegen!
-        // kann man Elemente einer Liste in eine Andere übergeben ?
-
+        // Zum testen der Positionen geeignet
         /*
         AddFirstJetons();
 		StartNewMatch();
+		BettingRound();
         DealFlop();
         DealTurn();
         DealRiver();
+        for (int i = 0; i < pList.Count(); i++)
+        { GetChoice(pList[i]); }
         */
-
-        // MoveDealerBtn(); MoveSmallBlindBtn(); MoveBigBlindBtn();
-
-        //ca.GetComponent<Cards>().rank = 200;
-
-        /*
-        if(player1.isBusted == true)
-        {
-            // do something
-        }
-        */
-
-        // das sind alle Spieler die noch mitspielen
-        //mainPot.playersInPot = pList;
-
-        /*
-        amountInPot = 999;
-        Pot mainPot = new Pot(amountInPot, pList);
-        */
-
-        // so könnte ein fold oder call aussehen
-        //player1.Fold(mainPot);  oder  player3.Call(mainPot);  oder  player5.Reset();
     }
 
     public void Update()
     {
-        
+        //while (player3.isBusted == false) 
+        //{
+
+        //}
+
+        while(player3.isBusted == true)
+        {
+            amountInPot = mainPot.amountInPot;
+
+            //neuesSpiel = false;
+            //spielEnde = false;
+            //spielStart = true;
+            //sieger = 0; 
+            AddFirstJetons();
+            StartNewMatch();
+            BettingRound();
+            DealFlop();
+            DealTurn();
+            DealRiver();
+            player3.isBusted = true;
+        }
     }
     public void MoveBigBlindBtn()
     {
@@ -236,17 +235,49 @@ public class Tisch : MonoBehaviour
     public void StartNewMatch()
     {
         AddAllCardsToDeck();
-
         AddAllPlayers();
-
-        DealHoleCards(p11, p12, player1);
-        DealHoleCards(p21, p22, player2);
-        DealHoleCards(p31, p32, player3);
-        DealHoleCards(p41, p42, player4);
-        DealHoleCards(p51, p52, player5);
-        
-
+		DealAllHoleCards();
     }
+
+	// Deal Hole Cards to all 5 Players
+	public void DealAllHoleCards() 
+	{
+        DealHoleCards(p11, p12, player1);
+		DealHoleCards(p21, p22, player2);
+		DealHoleCards(p31, p32, player3);
+		DealHoleCards(p41, p42, player4);
+		DealHoleCards(p51, p52, player5);
+	}
+
+	// Betting Round
+	public void BettingRound() 
+	{
+        int count = 1;
+        if (count == 1)
+        {
+            // PRE FLOP
+            player1.PaySmallBlind(5, mainPot);
+            player2.PaySmallBlind(10, mainPot);
+            player3.Raise(150, mainPot);
+            player4.Call(mainPot);
+            player5.Call(mainPot);
+            player1.Call(mainPot);
+            player2.Call(mainPot);
+            count++;
+        }
+        else if (count == 2) 
+        {
+            // FLOP 
+        }
+        else if (count == 3) 
+        {
+            // TURN
+        }
+        else if (count == 4) 
+        {
+            // RIVER
+        }
+	}
 
     public void AddPlayer(p1 player)
     {
@@ -435,5 +466,52 @@ public class Tisch : MonoBehaviour
     }
     Blind smallBlind, bigBlind;
     */
+
+
+
+    // Random method for AI
+    public void RandomChoose(p1 player)
+    {
+	
+        int randomIndex = UnityEngine.Random.Range(1, 6);
+        switch (randomIndex)
+        {
+            case 1:
+                player.Fold(mainPot);
+                break;
+            case 2:
+                player.Check(mainPot);
+                break;		
+            case 3:
+                player.Raise(50, mainPot);
+                break;
+            case 4:
+                player.Call(mainPot);
+                break;
+            case 5:
+                player.Bet(50, mainPot);
+                break;
+            case 6:
+                player.AllIn(mainPot);
+                break;
+        }
+    }
+
+    public void GetChoice(p1 player)
+    {
+            bool a = true;
+            while (a == true)
+            {
+            if (player.name == "Dive_Camera")
+            {
+                // Spieler soll aussuchen was er macht !
+                a = false;
+            }
+            else
+                player.Call(mainPot);
+                a = false;
+            }
+
+    }
 }
 

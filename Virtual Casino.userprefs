@@ -1,13 +1,14 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+﻿<Properties StartupConfiguration="{9B33879D-49AA-0579-FAB0-EA3BC6D4E1F2}|Komponententests">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RayCast.cs">
     <Files>
-      <File FileName="Assets/Scripts/RayCast.cs" Line="568" Column="16" />
-      <File FileName="../../../Downloads/VirtualCasino/Assets/move.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RayCast.cs" Line="568" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp-Editor PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
 </Properties>

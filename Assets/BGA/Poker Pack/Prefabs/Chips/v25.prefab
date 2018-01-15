@@ -10,8 +10,8 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
-  - component: {fileID: 54675203020226602}
   - component: {fileID: 65431816404283586}
+  - component: {fileID: 54313940799577336}
   m_Layer: 0
   m_Name: v25
   m_TagString: Untagged
@@ -102,7 +102,7 @@ Prefab:
 --- !u!1002 &100100001
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!54 &54675203020226602
+--- !u!54 &54313940799577336
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
