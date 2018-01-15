@@ -26,16 +26,17 @@ public class p1 : MonoBehaviour
     // Update is called once per frame
     void Update () {
     }
+
     //leave the round
     public void Fold(Pot mainPot) 
     {
-        folded = true;
         mainPot.getPlayersInPot().Remove(this);
         myHand[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position; 
         myHand[0].transform.Rotate(180, 0, 0);
         myHand[1].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
         myHand[1].transform.Rotate(180, 0, 0);
         this.myHand.Clear();
+        folded = true;
     }
     //don't bet
     public void Check(Pot mainPot) { }
