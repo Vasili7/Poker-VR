@@ -68,6 +68,8 @@ public class Tisch : MonoBehaviour
         {
             amountInPot = mainPot.amountInPot;
 
+			player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
+
             //neuesSpiel = false;
             //spielEnde = false;
             //spielStart = true;
@@ -463,9 +465,25 @@ public class Tisch : MonoBehaviour
     // Showdown
     public void ShowDown()
     {
-        // wenn gewonnen
-        // player3.gewonnenRunden++;
-    }
+		
+/*		// HUD for gewonnere und verlorene Runden und bank
+		int bank = player3.bank_amount; 
+		// wenn gewonnen
+		player3.gewonnenRunden++;
+		player3.siege_txt.text = "Siege:" + player3.gewonnenRunden;
+
+		bank += amountInPot;
+		player3.bank_amount.text = bank.ToString ();
+
+
+		//wenn verloren
+		player3.verlorenenRunden++;
+		player3.Niederlagen_txt.text = "Niederlage:" + player3.verlorenenRunden;
+
+		bank -= amountInPot;
+		player3.bank_amount.text = bank.ToString ();
+*/
+      }
 
     /*
     private class Blind

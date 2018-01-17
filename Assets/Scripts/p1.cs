@@ -15,7 +15,12 @@ public class p1 : MonoBehaviour
     public Tisch tisch;
     Pot pot;
 
-    //public int gewonnenRunden;
+	public int gewonnenRunden=0;
+	public int verlorenenRunden = 0;
+	public TextMesh siege_txt; 
+	public TextMesh Niederlagen_txt;
+	public TextMesh bank_amount;
+	public TextMesh pot_amount;
 
 
     // Use this for initialization

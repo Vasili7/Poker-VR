@@ -75,7 +75,12 @@ public class RayCast : MonoBehaviour {
 	private static int Set_Bet=0;
 
 	public TextMesh Bank_amount;
-	private static int bank = 100;
+	private static int bank = 200;
+
+	public GameObject pot,pot_amount;
+	public TextMesh pot_amount_txt;
+	private static int pot_amount_int=0;
+
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
 	public Tisch t = new Tisch();
@@ -98,6 +103,8 @@ public class RayCast : MonoBehaviour {
 		HUD_Minus_100.SetActive (false);
 		HUD_Raise_minus.SetActive (false);
 		HUD_Raise_plus.SetActive (false);
+		pot.SetActive (false);
+		pot_amount.SetActive (false);
 
 		buttonEnd.SetActive (false);
 		buttonEndJa.SetActive (false);
@@ -154,6 +161,8 @@ public class RayCast : MonoBehaviour {
 					Bewegung.geschwindigkeit = 0;
 
 					// Tisch löschen
+					t.Reset();
+					t.RemoveJetons ();
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
@@ -176,6 +185,9 @@ public class RayCast : MonoBehaviour {
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
 					buttonStart.SetActive (false);
+					pot.SetActive (true);
+					pot_amount.SetActive (true);
+					pot_amount_txt.text = "0";
 
 					buttonEnd.SetActive (true);
 					buttonEndJa.SetActive (false);
@@ -206,7 +218,8 @@ public class RayCast : MonoBehaviour {
 					siegsteineHervorheben = false;
 
 					// Tisch löschen
-
+					t.Reset();
+					t.RemoveJetons ();
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
 					spielende = false;
@@ -231,6 +244,9 @@ public class RayCast : MonoBehaviour {
 					HUD_Minus_100.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
+					pot.SetActive (true);
+					pot_amount.SetActive (true);
+					pot_amount_txt.text = "0";
 
 					t.AddFirstJetons();
 					t.StartNewMatch();
@@ -271,6 +287,8 @@ public class RayCast : MonoBehaviour {
 							HUD_Minus_100.SetActive (false);
 							HUD_Raise_minus.SetActive (false);
 							HUD_Raise_plus.SetActive (false);
+							pot.SetActive (false);
+							pot_amount.SetActive (false);
 							break;
 						case "Spiel abbrechen (JA)":
 							siegsteineHervorheben = false;
@@ -307,6 +325,8 @@ public class RayCast : MonoBehaviour {
 							HUD_Minus_100.SetActive (true);
 							HUD_Raise_minus.SetActive (true);
 							HUD_Raise_plus.SetActive (true);
+							pot.SetActive (true);
+							pot_amount.SetActive (true);
 
 							break;
 						}
@@ -364,9 +384,10 @@ public class RayCast : MonoBehaviour {
 
 
 
-					//abziehen von Bank
-					bank -= int.Parse (Bet.text);
+					bank -= int.Parse (Bet.text); //from Bank
+					pot_amount_int += int.Parse (Bet.text); //to pot
 					Bank_amount.text = bank.ToString();
+					pot_amount_txt.text = pot_amount_int.ToString ();
 					Bet.text = "0";
 					Set_Bet = 0;
 
