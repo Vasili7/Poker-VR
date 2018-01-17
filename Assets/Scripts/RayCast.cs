@@ -28,6 +28,8 @@ public class RayCast : MonoBehaviour {
 	public GameObject buttonLeicht, buttonMittel, buttonSchwierig;
 	public GameObject buttonEnd, buttonEndJa, buttonEndNein;
 	public GameObject HUD_Check, HUD_Fold, HUD_Raise, HUD_Raise_plus, HUD_Raise_minus;
+	public GameObject HUD_Raise_1, HUD_Raise_5, HUD_Raise_25, HUD_Raise_100;
+	public GameObject HUD_Minus_1, HUD_Minus_5, HUD_Minus_25, HUD_Minus_100;
 	public GameObject buttonStart;
 	public GameObject buttonRestart;
 	public GameObject Player;
@@ -73,10 +75,10 @@ public class RayCast : MonoBehaviour {
 	private static int Set_Bet=0;
 
 	public TextMesh Bank_amount;
-	private static int bank = 1000;
+	private static int bank = 100;
 
-    KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
-    public Tisch t = new Tisch();
+	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
+	public Tisch t = new Tisch();
 
 
 	void Start(){
@@ -86,6 +88,14 @@ public class RayCast : MonoBehaviour {
 		HUD_Check.SetActive (false);
 		HUD_Fold.SetActive (false);
 		HUD_Raise.SetActive (false);
+		HUD_Raise_1.SetActive (false);
+		HUD_Raise_5.SetActive (false);
+		HUD_Raise_25.SetActive (false);
+		HUD_Raise_100.SetActive (false);
+		HUD_Minus_1.SetActive (false);
+		HUD_Minus_5.SetActive (false);
+		HUD_Minus_25.SetActive (false);
+		HUD_Minus_100.SetActive (false);
 		HUD_Raise_minus.SetActive (false);
 		HUD_Raise_plus.SetActive (false);
 
@@ -98,7 +108,7 @@ public class RayCast : MonoBehaviour {
 
 		Bet.text = Set_Bet.ToString ();
 
-	//	Bank_amount = GetComponent<TextMesh> ();
+		//	Bank_amount = GetComponent<TextMesh> ();
 		Bank_amount.text = bank.ToString ();
 
 	}
@@ -124,10 +134,10 @@ public class RayCast : MonoBehaviour {
 		// Spielstart, Spielabbruch, Spielerzug & Gegnerzug
 		// ------------------------------------------------------------
 		if (Physics.Raycast (transform.position, forward, out hit)) {
-			
+
 			// SPIELSTART
 			if (hit.collider.gameObject.tag == "Spiel starten") 
-            {
+			{
 
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
@@ -142,7 +152,8 @@ public class RayCast : MonoBehaviour {
 
 					Bewegung.spielstart = true;
 					Bewegung.geschwindigkeit = 0;
-					// Spielsteine löschen
+
+					// Tisch löschen
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
@@ -154,6 +165,14 @@ public class RayCast : MonoBehaviour {
 					HUD_Check.SetActive (true);
 					HUD_Fold.SetActive (true);
 					HUD_Raise.SetActive (true);
+					HUD_Raise_1.SetActive (true);
+					HUD_Raise_5.SetActive (true);
+					HUD_Raise_25.SetActive (true);
+					HUD_Raise_100.SetActive (true);
+					HUD_Minus_1.SetActive (true);
+					HUD_Minus_5.SetActive (true);
+					HUD_Minus_25.SetActive (true);
+					HUD_Minus_100.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
 					buttonStart.SetActive (false);
@@ -173,7 +192,7 @@ public class RayCast : MonoBehaviour {
 
 				}
 
-			// NEUSTART
+				// NEUSTART
 			} else if (hit.collider.gameObject.tag == "Neustart") {
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
@@ -195,25 +214,33 @@ public class RayCast : MonoBehaviour {
 
 					ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
-                    buttonLeicht.SetActive(false); 
-                    buttonMittel.SetActive(false); 
-                    buttonSchwierig.SetActive(false);
+					buttonLeicht.SetActive(false); 
+					buttonMittel.SetActive(false); 
+					buttonSchwierig.SetActive(false);
 
 					HUD_Check.SetActive (true);
 					HUD_Fold.SetActive (true);
 					HUD_Raise.SetActive (true);
+					HUD_Raise_1.SetActive (true);
+					HUD_Raise_5.SetActive (true);
+					HUD_Raise_25.SetActive (true);
+					HUD_Raise_100.SetActive (true);
+					HUD_Minus_1.SetActive (true);
+					HUD_Minus_5.SetActive (true);
+					HUD_Minus_25.SetActive (true);
+					HUD_Minus_100.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
 
-                    t.AddFirstJetons();
-                    t.StartNewMatch();
-                    t.DealFlop();
-                    t.DealTurn();
-                    t.DealRiver();
+					t.AddFirstJetons();
+					t.StartNewMatch();
+					t.DealFlop();
+					t.DealTurn();
+					t.DealRiver();
 
 				}
-					
-			// SPIELABBRUCH
+
+				// SPIELABBRUCH
 			} else if (hit.collider.gameObject.tag == "Spiel abbrechen") {
 				aktiviert = true;
 				if (hit.collider.gameObject.name == fokusiertesObjekt) {
@@ -234,6 +261,14 @@ public class RayCast : MonoBehaviour {
 							HUD_Check.SetActive (false);
 							HUD_Fold.SetActive (false);
 							HUD_Raise.SetActive (false);
+							HUD_Raise_1.SetActive (false);
+							HUD_Raise_5.SetActive (false);
+							HUD_Raise_25.SetActive (false);
+							HUD_Raise_100.SetActive (false);
+							HUD_Minus_1.SetActive (false);
+							HUD_Minus_5.SetActive (false);
+							HUD_Minus_25.SetActive (false);
+							HUD_Minus_100.SetActive (false);
 							HUD_Raise_minus.SetActive (false);
 							HUD_Raise_plus.SetActive (false);
 							break;
@@ -262,12 +297,20 @@ public class RayCast : MonoBehaviour {
 							HUD_Check.SetActive (true);
 							HUD_Fold.SetActive (true);
 							HUD_Raise.SetActive (true);
+							HUD_Raise_1.SetActive (true);
+							HUD_Raise_5.SetActive (true);
+							HUD_Raise_25.SetActive (true);
+							HUD_Raise_100.SetActive (true);
+							HUD_Minus_1.SetActive (true);
+							HUD_Minus_5.SetActive (true);
+							HUD_Minus_25.SetActive (true);
+							HUD_Minus_100.SetActive (true);
 							HUD_Raise_minus.SetActive (true);
 							HUD_Raise_plus.SetActive (true);
 
 							break;
 						}
-							
+
 					}
 				} else {
 					//ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
@@ -319,34 +362,76 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-				//	HUD_Raise.SetActive (false);
 
+
+					//abziehen von Bank
 					bank -= int.Parse (Bet.text);
 					Bank_amount.text = bank.ToString();
 					Bet.text = "0";
 					Set_Bet = 0;
 
 				}
-				//RAISE MINUS
-			}else if(hit.collider.gameObject.tag=="Raise minus"){
-				aktiviert = true;
-
-				timer = timer + Time.deltaTime;
-				this.lastHit = hit;
-				angeseheneObjekte.Add (lastHit.transform.gameObject);
-				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
-
-
-				if (timer >= 2f ) {
-					timer = 0f;
-
-					if (int.Parse (Bet.text) > 0)
-						Set_Bet--;
-
-					Bet.text = Set_Bet.ToString ();
-				}
-				//RAISE PLUS
-			}else if(hit.collider.gameObject.tag=="Raise plus"){
+				//				//RAISE MINUS
+				//			}else if(hit.collider.gameObject.tag=="Raise minus"){
+				//				aktiviert = true;
+				//
+				//				timer = timer + Time.deltaTime;
+				//				this.lastHit = hit;
+				//				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				//				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+				//
+				//
+				//				if (timer >= 2f ) {
+				//					timer = 0f;
+				//
+				//					if (int.Parse (Bet.text) > 0)
+				//						Set_Bet--;
+				//
+				//					Bet.text = Set_Bet.ToString ();
+				//				}
+				//				//RAISE PLUS
+				//			}else if(hit.collider.gameObject.tag=="Raise plus"){
+				//				aktiviert = true;
+				//
+				//				timer = timer + Time.deltaTime;
+				//				this.lastHit = hit;
+				//				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				//				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+				//
+				//
+				//				if (timer >= 2f) {
+				//
+				///*					int new_bet = int.Parse (Bet.text);
+				//					if (timer > 5f) {
+				//						if (timer > 10f) {
+				//							Set_Bet += 20;
+				//						} else
+				//							Set_Bet += 5;
+				//					} else
+				//						Set_Bet++;
+				//					Bet.text = Set_Bet.ToString ();
+				//*/
+				//					timer = 0f;
+				//
+				//					int new_bet = int.Parse (Bet.text);
+				//					if (new_bet < bank) {
+				//						if (new_bet >= 5) {
+				//							if (new_bet >= 40) {
+				//								if (new_bet >= 70)
+				//									Set_Bet += 100;
+				//								else
+				//									Set_Bet += 10;
+				//							} else
+				//								Set_Bet += 5;
+				//						} else
+				//							Set_Bet++;
+				//					
+				//						//Set_Bet++;
+				//						Bet.text = Set_Bet.ToString ();
+				//					}
+				//				}
+				//RAISE MINUS 1
+			}else if(hit.collider.gameObject.tag=="minus 1"){
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -356,35 +441,144 @@ public class RayCast : MonoBehaviour {
 
 
 				if (timer >= 2f) {
+					timer = 0f;
 
-/*					int new_bet = int.Parse (Bet.text);
-					if (timer > 5f) {
-						if (timer > 10f) {
-							Set_Bet += 20;
-						} else
-							Set_Bet += 5;
-					} else
-						Set_Bet++;
+					if (int.Parse (Bet.text)-1 > 0)
+						Set_Bet--;
 					Bet.text = Set_Bet.ToString ();
-*/
+
+				}
+				//RAISE MINUS 5
+			}else if(hit.collider.gameObject.tag=="minus 5"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					if (int.Parse (Bet.text)-5 > 0)
+						Set_Bet -= 5;
+					Bet.text = Set_Bet.ToString ();
+				}
+
+				//RAISE MINUS 25
+			}else if(hit.collider.gameObject.tag=="minus 25"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					if (int.Parse (Bet.text)-25 > 0)
+						Set_Bet -= 25;
+					Bet.text = Set_Bet.ToString ();
+
+				}
+				//RAISE MINUS 100
+			}else if(hit.collider.gameObject.tag=="minus 100"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					if (int.Parse (Bet.text)-100 > 0)
+						Set_Bet -= 100;
+					Bet.text = Set_Bet.ToString ();
+
+				}
+				//RAISE PLUS 1
+			}else if(hit.collider.gameObject.tag=="raise 1"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet >= 5) {
-						if (new_bet >= 40) {
-							if (new_bet >= 70)
-								Set_Bet += 100;
-							else
-								Set_Bet += 10;
-						} else
-							Set_Bet += 5;
-					} else
+					if (new_bet + 1 <= bank) {
 						Set_Bet++;
-					
-					//Set_Bet++;
-					Bet.text = Set_Bet.ToString ();
+						Bet.text = Set_Bet.ToString ();
+					}
 				}
-			// SPIELERZUG
+				//RAISE PLUS 5
+			}else if(hit.collider.gameObject.tag=="raise 5"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet+5 <= bank) {
+						Set_Bet += 5;
+						Bet.text = Set_Bet.ToString ();
+					}
+				}
+				//RAISE PLUS 25
+			}else if(hit.collider.gameObject.tag=="raise 25"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet+25 <= bank) {
+						Set_Bet += 25;
+						Bet.text = Set_Bet.ToString ();
+					}
+				}
+				//RAISE PLUS 100
+			}else if(hit.collider.gameObject.tag=="raise 100"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet+100 <= bank) {
+						Set_Bet += 100;
+						Bet.text = Set_Bet.ToString ();
+					}
+				}
+				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {
 				if (spielstart && !spielende) {
 					aktiviert = true;
@@ -428,7 +622,7 @@ public class RayCast : MonoBehaviour {
 				timer = 0f;
 			}
 		}
-			
+
 
 		// ------------------------------------------------------------
 		// Einstellungen für ein neues Spiel
