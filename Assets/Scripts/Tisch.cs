@@ -37,6 +37,9 @@ public class Tisch : MonoBehaviour
     public Pot mainPot;
     List<Pot> sidePots;
 
+    RaycastHit hit;
+    RayCast rayray;
+
     //public TextMesh Pot_amount;
     //private static int pot = 0;
     //public int pip;
@@ -53,8 +56,7 @@ public class Tisch : MonoBehaviour
         for (int i = 0; i < pList.Count(); i++)
         { GetChoice(pList[i]); }
         */
-        //StartCoroutine(Warten());
-
+        //StartCoroutine(Beginnen());
     }
 
     public void Update()
@@ -94,13 +96,13 @@ public class Tisch : MonoBehaviour
             player1.chipStack++;
             player1.myJetons.Add(j1);
         }
-        for (int i = 0; i< 3; i++)
+        for (int i = 0; i< 30; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("1j5").transform.position, j5.transform.rotation);
             player1.chipStack = player1.chipStack + 5;
             player1.myJetons.Add(j5);
         }
-        for (int i = 0; i< 3; i++)
+        for (int i = 0; i< 30; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("1j25").transform.position, j25.transform.rotation);
             player1.chipStack = player1.chipStack + 25;
@@ -119,19 +121,19 @@ public class Tisch : MonoBehaviour
             player2.chipStack++;
             player2.myJetons.Add(j1);
         }
-        for (int i = 0; i< 3; i++)
+        for (int i = 0; i< 30; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("2j5").transform.position, j5.transform.rotation);
             player2.chipStack = player2.chipStack + 5;
             player2.myJetons.Add(j5);
         }
-        for (int i = 0; i< 3; i++)
+        for (int i = 0; i< 30; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("2j25").transform.position, j25.transform.rotation);
             player2.chipStack = player2.chipStack + 25;
             player2.myJetons.Add(j25);
         }
-        for (int i = 0; i< 1; i++)
+        for (int i = 0; i< 10; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("2j100").transform.position, j100.transform.rotation);
             player2.chipStack = player2.chipStack + 100;
@@ -144,19 +146,19 @@ public class Tisch : MonoBehaviour
             player3.chipStack++;
             player3.myJetons.Add(j1);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 30; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("3j5").transform.position, j5.transform.rotation);
             player3.chipStack = player3.chipStack + 5;
             player3.myJetons.Add(j5);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 30; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("3j25").transform.position, j25.transform.rotation);
             player3.chipStack = player3.chipStack + 25;
             player3.myJetons.Add(j25);
         }
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 10; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("3j100").transform.position, j100.transform.rotation);
             player3.chipStack = player3.chipStack + 100;
@@ -169,19 +171,19 @@ public class Tisch : MonoBehaviour
             player4.chipStack++;
             player4.myJetons.Add(j1);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 30; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("4j5").transform.position, j5.transform.rotation);
             player4.chipStack = player4.chipStack + 5;
             player4.myJetons.Add(j5);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 30; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("4j25").transform.position, j25.transform.rotation);
             player4.chipStack = player4.chipStack + 25;
             player4.myJetons.Add(j25);
         }
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 10; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("4j100").transform.position, j100.transform.rotation);
             player4.chipStack = player4.chipStack + 100;
@@ -194,19 +196,19 @@ public class Tisch : MonoBehaviour
             player5.chipStack++;
             player5.myJetons.Add(j1);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 30; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("5j5").transform.position, j5.transform.rotation);
             player5.chipStack = player5.chipStack + 5;
             player5.myJetons.Add(j5);
         }
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 30; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("5j25").transform.position, j25.transform.rotation);
             player5.chipStack = player5.chipStack + 25;
             player5.myJetons.Add(j25);
         }
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 10; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("5j100").transform.position, j100.transform.rotation);
             player5.chipStack = player5.chipStack + 100;
@@ -561,6 +563,9 @@ public class Tisch : MonoBehaviour
             if (player.name == "Dive_Camera")
             {
                 // Spieler soll aussuchen was er macht !
+                //StartCoroutine(Warten15());
+                //player.Fold(mainPot);
+                //mainPot.playersInPot.Remove(player);
                 RandomChoose(player);
                 a = false;
             }
@@ -571,7 +576,12 @@ public class Tisch : MonoBehaviour
 
     }
 
-    IEnumerator Warten()
+    IEnumerator Warten15()
+    {
+        yield return new WaitForSeconds(15f); 
+    }
+
+    IEnumerator Beginnen()
     {
         AddFirstJetons();
         for (int count = 1; count < 5; count++)
@@ -711,6 +721,31 @@ public class Tisch : MonoBehaviour
         for (int i = 0; i < pList.Count(); i++)
         {
             pList[i].Reset();
+        }
+    }
+
+    /*
+    void OnTriggerEnter(Collider col)
+    {
+        if (zugSpieler && gueltigeSpalten[columnNumber - 1] && spielstart && col.gameObject.name == "check")
+        {
+            Debug.Log("Einwurf in: " + columnNumber);
+            fuegeSteinHinzu(columnNumber - 1);
+            if (!spielende)
+            {
+                zugSpieler = false;
+                werIstDran_txt.text = "Gegenspieler überlegt...";
+                werIstDran_txt.transform.localPosition = new Vector3(-1.25f, 5.35f, 8f);
+                StartCoroutine("Warten");
+            }
+        }
+    }
+    */
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.name == "HUD Check")
+        {
+            
         }
     }
 }

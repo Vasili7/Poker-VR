@@ -347,7 +347,7 @@ public class RayCast : MonoBehaviour {
 				angeseheneObjekte.Add (lastHit.transform.gameObject);
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-
+                t.player3.Check(t.mainPot);
 				if (timer >= 2f) {
 					timer = 0f;
 
@@ -362,7 +362,7 @@ public class RayCast : MonoBehaviour {
 				angeseheneObjekte.Add (lastHit.transform.gameObject);
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-
+                t.player3.Fold(t.mainPot);
 				if (timer >= 2f) {
 					timer = 0f;
 
@@ -1406,6 +1406,9 @@ public class RayCast : MonoBehaviour {
                 t.DealRiver();
                 yield return new WaitForSeconds(5f);
                 t.Test();
+
+                t.Reset();
+                t.mainPot.Reset();
             }
             else if (count == 2)
             {
@@ -1421,6 +1424,9 @@ public class RayCast : MonoBehaviour {
                 t.DealRiver();
                 yield return new WaitForSeconds(5f);
                 t.Test();
+
+                t.Reset();
+                t.mainPot.Reset();
             }
             else if (count == 3)
             {
@@ -1436,6 +1442,9 @@ public class RayCast : MonoBehaviour {
                 t.DealRiver();
                 yield return new WaitForSeconds(5f);
                 t.Test();
+
+                t.Reset();
+                t.mainPot.Reset();
             }
             else if (count == 4)
             {
@@ -1451,9 +1460,13 @@ public class RayCast : MonoBehaviour {
                 t.DealRiver();
                 yield return new WaitForSeconds(5f);
                 t.Test();
+
+                t.Reset();
+                t.mainPot.Reset();
             }
         }
         t.Reset();
+        t.mainPot.Reset();
     }
 
 }
