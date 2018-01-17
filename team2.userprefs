@@ -4,7 +4,11 @@
       <File FileName="Assets\Scripts\Cards.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\p1.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Pot.cs" Line="1" Column="1" />
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\RayCast.cs" Line="1" Column="1" />
+=======
+      <File FileName="Assets\Scripts\RayCast.cs" Line="1364" Column="2" />
+>>>>>>> 44109cb87a94d2f7a01d1a6e29aed0ff9a81592f
       <File FileName="Assets\Scripts\SpielSteinEinwurfLEAP.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Tisch.cs" Line="1" Column="1" />
     </Files>
@@ -15,4 +19,9 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+<<<<<<< HEAD
 </Properties>
+=======
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
+>>>>>>> 44109cb87a94d2f7a01d1a6e29aed0ff9a81592f

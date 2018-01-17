@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class p1 : MonoBehaviour 
@@ -8,10 +9,14 @@ public class p1 : MonoBehaviour
     //private GameObject goJetons;
     public List<GameObject> myJetons = new List<GameObject>();
     public List<GameObject> myHand = new List<GameObject>();
-    public int chipStack, amountInPot;
+    public int chipStack = 0, amountInPot;
     public bool isBusted, folded;
 
     public Tisch tisch;
+    Pot pot;
+
+    //public int gewonnenRunden;
+
 
     // Use this for initialization
     void Start () 
@@ -21,24 +26,28 @@ public class p1 : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update () {
+    void Update () 
+    {
+        amountInPot = pot.amountInPot;
     }
+
     //leave the round
     public void Fold(Pot mainPot) 
     {
-        folded = true;
         mainPot.getPlayersInPot().Remove(this);
         myHand[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position; 
         myHand[0].transform.Rotate(180, 0, 0);
         myHand[1].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
         myHand[1].transform.Rotate(180, 0, 0);
         this.myHand.Clear();
+        folded = true;
     }
     //don't bet
     public void Check(Pot mainPot) { }
     //call and bet additional amount of money
     public void Raise(int raise, Pot mainPot) 
     {
+        amountInPot = mainPot.amountInPot;
         int amount = mainPot.getMaximumAmountPutIn() + raise - amountInPot;
         if (chipStack <= amount)
         {
@@ -55,6 +64,8 @@ public class p1 : MonoBehaviour
     //bet enough to stay in the round
     public void Call(Pot mainPot) 
     {
+        amountInPot = mainPot.amountInPot;
+
         int amount = mainPot.getMaximumAmountPutIn() - amountInPot;
         if (chipStack <= amount)
         {
@@ -69,6 +80,8 @@ public class p1 : MonoBehaviour
     //bet a certain amount of money
     public void Bet(int bet, Pot mainPot) 
     {
+        amountInPot = mainPot.amountInPot;
+
         if (chipStack <= bet)
         {
             AllIn(mainPot);
@@ -134,14 +147,14 @@ public class p1 : MonoBehaviour
     public void Reset()
     {
         this.amountInPot = 0;
-        this.chipStack = 0;
-        this.folded = false;
+        //this.chipStack = 0;
+        //this.folded = false;
         myHand[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position; 
         myHand[0].transform.Rotate(180, 0, 0);
         myHand[1].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
         myHand[1].transform.Rotate(180, 0, 0);
         this.myHand.Clear();
-        this.myJetons.Clear();
+        //this.myJetons.Clear();
     }
 
     //set isBusted to true if the player busted out
@@ -150,4 +163,10 @@ public class p1 : MonoBehaviour
         // do something
         isBusted = true;
     }
+
+    //public void Sorting()
+    //{
+    //    myJetons.OrderBy(j1 => j1.name);
+    //    myHand.OrderBy(j1 => j1);
+    //}
 }

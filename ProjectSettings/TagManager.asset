@@ -67,6 +67,15 @@ TagManager:
   - 5j100
   - 5j1
   - 5j25
+  - raise
+  - raise 1
+  - raise 5
+  - raise 25
+  - raise 100
+  - minus 1
+  - minus 5
+  - minus 25
+  - minus 100
   layers:
   - Default
   - TransparentFX

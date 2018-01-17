@@ -28,6 +28,8 @@ public class RayCast : MonoBehaviour {
 	public GameObject buttonLeicht, buttonMittel, buttonSchwierig;
 	public GameObject buttonEnd, buttonEndJa, buttonEndNein;
 	public GameObject HUD_Check, HUD_Fold, HUD_Raise, HUD_Raise_plus, HUD_Raise_minus;
+	public GameObject HUD_Raise_1, HUD_Raise_5, HUD_Raise_25, HUD_Raise_100;
+	public GameObject HUD_Minus_1, HUD_Minus_5, HUD_Minus_25, HUD_Minus_100;
 	public GameObject buttonStart;
 	public GameObject buttonRestart;
 	public GameObject Player;
@@ -69,15 +71,14 @@ public class RayCast : MonoBehaviour {
 	private bool wechsel = true;
 	private float timer2 = 0f;
 
-	private int Bet_Change=1;
 	public Text Bet;
-	private int Set_Bet=0;
+	private static int Set_Bet=0;
 
 	public TextMesh Bank_amount;
-	private static int bank = 1000;
+	private static int bank = 100;
 
-    KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
-    public Tisch t = new Tisch();
+	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
+	public Tisch t = new Tisch();
 
 
 	void Start(){
@@ -87,6 +88,14 @@ public class RayCast : MonoBehaviour {
 		HUD_Check.SetActive (false);
 		HUD_Fold.SetActive (false);
 		HUD_Raise.SetActive (false);
+		HUD_Raise_1.SetActive (false);
+		HUD_Raise_5.SetActive (false);
+		HUD_Raise_25.SetActive (false);
+		HUD_Raise_100.SetActive (false);
+		HUD_Minus_1.SetActive (false);
+		HUD_Minus_5.SetActive (false);
+		HUD_Minus_25.SetActive (false);
+		HUD_Minus_100.SetActive (false);
 		HUD_Raise_minus.SetActive (false);
 		HUD_Raise_plus.SetActive (false);
 
@@ -99,7 +108,7 @@ public class RayCast : MonoBehaviour {
 
 		Bet.text = Set_Bet.ToString ();
 
-	//	Bank_amount = GetComponent<TextMesh> ();
+		//	Bank_amount = GetComponent<TextMesh> ();
 		Bank_amount.text = bank.ToString ();
 
 	}
@@ -125,72 +134,11 @@ public class RayCast : MonoBehaviour {
 		// Spielstart, Spielabbruch, Spielerzug & Gegnerzug
 		// ------------------------------------------------------------
 		if (Physics.Raycast (transform.position, forward, out hit)) {
-			
+
 			// SPIELSTART
 			if (hit.collider.gameObject.tag == "Spiel starten") 
-            {
-/*				if (hit.collider.gameObject.name == fokusiertesObjekt) {
-					aktiviert = true;
-					timer = timer + Time.deltaTime;
-					this.lastHit = hit;
-					angeseheneObjekte.Add (lastHit.transform.gameObject);
-					ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+			{
 
-					if (timer >= 2f) {
-						timer = 0f;
-						Bewegung.spielstart = true;
-						Bewegung.geschwindigkeit = 0;
-
-
-						// Angaben für das HUD
-						switch (hit.collider.gameObject.name) {
-						case "Spiel starten(LEICHT)":
-							schwierigkeit = "Einfach";
-							schwierigkeit_txt.transform.localPosition = new Vector3 (-1.5f, 6f, 8f);
-							break;
-						case "Spiel starten(MITTEL)":
-							schwierigkeit = "Mittel";
-							schwierigkeit_txt.transform.localPosition = new Vector3 (-1.65f, 6f, 8f);
-							break;
-						case "Spiel starten(SCHWER)":
-							schwierigkeit = "Schwer";
-							schwierigkeit_txt.transform.localPosition = new Vector3 (-1.55f, 6f, 8f);
-							break;
-						case "Dk":
-							print ("hit1");
-							cardOne.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							cardTwo.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							break;
-						case "C2":
-							print ("hit");
-							cardOne.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							cardTwo.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-							break;
-
-						}
-						schwierigkeit_txt.text = "Spielstärke: " + schwierigkeit;
-						siege_txt.text = "Siege: " + siege;
-						niederlage_txt.text = "Niederlagen: " + niederlagen;
-
-
-						// Buttons ein- und ausblenden
-						buttonLeicht.SetActive (false);
-						buttonMittel.SetActive (false);
-						buttonSchwierig.SetActive (false);
-						buttonEnd.SetActive (true);
-						buttonRestart.SetActive (true);
-
-
-						// Einstellungen für den Spielstart
-						neuesSpiel = true;
-						spielende = false;
-						Player.transform.position = new Vector3 (15.673f, 0.177f, -7.725f);
-					}
-				} else {
-					fokusiertesObjekt = hit.collider.gameObject.name;
-					timer = 0f;
-				}
-*/			
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
 				this.lastHit = hit;
@@ -204,7 +152,8 @@ public class RayCast : MonoBehaviour {
 
 					Bewegung.spielstart = true;
 					Bewegung.geschwindigkeit = 0;
-					// Spielsteine löschen
+
+					// Tisch löschen
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
@@ -216,6 +165,14 @@ public class RayCast : MonoBehaviour {
 					HUD_Check.SetActive (true);
 					HUD_Fold.SetActive (true);
 					HUD_Raise.SetActive (true);
+					HUD_Raise_1.SetActive (true);
+					HUD_Raise_5.SetActive (true);
+					HUD_Raise_25.SetActive (true);
+					HUD_Raise_100.SetActive (true);
+					HUD_Minus_1.SetActive (true);
+					HUD_Minus_5.SetActive (true);
+					HUD_Minus_25.SetActive (true);
+					HUD_Minus_100.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
 					buttonStart.SetActive (false);
@@ -225,15 +182,17 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
-					t.AddFirstJetons();
-					t.StartNewMatch();
-					t.DealFlop();
-					t.DealTurn();
-					t.DealRiver();
+					//t.AddFirstJetons();
+					//t.StartNewMatch();
+					//t.DealFlop();
+					//t.DealTurn();
+					//t.DealRiver();
+
+                    StartCoroutine(Beginn());
 
 				}
 
-			// NEUSTART
+				// NEUSTART
 			} else if (hit.collider.gameObject.tag == "Neustart") {
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
@@ -246,7 +205,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 					siegsteineHervorheben = false;
 
-					// Spielsteine löschen
+					// Tisch löschen
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
@@ -255,33 +214,33 @@ public class RayCast : MonoBehaviour {
 
 					ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
-                    buttonLeicht.SetActive(false); 
-                    buttonMittel.SetActive(false); 
-                    buttonSchwierig.SetActive(false);
+					buttonLeicht.SetActive(false); 
+					buttonMittel.SetActive(false); 
+					buttonSchwierig.SetActive(false);
 
-					HUD_Check.SetActive (true);
-					HUD_Fold.SetActive (true);
 					HUD_Check.SetActive (true);
 					HUD_Fold.SetActive (true);
 					HUD_Raise.SetActive (true);
+					HUD_Raise_1.SetActive (true);
+					HUD_Raise_5.SetActive (true);
+					HUD_Raise_25.SetActive (true);
+					HUD_Raise_100.SetActive (true);
+					HUD_Minus_1.SetActive (true);
+					HUD_Minus_5.SetActive (true);
+					HUD_Minus_25.SetActive (true);
+					HUD_Minus_100.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
-	//				buttonStart.SetActive (false);
 
-	//				buttonEnd.SetActive (true);
-	//				buttonEndJa.SetActive (false);
-	//				buttonEndNein.SetActive (false);
-	//				buttonRestart.SetActive (true);
-
-                    t.AddFirstJetons();
-                    t.StartNewMatch();
-                    t.DealFlop();
-                    t.DealTurn();
-                    t.DealRiver();
+					t.AddFirstJetons();
+					t.StartNewMatch();
+					t.DealFlop();
+					t.DealTurn();
+					t.DealRiver();
 
 				}
-					
-			// SPIELABBRUCH
+
+				// SPIELABBRUCH
 			} else if (hit.collider.gameObject.tag == "Spiel abbrechen") {
 				aktiviert = true;
 				if (hit.collider.gameObject.name == fokusiertesObjekt) {
@@ -302,6 +261,14 @@ public class RayCast : MonoBehaviour {
 							HUD_Check.SetActive (false);
 							HUD_Fold.SetActive (false);
 							HUD_Raise.SetActive (false);
+							HUD_Raise_1.SetActive (false);
+							HUD_Raise_5.SetActive (false);
+							HUD_Raise_25.SetActive (false);
+							HUD_Raise_100.SetActive (false);
+							HUD_Minus_1.SetActive (false);
+							HUD_Minus_5.SetActive (false);
+							HUD_Minus_25.SetActive (false);
+							HUD_Minus_100.SetActive (false);
 							HUD_Raise_minus.SetActive (false);
 							HUD_Raise_plus.SetActive (false);
 							break;
@@ -310,25 +277,14 @@ public class RayCast : MonoBehaviour {
 							Bewegung.spielstart = false;
 							Bewegung.geschwindigkeit = 2;
 
-
-							// Angaben für das HUD
-							schwierigkeit_txt.text = "";
-							werIstDran_txt.text = "";
-							siege_txt.text = "";
-							niederlage_txt.text = "";
-
 							// Buttons ein- und ausblenden
-					//		buttonEnd.SetActive (false);
 							buttonEndJa.SetActive (false);
 							buttonEndNein.SetActive (false);
-					//		buttonRestart.SetActive (false);
-
 							buttonStart.SetActive (true);
 
-							// Spielsteine löschen
+							// Tisch löschen
 
 							// Einstellungen für das Spielende
-							Player.transform.position = new Vector3 (6F, -0.5F, 6F);
 							spielstart = false;
 							break;
 						case "Spiel abbrechen (NEIN)":
@@ -341,12 +297,20 @@ public class RayCast : MonoBehaviour {
 							HUD_Check.SetActive (true);
 							HUD_Fold.SetActive (true);
 							HUD_Raise.SetActive (true);
+							HUD_Raise_1.SetActive (true);
+							HUD_Raise_5.SetActive (true);
+							HUD_Raise_25.SetActive (true);
+							HUD_Raise_100.SetActive (true);
+							HUD_Minus_1.SetActive (true);
+							HUD_Minus_5.SetActive (true);
+							HUD_Minus_25.SetActive (true);
+							HUD_Minus_100.SetActive (true);
 							HUD_Raise_minus.SetActive (true);
 							HUD_Raise_plus.SetActive (true);
 
 							break;
 						}
-							
+
 					}
 				} else {
 					//ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
@@ -398,33 +362,76 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-				//	HUD_Raise.SetActive (false);
 
+
+					//abziehen von Bank
 					bank -= int.Parse (Bet.text);
-			
 					Bank_amount.text = bank.ToString();
+					Bet.text = "0";
+					Set_Bet = 0;
 
 				}
-				//RAISE MINUS
-			}else if(hit.collider.gameObject.tag=="Raise minus"){
-				aktiviert = true;
-
-				timer = timer + Time.deltaTime;
-				this.lastHit = hit;
-				angeseheneObjekte.Add (lastHit.transform.gameObject);
-				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
-
-
-				if (timer >= 2f ) {
-					timer = 0f;
-
-					if (int.Parse (Bet.text) > 0)
-						Set_Bet -= Bet_Change;
-
-					Bet.text = Set_Bet.ToString ();
-				}
-				//RAISE PLUS
-			}else if(hit.collider.gameObject.tag=="Raise plus"){
+				//				//RAISE MINUS
+				//			}else if(hit.collider.gameObject.tag=="Raise minus"){
+				//				aktiviert = true;
+				//
+				//				timer = timer + Time.deltaTime;
+				//				this.lastHit = hit;
+				//				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				//				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+				//
+				//
+				//				if (timer >= 2f ) {
+				//					timer = 0f;
+				//
+				//					if (int.Parse (Bet.text) > 0)
+				//						Set_Bet--;
+				//
+				//					Bet.text = Set_Bet.ToString ();
+				//				}
+				//				//RAISE PLUS
+				//			}else if(hit.collider.gameObject.tag=="Raise plus"){
+				//				aktiviert = true;
+				//
+				//				timer = timer + Time.deltaTime;
+				//				this.lastHit = hit;
+				//				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				//				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+				//
+				//
+				//				if (timer >= 2f) {
+				//
+				///*					int new_bet = int.Parse (Bet.text);
+				//					if (timer > 5f) {
+				//						if (timer > 10f) {
+				//							Set_Bet += 20;
+				//						} else
+				//							Set_Bet += 5;
+				//					} else
+				//						Set_Bet++;
+				//					Bet.text = Set_Bet.ToString ();
+				//*/
+				//					timer = 0f;
+				//
+				//					int new_bet = int.Parse (Bet.text);
+				//					if (new_bet < bank) {
+				//						if (new_bet >= 5) {
+				//							if (new_bet >= 40) {
+				//								if (new_bet >= 70)
+				//									Set_Bet += 100;
+				//								else
+				//									Set_Bet += 10;
+				//							} else
+				//								Set_Bet += 5;
+				//						} else
+				//							Set_Bet++;
+				//					
+				//						//Set_Bet++;
+				//						Bet.text = Set_Bet.ToString ();
+				//					}
+				//				}
+				//RAISE MINUS 1
+			}else if(hit.collider.gameObject.tag=="minus 1"){
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -436,11 +443,142 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-					Set_Bet += Bet_Change;
+					if (int.Parse (Bet.text)-1 > 0)
+						Set_Bet--;
+					Bet.text = Set_Bet.ToString ();
 
+				}
+				//RAISE MINUS 5
+			}else if(hit.collider.gameObject.tag=="minus 5"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					if (int.Parse (Bet.text)-5 > 0)
+						Set_Bet -= 5;
 					Bet.text = Set_Bet.ToString ();
 				}
-			// SPIELERZUG
+
+				//RAISE MINUS 25
+			}else if(hit.collider.gameObject.tag=="minus 25"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					if (int.Parse (Bet.text)-25 > 0)
+						Set_Bet -= 25;
+					Bet.text = Set_Bet.ToString ();
+
+				}
+				//RAISE MINUS 100
+			}else if(hit.collider.gameObject.tag=="minus 100"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					if (int.Parse (Bet.text)-100 > 0)
+						Set_Bet -= 100;
+					Bet.text = Set_Bet.ToString ();
+
+				}
+				//RAISE PLUS 1
+			}else if(hit.collider.gameObject.tag=="raise 1"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet + 1 <= bank) {
+						Set_Bet++;
+						Bet.text = Set_Bet.ToString ();
+					}
+				}
+				//RAISE PLUS 5
+			}else if(hit.collider.gameObject.tag=="raise 5"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet+5 <= bank) {
+						Set_Bet += 5;
+						Bet.text = Set_Bet.ToString ();
+					}
+				}
+				//RAISE PLUS 25
+			}else if(hit.collider.gameObject.tag=="raise 25"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet+25 <= bank) {
+						Set_Bet += 25;
+						Bet.text = Set_Bet.ToString ();
+					}
+				}
+				//RAISE PLUS 100
+			}else if(hit.collider.gameObject.tag=="raise 100"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+					int new_bet = int.Parse (Bet.text);
+					if (new_bet+100 <= bank) {
+						Set_Bet += 100;
+						Bet.text = Set_Bet.ToString ();
+					}
+				}
+				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {
 				if (spielstart && !spielende) {
 					aktiviert = true;
@@ -484,7 +622,7 @@ public class RayCast : MonoBehaviour {
 				timer = 0f;
 			}
 		}
-			
+
 
 		// ------------------------------------------------------------
 		// Einstellungen für ein neues Spiel
@@ -1225,4 +1363,76 @@ public class RayCast : MonoBehaviour {
 			unentschieden = unentschieden * feld [zeilen - 1, s];
 		}
 	}
+
+
+
+    IEnumerator Beginn()
+    {
+        t.AddFirstJetons();
+        for (int count = 1; count < 5; count++)
+        {
+            if (count == 1)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+            else if (count == 2)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+            else if (count == 3)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+            else if (count == 4)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+        }
+        t.Reset();
+    }
+
 }

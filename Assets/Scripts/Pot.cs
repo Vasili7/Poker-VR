@@ -57,4 +57,13 @@ public class Pot : MonoBehaviour {
     {
         return playersInPot;
     }
+
+    public void Reset()
+    {
+        amountInPot = 0;
+        minimumRaise = 0;
+        maximumAmountPutIn = 0;
+        smallBlind = 0;
+        bigBlind = 0;
+    }
 }
