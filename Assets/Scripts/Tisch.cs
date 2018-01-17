@@ -53,7 +53,7 @@ public class Tisch : MonoBehaviour
         for (int i = 0; i < pList.Count(); i++)
         { GetChoice(pList[i]); }
         */
-        StartCoroutine(Warten());
+        //StartCoroutine(Warten());
 
     }
 
