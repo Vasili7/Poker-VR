@@ -1,19 +1,20 @@
-﻿<Properties StartupConfiguration="{E16AFF02-8AE6-E962-67A5-E2F805F00927}|Komponententests" StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RayCast.cs">
+﻿<Properties StartupConfiguration="{E16AFF02-8AE6-E962-67A5-E2F805F00927}|Komponententests">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Tisch.cs">
     <Files>
-      <File FileName="Assets\Scripts\Cards.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\p1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Pot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RayCast.cs" Line="1364" Column="2" />
-      <File FileName="Assets\Scripts\SpielSteinEinwurfLEAP.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Tisch.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Cards.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/p1.cs" Line="150" Column="1" />
+      <File FileName="Assets/Scripts/Pot.cs" Line="67" Column="22" />
+      <File FileName="Assets/Scripts/RayCast.cs" Line="1448" Column="27" />
+      <File FileName="Assets/Scripts/SpielSteinEinwurfLEAP.cs" Line="120" Column="15" />
+      <File FileName="Assets/Scripts/Tisch.cs" Line="59" Column="11" />
+      <File FileName="Assets/Scripts/Jetons.cs" Line="5" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
