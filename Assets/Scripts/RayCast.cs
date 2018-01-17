@@ -163,11 +163,13 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
-					t.AddFirstJetons();
-					t.StartNewMatch();
-					t.DealFlop();
-					t.DealTurn();
-					t.DealRiver();
+					//t.AddFirstJetons();
+					//t.StartNewMatch();
+					//t.DealFlop();
+					//t.DealTurn();
+					//t.DealRiver();
+
+                    StartCoroutine(Beginn());
 
 				}
 
@@ -1167,4 +1169,76 @@ public class RayCast : MonoBehaviour {
 			unentschieden = unentschieden * feld [zeilen - 1, s];
 		}
 	}
+
+
+
+    IEnumerator Beginn()
+    {
+        t.AddFirstJetons();
+        for (int count = 1; count < 5; count++)
+        {
+            if (count == 1)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+            else if (count == 2)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+            else if (count == 3)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+            else if (count == 4)
+            {
+                t.StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealFlop();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealTurn();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+                t.DealRiver();
+                yield return new WaitForSeconds(5f);
+                t.Test();
+            }
+        }
+        t.Reset();
+    }
+
 }

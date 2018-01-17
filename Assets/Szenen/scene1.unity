@@ -6154,7 +6154,6 @@ MonoBehaviour:
   isBusted: 0
   folded: 0
   tisch: {fileID: 278796841}
-  gewonnenRunden: 0
 --- !u!1001 &616373626
 Prefab:
   m_ObjectHideFlags: 0
@@ -6712,7 +6711,6 @@ MonoBehaviour:
   isBusted: 0
   folded: 0
   tisch: {fileID: 278796841}
-  gewonnenRunden: 0
 --- !u!4 &659172105 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fa6f1e79fe9c442acbd6a6b09dd22085, type: 2}
@@ -9106,7 +9104,6 @@ MonoBehaviour:
   isBusted: 0
   folded: 0
   tisch: {fileID: 278796841}
-  gewonnenRunden: 0
 --- !u!1 &897045813
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,7 +10621,6 @@ MonoBehaviour:
   isBusted: 0
   folded: 0
   tisch: {fileID: 278796841}
-  gewonnenRunden: 0
 --- !u!1 &1049198371
 GameObject:
   m_ObjectHideFlags: 0
@@ -11146,7 +11142,6 @@ MonoBehaviour:
   isBusted: 0
   folded: 0
   tisch: {fileID: 278796841}
-  gewonnenRunden: 0
 --- !u!1 &1084726591
 GameObject:
   m_ObjectHideFlags: 0
