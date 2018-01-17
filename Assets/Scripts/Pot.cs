@@ -10,6 +10,8 @@ public class Pot : MonoBehaviour {
     public int maximumAmountPutIn;
     public int smallBlind, bigBlind;
 
+	public TextMesh pot_amount_txt;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +26,7 @@ public class Pot : MonoBehaviour {
     {
         this.amountInPot = amount;
         this.playersInPot = playersInPot;
+	
     }
 
     //add money to pot
@@ -32,6 +35,8 @@ public class Pot : MonoBehaviour {
         if (amount < 0)
             return;
         amountInPot += amount;
+
+		pot_amount_txt.text = amountInPot.ToString (); // set pot ???
     }
 
     //add player to pot

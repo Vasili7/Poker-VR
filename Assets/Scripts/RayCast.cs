@@ -161,8 +161,8 @@ public class RayCast : MonoBehaviour {
 					Bewegung.geschwindigkeit = 0;
 
 					// Tisch löschen
-					t.Reset();
-					t.RemoveJetons ();
+			//		t.Reset();
+			//		t.RemoveJetons ();
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
@@ -218,8 +218,8 @@ public class RayCast : MonoBehaviour {
 					siegsteineHervorheben = false;
 
 					// Tisch löschen
-					t.Reset();
-					t.RemoveJetons ();
+			//		t.Reset();
+			//		t.RemoveJetons ();
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
 					spielende = false;
@@ -392,65 +392,7 @@ public class RayCast : MonoBehaviour {
 					Set_Bet = 0;
 
 				}
-				//				//RAISE MINUS
-				//			}else if(hit.collider.gameObject.tag=="Raise minus"){
-				//				aktiviert = true;
-				//
-				//				timer = timer + Time.deltaTime;
-				//				this.lastHit = hit;
-				//				angeseheneObjekte.Add (lastHit.transform.gameObject);
-				//				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
-				//
-				//
-				//				if (timer >= 2f ) {
-				//					timer = 0f;
-				//
-				//					if (int.Parse (Bet.text) > 0)
-				//						Set_Bet--;
-				//
-				//					Bet.text = Set_Bet.ToString ();
-				//				}
-				//				//RAISE PLUS
-				//			}else if(hit.collider.gameObject.tag=="Raise plus"){
-				//				aktiviert = true;
-				//
-				//				timer = timer + Time.deltaTime;
-				//				this.lastHit = hit;
-				//				angeseheneObjekte.Add (lastHit.transform.gameObject);
-				//				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
-				//
-				//
-				//				if (timer >= 2f) {
-				//
-				///*					int new_bet = int.Parse (Bet.text);
-				//					if (timer > 5f) {
-				//						if (timer > 10f) {
-				//							Set_Bet += 20;
-				//						} else
-				//							Set_Bet += 5;
-				//					} else
-				//						Set_Bet++;
-				//					Bet.text = Set_Bet.ToString ();
-				//*/
-				//					timer = 0f;
-				//
-				//					int new_bet = int.Parse (Bet.text);
-				//					if (new_bet < bank) {
-				//						if (new_bet >= 5) {
-				//							if (new_bet >= 40) {
-				//								if (new_bet >= 70)
-				//									Set_Bet += 100;
-				//								else
-				//									Set_Bet += 10;
-				//							} else
-				//								Set_Bet += 5;
-				//						} else
-				//							Set_Bet++;
-				//					
-				//						//Set_Bet++;
-				//						Bet.text = Set_Bet.ToString ();
-				//					}
-				//				}
+
 				//RAISE MINUS 1
 			}else if(hit.collider.gameObject.tag=="minus 1"){
 				aktiviert = true;

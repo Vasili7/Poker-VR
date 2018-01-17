@@ -5988,6 +5988,7 @@ MonoBehaviour:
   maximumAmountPutIn: 0
   smallBlind: 0
   bigBlind: 0
+  pot_amount_txt: {fileID: 492700033}
 --- !u!1 &565298807 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 7640defeb12bbff45bcdf86ca9d4aee6, type: 3}

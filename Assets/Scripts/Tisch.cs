@@ -741,6 +741,9 @@ public class Tisch : MonoBehaviour
         }
     }
     */
+
+	//if (Physics.Raycast (transform.position, forward, out hit)){ 
+	//if(hit.collider.gameObject.tag=="Check"){}}  -------------> nicht im Update() ????
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.gameObject.name == "HUD Check")
