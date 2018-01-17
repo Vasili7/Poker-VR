@@ -37,20 +37,24 @@ public class Tisch : MonoBehaviour
     public Pot mainPot;
     List<Pot> sidePots;
 
+    //public TextMesh Pot_amount;
+    //private static int pot = 0;
+    //public int pip;
 
     public void Start()
     {
         // Zum testen der Positionen geeignet
+        /*
+
         AddFirstJetons();
 		StartNewMatch();
         BettingRound();
-        //BettingRound();
-        //BettingRound();
-        /*
 
         for (int i = 0; i < pList.Count(); i++)
         { GetChoice(pList[i]); }
         */
+        //StartCoroutine(Warten());
+
     }
 
     public void Update()
@@ -100,7 +104,7 @@ public class Tisch : MonoBehaviour
             player1.chipStack = player1.chipStack + 25;
             player1.myJetons.Add(j25);
         }
-        for (int i = 0; i< 1; i++)
+        for (int i = 0; i< 10; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("1j100").transform.position, j100.transform.rotation);
             player1.chipStack = player1.chipStack + 100;
@@ -212,8 +216,11 @@ public class Tisch : MonoBehaviour
     {
         // ??
     }
+
+    // cleans the table to begin a new round
     public void StartNewMatch()
     {
+        tableHand.Clear();
         AddAllCardsToDeck();
         AddAllPlayers();
 		DealAllHoleCards();
@@ -236,32 +243,41 @@ public class Tisch : MonoBehaviour
         {
             if (count == 1)
             {
+                // PRE FLOP
                 for (int i = 0; i < pList.Count(); i++)
                 {
-                    // PRE FLOP
-                    player1.PaySmallBlind(5, mainPot);
-                    player2.PaySmallBlind(10, mainPot);
-                    player3.Call(mainPot);
-                    player4.Call(mainPot);
-                    player5.Call(mainPot);
-                    player1.Call(mainPot);
-                    player2.Call(mainPot);
+                    Betting(pList[i]);
                 }
             }
             else if (count == 2)
             {
                 // FLOP 
                 DealFlop();
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+
             }
             else if (count == 3)
             {
                 // TURN
                 DealTurn();
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+
             }
             else if (count == 4)
             {
                 // RIVER
                 DealRiver();
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+
             }
         }
     }
@@ -359,6 +375,13 @@ public class Tisch : MonoBehaviour
             deck[i] = deck[randomIndex];
             deck[randomIndex] = temp;
         }
+        float abstand = 0.003f;
+        for (int i = 0; i < deck.Count; i++)
+        {
+            deck[i].transform.localPosition = new Vector3(0, abstand, 0);
+            deck[i].transform.Rotate(0, 0, 0);
+            abstand = abstand + 0.001f;
+        }
     }
 
     public void DealHoleCards(string a, string b, p1 p)
@@ -430,9 +453,9 @@ public class Tisch : MonoBehaviour
         deck.RemoveAt(0);
     }
 
-    void AddCardToDeck(GameObject card)
+    public void AddCardToDeck(GameObject card)
     {
-
+        //card.transform.localPosition = new Vector3(0,0,0);
         if (!deck.Contains(card))
             deck.Add(card);
     }
@@ -441,7 +464,7 @@ public class Tisch : MonoBehaviour
     public void ShowDown()
     {
         // wenn gewonnen
-        player3.gewonnenRunden++;
+        // player3.gewonnenRunden++;
     }
 
     /*
@@ -487,8 +510,8 @@ public class Tisch : MonoBehaviour
     // Random method for AI
     public void RandomChoose(p1 player)
     {
-	
-        int randomIndex = UnityEngine.Random.Range(1, 6);
+	    // fold, allin + check bringt die Reihenfolge durcheinander, deswegen deaktiviert
+        int randomIndex = UnityEngine.Random.Range(3, 5);
         switch (randomIndex)
         {
             case 1:
@@ -498,13 +521,13 @@ public class Tisch : MonoBehaviour
                 player.Check(mainPot);
                 break;		
             case 3:
-                player.Raise(50, mainPot);
+                player.Raise(100, mainPot);
                 break;
             case 4:
                 player.Call(mainPot);
                 break;
             case 5:
-                player.Bet(50, mainPot);
+                player.Bet(150, mainPot);
                 break;
             case 6:
                 player.AllIn(mainPot);
@@ -512,7 +535,7 @@ public class Tisch : MonoBehaviour
         }
     }
 
-    public void GetChoice(p1 player)
+    public void Betting(p1 player)
     {
             bool a = true;
             while (a == true)
@@ -520,13 +543,157 @@ public class Tisch : MonoBehaviour
             if (player.name == "Dive_Camera")
             {
                 // Spieler soll aussuchen was er macht !
+                RandomChoose(player);
                 a = false;
             }
             else
-                player.Call(mainPot);
+                RandomChoose(player);
                 a = false;
             }
 
+    }
+
+    IEnumerator Warten()
+    {
+        AddFirstJetons();
+        for (int count = 1; count < 5; count++)
+        {
+            if (count == 1)
+            {
+                StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealFlop();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealTurn();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealRiver();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                    pList[i].Reset();
+                    mainPot.Reset();
+                }
+            }
+            else if (count == 2)
+            {
+                StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealFlop();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealTurn();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealRiver();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                    pList[i].Reset();
+                    mainPot.Reset();
+                }
+            }
+            else if (count == 3)
+            {
+                StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealFlop();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealTurn();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealRiver();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                    pList[i].Reset();
+                    mainPot.Reset();
+                }
+            }
+            else if (count == 4)
+            {
+                StartNewMatch();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealFlop();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealTurn();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                }
+                DealRiver();
+                yield return new WaitForSeconds(5f);
+                for (int i = 0; i < pList.Count(); i++)
+                {
+                    Betting(pList[i]);
+                    pList[i].Reset();
+                    mainPot.Reset();
+                }
+            }
+        }
+        Reset();
+    }
+
+    public void Test()
+    {
+        for (int i = 0; i < pList.Count(); i++)
+        {
+            Betting(pList[i]);
+        }
+    }
+
+    public void Reset()
+    {
+        AddAllCardsToDeck();
+        tableHand.Clear();
+        for (int i = 0; i < pList.Count(); i++)
+        {
+            pList[i].Reset();
+        }
     }
 }
 

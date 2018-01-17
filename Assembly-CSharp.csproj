@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\HUD_Raise_Confirm.cs" />
      <Compile Include="Assets\Scripts\HUD_Raise_Minus.cs" />
      <Compile Include="Assets\Scripts\HUD_Raise_Plus.cs" />
+     <Compile Include="Assets\Scripts\Jetons.cs" />
      <Compile Include="Assets\Scripts\KartenBewegungZumSpieler.cs" />
      <Compile Include="Assets\Scripts\Main.cs" />
      <Compile Include="Assets\Scripts\NaturalOrientation.cs" />
