@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Linq;
+
 
 /* --------------------------------------------------------------------------------------------------------------------------
  * ERSTELLT VON:
@@ -84,8 +86,9 @@ public class RayCast : MonoBehaviour {
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch tisch = new Tisch() ;
-    public Pot mainPot;
+    public Pot mPot;
     public List<p1> playersInMainpot = new List<p1>();
+    bool spielerAktion = false;
 
 
 	void Start(){
@@ -139,7 +142,7 @@ public class RayCast : MonoBehaviour {
 		buttonSchwierig.SetActive (false);
 
 		Bank_amount.text = bank.ToString ();
-        playersInMainpot = mainPot.playersInPot;
+        //playersInMainpot = mainPot.playersInPot;
 
 
 		// ------------------------------------------------------------
@@ -352,7 +355,9 @@ public class RayCast : MonoBehaviour {
 				angeseheneObjekte.Add (lastHit.transform.gameObject);
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-                tisch.player3.Check(tisch.mainPot);
+                tisch.player3.Call(tisch.mainPot);
+                spielerAktion = true;
+
 				if (timer >= 2f) {
 					timer = 0f;
 
@@ -367,8 +372,9 @@ public class RayCast : MonoBehaviour {
 				angeseheneObjekte.Add (lastHit.transform.gameObject);
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-                tisch.gedenkZeit = true;
                 tisch.player3.Fold(tisch.mainPot);
+                spielerAktion = true;
+
 				if (timer >= 2f) {
 					timer = 0f;
 
@@ -1420,64 +1426,72 @@ public class RayCast : MonoBehaviour {
 
 IEnumerator Beginn()
 {
-
         yield return new WaitForSeconds(5f);
-
-
-        for (int count = 1; count < 3; count++)
+        tisch.AddFirstJetons();
+        tisch.StartNewMatch();
+        for (int i = 0; i < tisch.pList.Count(); i++)
         {
-            if (count == 1)
-            {
-                tisch.AddFirstJetons();
-                tisch.StartNewMatch();
-                for (int i = 0; i < tisch.pList.Count; i++)
+            if (tisch.pList[i].name == "Dive_Camera")
                 {
-                    yield return new WaitForSeconds(5f);
-                    tisch.Betting(tisch.pList[i]);
-                }                
-                tisch.DealFlop();
-                for (int i = 0; i < tisch.pList.Count; i++)
-                {
-                    yield return new WaitForSeconds(5f);
-                    tisch.Betting(tisch.pList[i]);
-                }                
-                tisch.DealTurn();
-                for (int i = 0; i < tisch.pList.Count; i++)
-                {
-                    yield return new WaitForSeconds(5f);
-                    tisch.Betting(tisch.pList[i]);
-                }                
+                while(spielerAktion == false)
+                    {
+                    yield return new WaitForSeconds(1f);
+                    }
+                }
+            else 
                 yield return new WaitForSeconds(5f);
-                yield return new WaitForSeconds(5f);
-
-                tisch.DealRiver();
-                for (int i = 0; i < tisch.pList.Count; i++)
+                tisch.RandomChoose(tisch.pList[i]);
+        }   
+        yield return new WaitForSeconds(5f);
+        tisch.DealFlop();
+        for (int i = 0; i < tisch.pList.Count(); i++)
+        {
+            if (tisch.pList[i].name == "Dive_Camera")
                 {
-
-                    yield return new WaitForSeconds(5f);
-                    tisch.Betting(tisch.pList[i]);
-                }                
-                // t.ShowDown();
-                tisch.Test2();
-                tisch.Reset();
-                tisch.mainPot.Reset();
-            }
-        yield return null;
-    }
+                while(spielerAktion == false)
+                    {
+                    yield return new WaitForSeconds(1f);
+                    }
+                }
+            else 
+                yield return new WaitForSeconds(5f);
+                tisch.RandomChoose(tisch.pList[i]);
+        }    
+        yield return new WaitForSeconds(5f);
+        tisch.DealTurn();
+        for (int i = 0; i < tisch.pList.Count(); i++)
+        {
+            if (tisch.pList[i].name == "Dive_Camera")
+                {
+                while(spielerAktion == false)
+                    {
+                    yield return new WaitForSeconds(1f);
+                    }
+                }
+            else 
+                yield return new WaitForSeconds(5f);
+                tisch.RandomChoose(tisch.pList[i]);
+        }                
+        yield return new WaitForSeconds(5f);
+        tisch.DealRiver();
+        for (int i = 0; i < tisch.pList.Count(); i++)
+        {
+            if (tisch.pList[i].name == "Dive_Camera")
+                {
+                while(spielerAktion == false)
+                    {
+                    yield return new WaitForSeconds(1f);
+                    }
+                }
+            else 
+                yield return new WaitForSeconds(5f);
+                tisch.RandomChoose(tisch.pList[i]);
+        }                
+        // t.ShowDown();
+        tisch.Reset();
+        tisch.mainPot.Reset();
 }
 
-    public void Test()
-    {
-        for (int i = 0; i < tisch.pList.Count; i++)
-        {
-            tisch.Betting(tisch.pList[i]);
-        }
-    }
-
-    IEnumerator WWaaRRttEEnn()
-    {
-        yield return new WaitForSeconds(5f);
-    }
 
 
 
