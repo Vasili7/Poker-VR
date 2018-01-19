@@ -83,7 +83,9 @@ public class RayCast : MonoBehaviour {
 
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
-	public Tisch t = new Tisch();
+    public Tisch tisch = new Tisch() ;
+    public Pot mainPot;
+    public List<p1> playersInMainpot = new List<p1>();
 
 
 	void Start(){
@@ -117,8 +119,9 @@ public class RayCast : MonoBehaviour {
 
 		//	Bank_amount = GetComponent<TextMesh> ();
 		Bank_amount.text = bank.ToString ();
-
-	}
+        //mainPot.playersInPot;
+        //StartCoroutine(Beginn());	
+    }
 
 
 	// ##########################################################################################################################
@@ -136,6 +139,8 @@ public class RayCast : MonoBehaviour {
 		buttonSchwierig.SetActive (false);
 
 		Bank_amount.text = bank.ToString ();
+        playersInMainpot = mainPot.playersInPot;
+
 
 		// ------------------------------------------------------------
 		// Spielstart, Spielabbruch, Spielerzug & Gegnerzug
@@ -248,11 +253,11 @@ public class RayCast : MonoBehaviour {
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
 
-					t.AddFirstJetons();
-					t.StartNewMatch();
-					t.DealFlop();
-					t.DealTurn();
-					t.DealRiver();
+					tisch.AddFirstJetons();
+					tisch.StartNewMatch();
+					tisch.DealFlop();
+					tisch.DealTurn();
+					tisch.DealRiver();
 
 				}
 
@@ -347,7 +352,7 @@ public class RayCast : MonoBehaviour {
 				angeseheneObjekte.Add (lastHit.transform.gameObject);
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-                t.player3.Check(t.mainPot);
+                tisch.player3.Check(tisch.mainPot);
 				if (timer >= 2f) {
 					timer = 0f;
 
@@ -362,7 +367,8 @@ public class RayCast : MonoBehaviour {
 				angeseheneObjekte.Add (lastHit.transform.gameObject);
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-                t.player3.Fold(t.mainPot);
+                tisch.gedenkZeit = true;
+                tisch.player3.Fold(tisch.mainPot);
 				if (timer >= 2f) {
 					timer = 0f;
 
@@ -1328,87 +1334,152 @@ public class RayCast : MonoBehaviour {
 	}
 
 
-
+    /*
     IEnumerator Beginn()
     {
-        t.AddFirstJetons();
+        tisch.AddFirstJetons();
         for (int count = 1; count < 5; count++)
         {
             if (count == 1)
             {
-                t.StartNewMatch();
+                tisch.StartNewMatch();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealFlop();
+                tisch.Test();
+                tisch.DealFlop();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealTurn();
+                tisch.Test();
+                tisch.DealTurn();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealRiver();
+                tisch.Test();
+                tisch.DealRiver();
                 yield return new WaitForSeconds(5f);
-                t.Test();
+                tisch.Test();
 
-                t.Reset();
-                t.mainPot.Reset();
+                tisch.Reset();
+                tisch.mainPot.Reset();
             }
             else if (count == 2)
             {
-                t.StartNewMatch();
+                tisch.StartNewMatch();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealFlop();
+                tisch.Test();
+                tisch.DealFlop();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealTurn();
+                tisch.Test();
+                tisch.DealTurn();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealRiver();
+                tisch.Test();
+                tisch.DealRiver();
                 yield return new WaitForSeconds(5f);
-                t.Test();
+                tisch.Test();
 
-                t.Reset();
-                t.mainPot.Reset();
+                tisch.Reset();
+                tisch.mainPot.Reset();
             }
             else if (count == 3)
             {
-                t.StartNewMatch();
+                tisch.StartNewMatch();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealFlop();
+                tisch.Test();
+                tisch.DealFlop();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealTurn();
+                tisch.Test();
+                tisch.DealTurn();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealRiver();
+                tisch.Test();
+                tisch.DealRiver();
                 yield return new WaitForSeconds(5f);
-                t.Test();
+                tisch.Test();
 
-                t.Reset();
-                t.mainPot.Reset();
+                tisch.Reset();
+                tisch.mainPot.Reset();
             }
             else if (count == 4)
             {
-                t.StartNewMatch();
+                tisch.StartNewMatch();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealFlop();
+                tisch.Test();
+                tisch.DealFlop();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealTurn();
+                tisch.Test();
+                tisch.DealTurn();
                 yield return new WaitForSeconds(5f);
-                t.Test();
-                t.DealRiver();
+                tisch.Test();
+                tisch.DealRiver();
                 yield return new WaitForSeconds(5f);
-                t.Test();
+                tisch.Test();
 
-                t.Reset();
-                t.mainPot.Reset();
+                tisch.Reset();
+                tisch.mainPot.Reset();
             }
         }
-        t.Reset();
-        t.mainPot.Reset();
+        tisch.Reset();
+        tisch.mainPot.Reset();
     }
+    */
+
+IEnumerator Beginn()
+{
+
+        yield return new WaitForSeconds(5f);
+
+
+        for (int count = 1; count < 3; count++)
+        {
+            if (count == 1)
+            {
+                tisch.AddFirstJetons();
+                tisch.StartNewMatch();
+                for (int i = 0; i < tisch.pList.Count; i++)
+                {
+                    yield return new WaitForSeconds(5f);
+                    tisch.Betting(tisch.pList[i]);
+                }                
+                tisch.DealFlop();
+                for (int i = 0; i < tisch.pList.Count; i++)
+                {
+                    yield return new WaitForSeconds(5f);
+                    tisch.Betting(tisch.pList[i]);
+                }                
+                tisch.DealTurn();
+                for (int i = 0; i < tisch.pList.Count; i++)
+                {
+                    yield return new WaitForSeconds(5f);
+                    tisch.Betting(tisch.pList[i]);
+                }                
+                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(5f);
+
+                tisch.DealRiver();
+                for (int i = 0; i < tisch.pList.Count; i++)
+                {
+
+                    yield return new WaitForSeconds(5f);
+                    tisch.Betting(tisch.pList[i]);
+                }                
+                // t.ShowDown();
+                tisch.Test2();
+                tisch.Reset();
+                tisch.mainPot.Reset();
+            }
+        yield return null;
+    }
+}
+
+    public void Test()
+    {
+        for (int i = 0; i < tisch.pList.Count; i++)
+        {
+            tisch.Betting(tisch.pList[i]);
+        }
+    }
+
+    IEnumerator WWaaRRttEEnn()
+    {
+        yield return new WaitForSeconds(5f);
+    }
+
+
+
 
 }

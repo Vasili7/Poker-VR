@@ -41,9 +41,9 @@ public class p1 : MonoBehaviour
     {
         mainPot.getPlayersInPot().Remove(this);
         myHand[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position; 
-        myHand[0].transform.Rotate(180, 0, 0);
+        myHand[0].transform.Rotate(0, 0, 0);
         myHand[1].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
-        myHand[1].transform.Rotate(180, 0, 0);
+        myHand[1].transform.Rotate(0, 0, 0);
         this.myHand.Clear();
         folded = true;
     }
@@ -155,9 +155,9 @@ public class p1 : MonoBehaviour
         //this.chipStack = 0;
         //this.folded = false;
         myHand[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position; 
-        myHand[0].transform.Rotate(180, 0, 0);
+        myHand[0].transform.Rotate(0, 0, 0);
         myHand[1].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
-        myHand[1].transform.Rotate(180, 0, 0);
+        myHand[1].transform.Rotate(0, 0, 0);
         this.myHand.Clear();
         //this.myJetons.Clear();
     }

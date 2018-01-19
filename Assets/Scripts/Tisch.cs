@@ -33,12 +33,14 @@ public class Tisch : MonoBehaviour
     public p1 player1, player2, player3, player4, player5 = new p1();
     // Liste von allen Spielern, von der Klasse p1 
     public List<p1> pList = new List<p1>();
+    public List<p1> playersInMainpot = new List<p1>();
 
     public Pot mainPot;
     List<Pot> sidePots;
 
     RaycastHit hit;
     RayCast rayray;
+    public bool gedenkZeit = false;
 
     //public TextMesh Pot_amount;
     //private static int pot = 0;
@@ -84,6 +86,9 @@ public class Tisch : MonoBehaviour
             DealRiver();
             player3.isBusted = true;
         }
+
+                playersInMainpot = mainPot.playersInPot;
+
     }
 
 	// Position-Tag is needed to instatiate jetons
@@ -461,7 +466,10 @@ public class Tisch : MonoBehaviour
     {
         //card.transform.localPosition = new Vector3(0,0,0);
         if (!deck.Contains(card))
+        {
+            card.transform.Rotate(0, 0, 0);
             deck.Add(card);
+        }
     }
 
     // Showdown
@@ -566,8 +574,14 @@ public class Tisch : MonoBehaviour
                 //StartCoroutine(Warten15());
                 //player.Fold(mainPot);
                 //mainPot.playersInPot.Remove(player);
-                RandomChoose(player);
+                //RandomChoose(player);
+
+                //while(gedenkZeit == false)
+                //{
+                //    // warten ?
+                //}
                 a = false;
+                gedenkZeit = false;
             }
             else
                 RandomChoose(player);
@@ -708,9 +722,18 @@ public class Tisch : MonoBehaviour
 
     public void Test()
     {
+        for (int i = 0; i < mainPot.playersInPot.Count(); i++)
+        {
+            Betting(mainPot.playersInPot[i]);
+        }
+    }
+
+    public void Test2()
+    {
         for (int i = 0; i < pList.Count(); i++)
         {
-            Betting(pList[i]);
+            pList.Remove(pList[i]);
+            mainPot.Reset();        
         }
     }
 
@@ -744,12 +767,12 @@ public class Tisch : MonoBehaviour
 
 	//if (Physics.Raycast (transform.position, forward, out hit)){ 
 	//if(hit.collider.gameObject.tag=="Check"){}}  -------------> nicht im Update() ????
-    private void OnTriggerEnter(Collider collider)
-    {
-        if(collider.gameObject.name == "HUD Check")
-        {
+    //private void OnTriggerEnter(Collider collider)
+    //{
+    //    if(collider.gameObject.name == "HUD Check")
+    //    {
             
-        }
-    }
+    //    }
+    //}
 }
 
