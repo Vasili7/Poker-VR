@@ -66,6 +66,7 @@ public class Pot : MonoBehaviour {
     public void Reset()
     {
         amountInPot = 0;
+		pot_amount_txt.text = amountInPot.ToString ();
         minimumRaise = 0;
         maximumAmountPutIn = 0;
         smallBlind = 0;

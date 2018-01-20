@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\DiveMouseLook.cs" />
      <Compile Include="Assets\Scripts\Drehen.cs" />
      <Compile Include="Assets\Scripts\Exit.cs" />
+     <Compile Include="Assets\Scripts\FlipCart.cs" />
      <Compile Include="Assets\Scripts\HUD_Check.cs" />
      <Compile Include="Assets\Scripts\HUD_Fold.cs" />
      <Compile Include="Assets\Scripts\HUD_Raise_Confirm.cs" />

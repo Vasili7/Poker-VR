@@ -40,6 +40,8 @@ public class Tisch : MonoBehaviour
     RaycastHit hit;
     RayCast rayray;
 
+	public GameObject pp31, pp32;
+
     //public TextMesh Pot_amount;
     //private static int pot = 0;
     //public int pip;
@@ -84,6 +86,7 @@ public class Tisch : MonoBehaviour
             DealRiver();
             player3.isBusted = true;
         }
+
     }
 
 	// Position-Tag is needed to instatiate jetons
@@ -397,14 +400,24 @@ public class Tisch : MonoBehaviour
                 if (i == 0)
                 {
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(a).transform.position;
-                    deck[i].transform.Rotate(0, 0, 0);
+					if (a == "p31") {
+					//	deck [i].transform.Rotate (-90, 0, 0);
+						pp31 = deck [i];
+					}
+					else
+						deck[i].transform.Rotate(0, 0, 0);
                     //myHand.Add(deck[i]);
                     //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);
                     deck.RemoveAt(i);
 
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(b).transform.position;
-                    deck[i].transform.Rotate(0, 0, 0);
+					if (b == "p32") {
+					//	deck [i].transform.Rotate (-90, 0, 0);
+						pp32 = deck [i];
+					}
+					else
+						deck[i].transform.Rotate(0, 0, 0);
                     //myHand.Add(deck[i]);
                     //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);

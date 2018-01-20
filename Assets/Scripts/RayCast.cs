@@ -30,8 +30,8 @@ public class RayCast : MonoBehaviour {
 	public GameObject HUD_Check, HUD_Fold, HUD_Raise, HUD_Raise_plus, HUD_Raise_minus;
 	public GameObject HUD_Raise_1, HUD_Raise_5, HUD_Raise_25, HUD_Raise_100;
 	public GameObject HUD_Minus_1, HUD_Minus_5, HUD_Minus_25, HUD_Minus_100;
-	public GameObject buttonStart;
-	public GameObject buttonRestart;
+	public GameObject buttonStart,buttonRestart;
+	public GameObject HUD_Call,HUD_All_In;
 	public GameObject Player;
 	public GameObject cardOne;
 	public GameObject cardTwo;
@@ -81,10 +81,11 @@ public class RayCast : MonoBehaviour {
 	public TextMesh pot_amount_txt;
 	private static int pot_amount_int=0;
 
+	public GameObject cardsButton;
+
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
 	public Tisch t = new Tisch();
-
 
 	void Start(){
 		angeseheneObjekte = new List<GameObject> ();
@@ -105,6 +106,8 @@ public class RayCast : MonoBehaviour {
 		HUD_Raise_plus.SetActive (false);
 		pot.SetActive (false);
 		pot_amount.SetActive (false);
+		HUD_Call.SetActive (false);
+		HUD_All_In.SetActive (false);
 
 		buttonEnd.SetActive (false);
 		buttonEndJa.SetActive (false);
@@ -184,6 +187,8 @@ public class RayCast : MonoBehaviour {
 					HUD_Minus_100.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
+					HUD_Call.SetActive (true);
+					HUD_All_In.SetActive (true);
 					buttonStart.SetActive (false);
 					pot.SetActive (true);
 					pot_amount.SetActive (true);
@@ -244,6 +249,8 @@ public class RayCast : MonoBehaviour {
 					HUD_Minus_100.SetActive (true);
 					HUD_Raise_minus.SetActive (true);
 					HUD_Raise_plus.SetActive (true);
+					HUD_Call.SetActive (true);
+					HUD_All_In.SetActive (true);
 					pot.SetActive (true);
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
@@ -289,6 +296,8 @@ public class RayCast : MonoBehaviour {
 							HUD_Raise_plus.SetActive (false);
 							pot.SetActive (false);
 							pot_amount.SetActive (false);
+							HUD_Call.SetActive (false);
+							HUD_All_In.SetActive (false);
 							break;
 						case "Spiel abbrechen (JA)":
 							siegsteineHervorheben = false;
@@ -327,6 +336,8 @@ public class RayCast : MonoBehaviour {
 							HUD_Raise_plus.SetActive (true);
 							pot.SetActive (true);
 							pot_amount.SetActive (true);
+							HUD_Call.SetActive (true);
+							HUD_All_In.SetActive (true);
 
 							break;
 						}
@@ -541,6 +552,101 @@ public class RayCast : MonoBehaviour {
 						Bet.text = Set_Bet.ToString ();
 					}
 				}
+				//CALL
+			}else if(hit.collider.gameObject.tag=="call"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+
+				}
+
+				//ALL IN
+			}else if(hit.collider.gameObject.tag=="all in"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 2f) {
+					timer = 0f;
+
+//					Bet.text = Bank_amount.text;
+//					Set_Bet = bank;
+//					Bank_amount.text = "0";
+//					bank = 0;
+
+//					int new_bet = int.Parse (Bet.text);
+//					if (new_bet+bank <= bank) {
+					Set_Bet=0;
+					Set_Bet = bank;
+					Bet.text = Set_Bet.ToString ();
+
+//					}
+
+				}			
+
+			// FOR CARD FLIP
+			} else if (hit.collider.gameObject.tag == "show cards" ) {
+
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+//				float ttimer = 5f;
+				float shrink = .25f;
+				bool big = false;
+				Vector3 originalScale = t.pp31.transform.localScale;
+
+				if (timer >= 1f) {
+					timer = 0f; 
+
+					t.pp31.transform.Rotate (new Vector3 (-240, 0, 0) * Time.deltaTime * 10f );
+//					t.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
+					t.pp32.transform.Rotate (new Vector3 (-240, 0, 0) * Time.deltaTime * 10f);
+//					t.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
+
+//					originalScale = t.pp31.transform.localScale;
+//					t.pp31.transform.localScale *= 3;
+//					big = true;
+				}
+//				if (big)
+//						ttimer -= Time.deltaTime;
+//					if (ttimer <= 0)
+//						t.pp31.transform.localScale -= new Vector3 (shrink, shrink, shrink);
+//					if (t.pp31.transform.localScale == originalScale)
+//						big = false;
+
+//					Debug.Log("before sleep"+ Time.deltaTime);
+//					System.Threading.Thread.Sleep (3000);
+//					Debug.Log ("after sleep"+Time.deltaTime);
+//					Debug.Log ("before Wartennn"+Time.deltaTime);
+//					StartCoroutine ("Warten");
+//					Debug.Log ("after Wartennn"+Time.deltaTime);
+//					Debug.Log ("before Warten()"+Time.deltaTime);
+//					StartCoroutine (Warten ());
+//					Debug.Log ("after Warten()"+Time.deltaTime);
+//					t.pp31.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
+//					t.pp32.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
+//					t.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
+//					t.pp32.transform.localScale -= new Vector3(20f, 20f, 20f);
+
+//					timer = 0f;
+//					big=false;
+
+
 				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {
 				if (spielstart && !spielende) {
@@ -716,7 +822,7 @@ public class RayCast : MonoBehaviour {
 	// --------------------------------------------------------------------------------------------------------------------------
 	IEnumerator Warten() {
 		yield return new WaitForSeconds(2f);
-		gegner ();
+//		gegner ();
 	}
 
 
