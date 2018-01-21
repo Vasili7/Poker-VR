@@ -84,7 +84,7 @@ public class RayCast : MonoBehaviour {
 	private static int pot_amount_int=0;
 
 	public GameObject cardsButton;
-
+	static bool big = false;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch tisch = new Tisch() ;
@@ -120,9 +120,10 @@ public class RayCast : MonoBehaviour {
 		buttonRestart.SetActive (false);
 
 		buttonStart.SetActive (true);
-
+	
 		Bet.text = Set_Bet.ToString ();
 
+		big = false;
 		//	Bank_amount = GetComponent<TextMesh> ();
 		Bank_amount.text = bank.ToString ();
         //StartCoroutine(Beginn());   
@@ -601,7 +602,7 @@ public class RayCast : MonoBehaviour {
 				}			
 
 			// FOR CARD FLIP
-			} else if (hit.collider.gameObject.tag == "show cards" ) {
+			} else if (hit.collider.gameObject.tag == "show cards" && big ==false) {
 
 				aktiviert = true;
 
@@ -611,23 +612,24 @@ public class RayCast : MonoBehaviour {
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
 //				float ttimer = 5f;
-				float shrink = .25f;
-				bool big = false;
+//				float shrink = .25f;
+
 				Vector3 originalScale = tisch.pp31.transform.localScale;
 
-				if (timer >= 1f) {
+				if (timer >= 2f) {
 					timer = 0f; 
 
-					tisch.pp31.transform.Rotate (new Vector3 (-240, 0, 0) * Time.deltaTime * 10f );
-//					t.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
-					tisch.pp32.transform.Rotate (new Vector3 (-240, 0, 0) * Time.deltaTime * 10f);
-//					t.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
+					tisch.pp31.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f );
+//					tisch.pp31.transform.Rotate  (180, 0, 0) ;
+					tisch.pp31.transform.localScale += new Vector3(12f, 12f, 12f);
+					tisch.pp32.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f);
+					tisch.pp32.transform.localScale += new Vector3 (12f, 12f, 12f);
 
 //					originalScale = t.pp31.transform.localScale;
 //					t.pp31.transform.localScale *= 3;
-//					big = true;
+					big = true;
 				}
-//				if (big)
+
 //						ttimer -= Time.deltaTime;
 //					if (ttimer <= 0)
 //						t.pp31.transform.localScale -= new Vector3 (shrink, shrink, shrink);
@@ -651,6 +653,11 @@ public class RayCast : MonoBehaviour {
 //					timer = 0f;
 //					big=false;
 
+				// FOR CARD FLIP BACK
+			}else if (big == true) {
+				StartCoroutine (WaitToFlipBack ());
+
+				big = false;
 
 				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {
@@ -825,9 +832,14 @@ public class RayCast : MonoBehaviour {
 	// ##########################################################################################################################
 	// + Wartet eine bestimmte Zeit, bis der Zug des Computers ausgeführt wird
 	// --------------------------------------------------------------------------------------------------------------------------
-	IEnumerator Warten() {
-		yield return new WaitForSeconds(2f);
-//		gegner ();
+	IEnumerator WaitToFlipBack() {
+
+		yield return new WaitForSeconds(5f);
+		tisch.pp31.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
+		tisch.pp31.transform.localScale -= new Vector3(12f, 12f, 12f);
+		tisch.pp32.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
+		tisch.pp32.transform.localScale -= new Vector3 (12f, 12f, 12f);
+
 	}
 
 
