@@ -42,7 +42,7 @@ public class Pot : MonoBehaviour {
     //add player to pot
     public void AddPlayer(p1 player)
     {
-        if (!playersInPot.Contains(player))
+        if (!playersInPot.Contains(player) && player.folded == false)
             playersInPot.Add(player);
     }
 
@@ -54,7 +54,10 @@ public class Pot : MonoBehaviour {
     //set maximum amount in pot
     public void setMaximumAmount(int amount)
     {
-        maximumAmountPutIn = amount;
+        if(maximumAmountPutIn <= amount)
+        {
+            maximumAmountPutIn = amount;
+        }
     }
 
     //getter

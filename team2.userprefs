@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Tisch.cs">
@@ -6,8 +7,27 @@
       <File FileName="Assets\Scripts\Tisch.cs" Line="82" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+=======
+﻿<Properties StartupConfiguration="{E16AFF02-8AE6-E962-67A5-E2F805F00927}|Komponententests" StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\p1.cs">
+    <Files>
+      <File FileName="Assets\Scripts\RayCast.cs" Line="91" Column="18" />
+      <File FileName="Assets\Scripts\Jetons.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\p1.cs" Line="77" Column="72" />
+      <File FileName="Assets\Scripts\SpielSteinEinwurfLEAP.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Pot.cs" Line="7" Column="33" />
+      <File FileName="Assets\Scripts\Tisch.cs" Line="52" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+>>>>>>> 3c73e37963bafeef4441c2f1ae8e27bc14d790a7
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+<<<<<<< HEAD
+=======
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
+>>>>>>> 3c73e37963bafeef4441c2f1ae8e27bc14d790a7
 </Properties>

@@ -17,14 +17,11 @@ public class Tisch : MonoBehaviour
 
     private GameObject goJetons;
 
-    //public GameObject[] list;
     public List<GameObject> deck = new List<GameObject>();
     public List<GameObject> tableHand = new List<GameObject>();
     public int amountInPot;
 
     public bool spielEnde, neuesSpiel, spielStart;
-
-    // Brauche ich das ? public GameObject p1, p2, p3, p4, p5, pot;
 
     // Positions-Tags für die HoleCards der Spieler
     string p11 = "p11", p12 = "p12", p21 = "p21", p22 = "p22", p31 = "p31", 
@@ -36,57 +33,18 @@ public class Tisch : MonoBehaviour
     public List<p1> playersInMainpot = new List<p1>();
 
     public Pot mainPot;
-    List<Pot> sidePots;
 
-<<<<<<< HEAD
-    RaycastHit hit;
-    RayCast rayray;
+    public int roundCount;
 
 	public GameObject pp31, pp32;
 
-    //public TextMesh Pot_amount;
-    //private static int pot = 0;
-    //public int pip;
-
-=======
->>>>>>> 6858fd54d1d4a7c98e0216fb62bdebd6ad196c77
-    public void Start()
-    {
-    }
+    public void Start(){}
 
     public void Update()
-<<<<<<< HEAD
-    {
-        //while (player3.isBusted == false) 
-        //{
-
-        //}
-        // false!
-        while(player3.isBusted == true)
-        {
-            amountInPot = mainPot.amountInPot;
-
-			player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
-
-            //neuesSpiel = false;
-            //spielEnde = false;
-            //spielStart = true;
-            //sieger = 0; 
-            AddFirstJetons();
-            StartNewMatch();
-            BettingRound();
-            DealFlop();
-            DealTurn();
-            DealRiver();
-            player3.isBusted = true;
-        }
-
-=======
     {
         //amountInPot = mainPot.amountInPot;
         //player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
         //playersInMainpot = mainPot.playersInPot;
->>>>>>> 6858fd54d1d4a7c98e0216fb62bdebd6ad196c77
     }
 
 	// Position-Tag is needed to instatiate jetons
@@ -266,6 +224,11 @@ public class Tisch : MonoBehaviour
         AddPlayer(player3);
         AddPlayer(player4);
         AddPlayer(player5);
+        mainPot.AddPlayer(player1);
+        mainPot.AddPlayer(player2);
+        mainPot.AddPlayer(player3);
+        mainPot.AddPlayer(player4);
+        mainPot.AddPlayer(player5);
     }
     public void AddAllCardsToDeck()
     {
@@ -329,7 +292,7 @@ public class Tisch : MonoBehaviour
 
     public void Shuffel()
     {
-        for (int i = 0; i < deck.Count; i++)
+        for (int i = 0; i < deck.Count(); i++)
         {
             var temp = deck[i];
             int randomIndex = UnityEngine.Random.Range(i, deck.Count);
@@ -337,7 +300,7 @@ public class Tisch : MonoBehaviour
             deck[randomIndex] = temp;
         }
         float abstand = 0.003f;
-        for (int i = 0; i < deck.Count; i++)
+        for (int i = 0; i < deck.Count(); i++)
         {
             deck[i].transform.localPosition = new Vector3(0, abstand, 0);
             deck[i].transform.Rotate(0, 0, 0);
@@ -349,7 +312,7 @@ public class Tisch : MonoBehaviour
     {
         if (pList.Contains(p))
         {
-            for (int i = 0; i < deck.Count; i++)
+            for (int i = 0; i < deck.Count(); i++)
             {
                 if (i == 0)
                 {
@@ -384,6 +347,7 @@ public class Tisch : MonoBehaviour
     public void DealFlop()
     { 
         BurnCard();
+        mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc1");
         DealBoardCard("bc2");
         DealBoardCard("bc3");
@@ -391,11 +355,13 @@ public class Tisch : MonoBehaviour
     public void DealTurn()
     {
         BurnCard();
+        mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc4");
     }
     public void DealRiver()
     {
         BurnCard();
+        mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc5");
     }
 
@@ -409,9 +375,9 @@ public class Tisch : MonoBehaviour
                 deck[i].transform.Rotate(180, 0, 0);
                 tableHand.Add(deck[i]);
                 // bc werden den Spieler zugeordnet, die noch in der Liste sind
-                for (int a = 0; a < pList.Count(); a++)
+                for (int a = 0; a < mainPot.playersInPot.Count(); a++)
                 {
-                    pList[a].myHand.Add(deck[i]);
+                    mainPot.playersInPot[a].myHand.Add(deck[i]);
                 }
                 deck.RemoveAt(i);
             }
@@ -456,44 +422,6 @@ public class Tisch : MonoBehaviour
 		player3.bank_amount.text = bank.ToString ();
 */
       }
-
-    /*
-    private class Blind
-    {
-        private int amount;
-        public int position;
-        public int Amount
-        {
-            get { return amount; }
-            set { amount = value; }
-        }
-    }
-    Blind smallBlind, bigBlind;
-
-    public void MoveBigBlindBtn()
-    {
-        //if (playerList.Contains(p1))
-        //{
-        //    bigBlindBtn.transform.position = GameObject.FindGameObjectWithTag("bb1").transform.position;
-        //}
-    }
-    public void MoveSmallBlindBtn()
-    {
-        //if (playerList.Contains(p1))
-        //{
-        //    smallBlindBtn.transform.position = GameObject.FindGameObjectWithTag("sb1").transform.position;
-        //}
-    }
-    public void MoveDealerBtn()
-    {
-////        if (playerList.Contains(p1))
-        //if (p3.gameObject.name == "Dive_Camera" && playerList.Contains(p3))
-        //{
-        //    DealerBtn.transform.position = GameObject.FindGameObjectWithTag("d1").transform.position;
-        //}
-    }
-
-    */
 
 
 
