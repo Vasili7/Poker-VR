@@ -139,12 +139,7 @@ public class RayCast : MonoBehaviour {
 		Vector3 forward = transform.TransformDirection (Vector3.forward) * 20;
 		Debug.DrawRay (transform.position, forward, Color.red);
 
-		buttonLeicht.SetActive (false);
-		buttonMittel.SetActive (false);
-		buttonSchwierig.SetActive (false);
-
 		Bank_amount.text = bank.ToString ();
-
 
 		// ------------------------------------------------------------
 		// Spielstart, Spielabbruch, Spielerzug & Gegnerzug
@@ -364,7 +359,7 @@ public class RayCast : MonoBehaviour {
                     tisch.player3.Check(tisch.mainPot);
                     spielerAktion = true;
 
-					HUD_Check.SetActive (false);
+	//				HUD_Check.SetActive (false);
 				}
 				//FOLD
 			}else if(hit.collider.gameObject.tag=="Fold"){
@@ -382,7 +377,7 @@ public class RayCast : MonoBehaviour {
                     tisch.player3.Fold(tisch.mainPot);
                     spielerAktion = true;
 
-					HUD_Fold.SetActive (false);
+		//			HUD_Fold.SetActive (false);
 				}
 
 				//RAISE
