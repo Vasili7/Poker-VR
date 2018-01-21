@@ -17,14 +17,11 @@ public class Tisch : MonoBehaviour
 
     private GameObject goJetons;
 
-    //public GameObject[] list;
     public List<GameObject> deck = new List<GameObject>();
     public List<GameObject> tableHand = new List<GameObject>();
     public int amountInPot;
 
     public bool spielEnde, neuesSpiel, spielStart;
-
-    // Brauche ich das ? public GameObject p1, p2, p3, p4, p5, pot;
 
     // Positions-Tags für die HoleCards der Spieler
     string p11 = "p11", p12 = "p12", p21 = "p21", p22 = "p22", p31 = "p31", 
@@ -36,57 +33,18 @@ public class Tisch : MonoBehaviour
     public List<p1> playersInMainpot = new List<p1>();
 
     public Pot mainPot;
-    List<Pot> sidePots;
 
-<<<<<<< HEAD
-    RaycastHit hit;
-    RayCast rayray;
+    public int roundCount;
 
 	public GameObject pp31, pp32;
 
-    //public TextMesh Pot_amount;
-    //private static int pot = 0;
-    //public int pip;
-
-=======
->>>>>>> 6858fd54d1d4a7c98e0216fb62bdebd6ad196c77
-    public void Start()
-    {
-    }
+    public void Start(){}
 
     public void Update()
-<<<<<<< HEAD
-    {
-        //while (player3.isBusted == false) 
-        //{
-
-        //}
-        // false!
-        while(player3.isBusted == true)
-        {
-            amountInPot = mainPot.amountInPot;
-
-			player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
-
-            //neuesSpiel = false;
-            //spielEnde = false;
-            //spielStart = true;
-            //sieger = 0; 
-            AddFirstJetons();
-            StartNewMatch();
-            BettingRound();
-            DealFlop();
-            DealTurn();
-            DealRiver();
-            player3.isBusted = true;
-        }
-
-=======
     {
         //amountInPot = mainPot.amountInPot;
         //player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
         //playersInMainpot = mainPot.playersInPot;
->>>>>>> 6858fd54d1d4a7c98e0216fb62bdebd6ad196c77
     }
 
 	// Position-Tag is needed to instatiate jetons
@@ -236,8 +194,6 @@ public class Tisch : MonoBehaviour
 	// Deal Hole Cards to all 5 Players
 	public void DealAllHoleCards() 
 	{
-        //mainPot.playersInPot = pList;
-        //playersInMainpot = pList;
         DealHoleCards(p11, p12, player1);
 		DealHoleCards(p21, p22, player2);
 		DealHoleCards(p31, p32, player3);
@@ -466,44 +422,6 @@ public class Tisch : MonoBehaviour
 		player3.bank_amount.text = bank.ToString ();
 */
       }
-
-    /*
-    private class Blind
-    {
-        private int amount;
-        public int position;
-        public int Amount
-        {
-            get { return amount; }
-            set { amount = value; }
-        }
-    }
-    Blind smallBlind, bigBlind;
-
-    public void MoveBigBlindBtn()
-    {
-        //if (playerList.Contains(p1))
-        //{
-        //    bigBlindBtn.transform.position = GameObject.FindGameObjectWithTag("bb1").transform.position;
-        //}
-    }
-    public void MoveSmallBlindBtn()
-    {
-        //if (playerList.Contains(p1))
-        //{
-        //    smallBlindBtn.transform.position = GameObject.FindGameObjectWithTag("sb1").transform.position;
-        //}
-    }
-    public void MoveDealerBtn()
-    {
-////        if (playerList.Contains(p1))
-        //if (p3.gameObject.name == "Dive_Camera" && playerList.Contains(p3))
-        //{
-        //    DealerBtn.transform.position = GameObject.FindGameObjectWithTag("d1").transform.position;
-        //}
-    }
-
-    */
 
 
 

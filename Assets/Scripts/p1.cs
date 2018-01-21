@@ -13,7 +13,7 @@ public class p1 : MonoBehaviour
     public bool isBusted, folded;
 
     public Tisch tisch;
-    Pot pot;
+    //Pot pot;
 
 	public int gewonnenRunden=0;
 	public int verlorenenRunden = 0;
@@ -33,7 +33,7 @@ public class p1 : MonoBehaviour
     // Update is called once per frame
     void Update () 
     {
-        amountInPot = pot.amountInPot;
+        //amountInPot = pot.amountInPot;
     }
 
     //leave the round
