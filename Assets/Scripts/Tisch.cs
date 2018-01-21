@@ -38,15 +38,55 @@ public class Tisch : MonoBehaviour
     public Pot mainPot;
     List<Pot> sidePots;
 
+<<<<<<< HEAD
+    RaycastHit hit;
+    RayCast rayray;
+
+	public GameObject pp31, pp32;
+
+    //public TextMesh Pot_amount;
+    //private static int pot = 0;
+    //public int pip;
+
+=======
+>>>>>>> 6858fd54d1d4a7c98e0216fb62bdebd6ad196c77
     public void Start()
     {
     }
 
     public void Update()
+<<<<<<< HEAD
+    {
+        //while (player3.isBusted == false) 
+        //{
+
+        //}
+        // false!
+        while(player3.isBusted == true)
+        {
+            amountInPot = mainPot.amountInPot;
+
+			player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
+
+            //neuesSpiel = false;
+            //spielEnde = false;
+            //spielStart = true;
+            //sieger = 0; 
+            AddFirstJetons();
+            StartNewMatch();
+            BettingRound();
+            DealFlop();
+            DealTurn();
+            DealRiver();
+            player3.isBusted = true;
+        }
+
+=======
     {
         //amountInPot = mainPot.amountInPot;
         //player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
         //playersInMainpot = mainPot.playersInPot;
+>>>>>>> 6858fd54d1d4a7c98e0216fb62bdebd6ad196c77
     }
 
 	// Position-Tag is needed to instatiate jetons
@@ -321,14 +361,24 @@ public class Tisch : MonoBehaviour
                 if (i == 0)
                 {
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(a).transform.position;
-                    deck[i].transform.Rotate(0, 0, 0);
+					if (a == "p31") {
+					//	deck [i].transform.Rotate (-90, 0, 0);
+						pp31 = deck [i];
+					}
+					else
+						deck[i].transform.Rotate(0, 0, 0);
                     //myHand.Add(deck[i]);
                     //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);
                     deck.RemoveAt(i);
 
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(b).transform.position;
-                    deck[i].transform.Rotate(0, 0, 0);
+					if (b == "p32") {
+					//	deck [i].transform.Rotate (-90, 0, 0);
+						pp32 = deck [i];
+					}
+					else
+						deck[i].transform.Rotate(0, 0, 0);
                     //myHand.Add(deck[i]);
                     //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);
