@@ -53,7 +53,7 @@ public class p1 : MonoBehaviour
     public void Raise(int raise, Pot mainPot) 
     {
         amountInPot = mainPot.amountInPot;
-        int amount = mainPot.getMaximumAmountPutIn() + raise - amountInPot;
+        int amount = mainPot.getMaximumAmountPutIn() + raise; // - amountInPot;
         if (chipStack <= amount)
         {
             AllIn(mainPot);
@@ -62,7 +62,10 @@ public class p1 : MonoBehaviour
         chipStack -= amount;
         amountInPot += amount;
         mainPot.Add(amount);
-        mainPot.setMaximumAmount(amountInPot);
+        //if (mainPot.getMaximumAmountPutIn() >= amount)
+        //{ }
+            mainPot.setMaximumAmount(amount);
+        
         mainPot.AddPlayer(this);
         mainPot.minimumRaise = raise;
     }
@@ -71,7 +74,7 @@ public class p1 : MonoBehaviour
     {
         amountInPot = mainPot.amountInPot;
 
-        int amount = mainPot.getMaximumAmountPutIn() - amountInPot;
+        int amount = mainPot.getMaximumAmountPutIn(); // - amountInPot;
         if (chipStack <= amount)
         {
             AllIn(mainPot);

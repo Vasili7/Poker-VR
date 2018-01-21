@@ -196,6 +196,8 @@ public class Tisch : MonoBehaviour
 	// Deal Hole Cards to all 5 Players
 	public void DealAllHoleCards() 
 	{
+        //mainPot.playersInPot = pList;
+        //playersInMainpot = pList;
         DealHoleCards(p11, p12, player1);
 		DealHoleCards(p21, p22, player2);
 		DealHoleCards(p31, p32, player3);
@@ -226,6 +228,11 @@ public class Tisch : MonoBehaviour
         AddPlayer(player3);
         AddPlayer(player4);
         AddPlayer(player5);
+        mainPot.AddPlayer(player1);
+        mainPot.AddPlayer(player2);
+        mainPot.AddPlayer(player3);
+        mainPot.AddPlayer(player4);
+        mainPot.AddPlayer(player5);
     }
     public void AddAllCardsToDeck()
     {
@@ -289,7 +296,7 @@ public class Tisch : MonoBehaviour
 
     public void Shuffel()
     {
-        for (int i = 0; i < deck.Count; i++)
+        for (int i = 0; i < deck.Count(); i++)
         {
             var temp = deck[i];
             int randomIndex = UnityEngine.Random.Range(i, deck.Count);
@@ -297,7 +304,7 @@ public class Tisch : MonoBehaviour
             deck[randomIndex] = temp;
         }
         float abstand = 0.003f;
-        for (int i = 0; i < deck.Count; i++)
+        for (int i = 0; i < deck.Count(); i++)
         {
             deck[i].transform.localPosition = new Vector3(0, abstand, 0);
             deck[i].transform.Rotate(0, 0, 0);
@@ -309,7 +316,7 @@ public class Tisch : MonoBehaviour
     {
         if (pList.Contains(p))
         {
-            for (int i = 0; i < deck.Count; i++)
+            for (int i = 0; i < deck.Count(); i++)
             {
                 if (i == 0)
                 {
@@ -334,6 +341,7 @@ public class Tisch : MonoBehaviour
     public void DealFlop()
     { 
         BurnCard();
+        mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc1");
         DealBoardCard("bc2");
         DealBoardCard("bc3");
@@ -341,11 +349,13 @@ public class Tisch : MonoBehaviour
     public void DealTurn()
     {
         BurnCard();
+        mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc4");
     }
     public void DealRiver()
     {
         BurnCard();
+        mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc5");
     }
 
@@ -359,9 +369,9 @@ public class Tisch : MonoBehaviour
                 deck[i].transform.Rotate(180, 0, 0);
                 tableHand.Add(deck[i]);
                 // bc werden den Spieler zugeordnet, die noch in der Liste sind
-                for (int a = 0; a < pList.Count(); a++)
+                for (int a = 0; a < mainPot.playersInPot.Count(); a++)
                 {
-                    pList[a].myHand.Add(deck[i]);
+                    mainPot.playersInPot[a].myHand.Add(deck[i]);
                 }
                 deck.RemoveAt(i);
             }
