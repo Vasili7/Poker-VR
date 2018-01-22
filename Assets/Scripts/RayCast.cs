@@ -1215,6 +1215,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
                 {
+				HUDMenuAktivieren();
                 while(spielerAktion == false)
                     {
                     yield return new WaitForSeconds(1f);
@@ -1222,6 +1223,7 @@ IEnumerator Beginn()
                 }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1238,6 +1240,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
+				HUDMenuAktivieren();
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1245,6 +1248,7 @@ IEnumerator Beginn()
             }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1258,6 +1262,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
+				HUDMenuAktivieren();
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1265,6 +1270,7 @@ IEnumerator Beginn()
             }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1278,6 +1284,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
+				HUDMenuAktivieren();
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1285,6 +1292,7 @@ IEnumerator Beginn()
             }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1292,9 +1300,13 @@ IEnumerator Beginn()
 
         }                
         // t.ShowDown();
+
         tisch.Reset();
         tisch.mainPot.Reset();
-}
+
+		// start button
+	
+	}
 
 	public void HUDMenuAktivieren(){
 		HUD_Check.SetActive (true);
