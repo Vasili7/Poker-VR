@@ -92,6 +92,8 @@ public class RayCast : MonoBehaviour {
     public List<p1> playersInMainpot = new List<p1>();
     bool spielerAktion = false;
 
+    Coroutine co;
+
 	void Start(){
         angeseheneObjekte = new List<GameObject> ();
 		pointer = new PointerEventData (EventSystem.current);
@@ -175,7 +177,7 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
-                    StartCoroutine(Beginn());
+                    co = StartCoroutine(Beginn());
 				}
 
 				// NEUSTART
@@ -206,7 +208,7 @@ public class RayCast : MonoBehaviour {
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
 
-                    StopCoroutine(Beginn());
+                    StopCoroutine(co);
                     tisch.Reset();
                     StartCoroutine(Beginn());
 
