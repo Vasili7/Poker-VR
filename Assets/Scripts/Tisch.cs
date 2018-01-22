@@ -370,7 +370,7 @@ public class Tisch : MonoBehaviour
             if (i == 0)
             {
                 deck[i].transform.position = GameObject.FindGameObjectWithTag(bc).transform.position;
-                deck[i].transform.Rotate(180, 0, 0);
+                deck[i].transform.Rotate(-130, 0, 0);
                 tableHand.Add(deck[i]);
                 // bc werden den Spieler zugeordnet, die noch in der Liste sind
                 for (int a = 0; a < mainPot.playersInPot.Count(); a++)
@@ -454,13 +454,17 @@ public class Tisch : MonoBehaviour
 
     public void Reset()
     {
-        AddAllCardsToDeck();
-        tableHand.Clear();
         for (int i = 0; i < pList.Count(); i++)
         {
             pList[i].Reset();
         }
+        for (int i = 0; i < tableHand.Count(); i++)
+        {
+            tableHand[i].transform.Rotate(0, 0, 0);
+        }
         mainPot.Reset();
+        AddAllCardsToDeck();
+        tableHand.Clear();
     }
 }
 

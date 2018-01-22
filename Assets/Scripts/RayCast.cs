@@ -192,8 +192,6 @@ public class RayCast : MonoBehaviour {
 					siegsteineHervorheben = false;
 
 					// Tisch löschen
-			//		t.Reset();
-			//		t.RemoveJetons ();
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
 					spielende = false;
@@ -208,11 +206,9 @@ public class RayCast : MonoBehaviour {
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
 
-					tisch.AddFirstJetons();
-					tisch.StartNewMatch();
-					tisch.DealFlop();
-					tisch.DealTurn();
-					tisch.DealRiver();
+                    StopCoroutine(Beginn());
+                    tisch.Reset();
+                    StartCoroutine(Beginn());
 
 				}
 
@@ -267,6 +263,10 @@ public class RayCast : MonoBehaviour {
 							pot.SetActive (true);
 							pot_amount.SetActive (true);
 							break;
+
+                            StopCoroutine(Beginn());
+                            tisch.Reset();
+
 						}
 
 					}
@@ -1207,7 +1207,7 @@ public class RayCast : MonoBehaviour {
 
 IEnumerator Beginn()
 {
-        tisch.AddFirstJetons();
+        //tisch.AddFirstJetons();
         tisch.StartNewMatch();
         for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
         //for (int i = tisch.roundCount; i < tisch.mainPot.playersInPot.Count(); i++)
@@ -1225,11 +1225,7 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
-                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-                //p1 player = tisch.mainPot.playersInPot[i];
-                //player.Bet(111, tisch.mainPot);
-                //tisch.AddFirstJetons();
             }
 
         }   
@@ -1250,7 +1246,6 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
-                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
 
@@ -1272,7 +1267,6 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
-                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
 
@@ -1294,7 +1288,6 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
-                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
 
