@@ -96,23 +96,9 @@ public class RayCast : MonoBehaviour {
         angeseheneObjekte = new List<GameObject> ();
 		pointer = new PointerEventData (EventSystem.current);
 
-		HUD_Check.SetActive (false);
-		HUD_Fold.SetActive (false);
-		HUD_Raise.SetActive (false);
-		HUD_Raise_1.SetActive (false);
-		HUD_Raise_5.SetActive (false);
-		HUD_Raise_25.SetActive (false);
-		HUD_Raise_100.SetActive (false);
-		HUD_Minus_1.SetActive (false);
-		HUD_Minus_5.SetActive (false);
-		HUD_Minus_25.SetActive (false);
-		HUD_Minus_100.SetActive (false);
-		HUD_Raise_minus.SetActive (false);
-		HUD_Raise_plus.SetActive (false);
+		HUDMenuDeaktivieren ();
 		pot.SetActive (false);
 		pot_amount.SetActive (false);
-		HUD_Call.SetActive (false);
-		HUD_All_In.SetActive (false);
 
 		buttonEnd.SetActive (false);
 		buttonEndJa.SetActive (false);
@@ -176,32 +162,19 @@ public class RayCast : MonoBehaviour {
 
 					ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
-					HUD_Check.SetActive (true);
-					HUD_Fold.SetActive (true);
-					HUD_Raise.SetActive (true);
-					HUD_Raise_1.SetActive (true);
-					HUD_Raise_5.SetActive (true);
-					HUD_Raise_25.SetActive (true);
-					HUD_Raise_100.SetActive (true);
-					HUD_Minus_1.SetActive (true);
-					HUD_Minus_5.SetActive (true);
-					HUD_Minus_25.SetActive (true);
-					HUD_Minus_100.SetActive (true);
-					HUD_Raise_minus.SetActive (true);
-					HUD_Raise_plus.SetActive (true);
-					HUD_Call.SetActive (true);
-					HUD_All_In.SetActive (true);
+					HUDMenuAktivieren ();
+
 					buttonStart.SetActive (false);
 					pot.SetActive (true);
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
+					pot_amount_int = 0;
 
 					buttonEnd.SetActive (true);
 					buttonEndJa.SetActive (false);
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
-                    tisch.Reset();
                     StartCoroutine(Beginn());
 				}
 
@@ -228,31 +201,19 @@ public class RayCast : MonoBehaviour {
 
 					ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
-					buttonLeicht.SetActive(false); 
-					buttonMittel.SetActive(false); 
-					buttonSchwierig.SetActive(false);
+					HUDMenuAktivieren ();
 
-					HUD_Check.SetActive (true);
-					HUD_Fold.SetActive (true);
-					HUD_Raise.SetActive (true);
-					HUD_Raise_1.SetActive (true);
-					HUD_Raise_5.SetActive (true);
-					HUD_Raise_25.SetActive (true);
-					HUD_Raise_100.SetActive (true);
-					HUD_Minus_1.SetActive (true);
-					HUD_Minus_5.SetActive (true);
-					HUD_Minus_25.SetActive (true);
-					HUD_Minus_100.SetActive (true);
-					HUD_Raise_minus.SetActive (true);
-					HUD_Raise_plus.SetActive (true);
-					HUD_Call.SetActive (true);
-					HUD_All_In.SetActive (true);
 					pot.SetActive (true);
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
+					pot_amount_int = 0;
 
-                    tisch.Reset();
-                    StartCoroutine(Beginn());
+					tisch.AddFirstJetons();
+					tisch.StartNewMatch();
+					tisch.DealFlop();
+					tisch.DealTurn();
+					tisch.DealRiver();
+
 				}
 
 				// SPIELABBRUCH
@@ -273,23 +234,12 @@ public class RayCast : MonoBehaviour {
 							buttonRestart.SetActive (false);
 							buttonEndJa.SetActive (true);
 							buttonEndNein.SetActive (true);
-							HUD_Check.SetActive (false);
-							HUD_Fold.SetActive (false);
-							HUD_Raise.SetActive (false);
-							HUD_Raise_1.SetActive (false);
-							HUD_Raise_5.SetActive (false);
-							HUD_Raise_25.SetActive (false);
-							HUD_Raise_100.SetActive (false);
-							HUD_Minus_1.SetActive (false);
-							HUD_Minus_5.SetActive (false);
-							HUD_Minus_25.SetActive (false);
-							HUD_Minus_100.SetActive (false);
-							HUD_Raise_minus.SetActive (false);
-							HUD_Raise_plus.SetActive (false);
+
+							HUDMenuDeaktivieren ();
+
 							pot.SetActive (false);
 							pot_amount.SetActive (false);
-							HUD_Call.SetActive (false);
-							HUD_All_In.SetActive (false);
+
 							break;
 						case "Spiel abbrechen (JA)":
 							siegsteineHervorheben = false;
@@ -311,29 +261,11 @@ public class RayCast : MonoBehaviour {
 							buttonEndJa.SetActive (false);
 							buttonEndNein.SetActive (false);
 							buttonRestart.SetActive (true);
-							HUD_Check.SetActive (true);
-							HUD_Fold.SetActive (true);
-							HUD_Check.SetActive (true);
-							HUD_Fold.SetActive (true);
-							HUD_Raise.SetActive (true);
-							HUD_Raise_1.SetActive (true);
-							HUD_Raise_5.SetActive (true);
-							HUD_Raise_25.SetActive (true);
-							HUD_Raise_100.SetActive (true);
-							HUD_Minus_1.SetActive (true);
-							HUD_Minus_5.SetActive (true);
-							HUD_Minus_25.SetActive (true);
-							HUD_Minus_100.SetActive (true);
-							HUD_Raise_minus.SetActive (true);
-							HUD_Raise_plus.SetActive (true);
+
+							HUDMenuAktivieren ();
+
 							pot.SetActive (true);
 							pot_amount.SetActive (true);
-							HUD_Call.SetActive (true);
-							HUD_All_In.SetActive (true);
-
-                                tisch.Reset();
-                                tisch.mainPot.Reset();
-
 							break;
 						}
 
@@ -602,7 +534,7 @@ public class RayCast : MonoBehaviour {
 				}			
 
 			// FOR CARD FLIP
-			} else if (hit.collider.gameObject.tag == "show cards" && big ==false) {
+			} else if (hit.collider.gameObject.tag == "show cards" && big == false) {
 
 				aktiviert = true;
 
@@ -616,42 +548,26 @@ public class RayCast : MonoBehaviour {
 
 				Vector3 originalScale = tisch.pp31.transform.localScale;
 
-				if (timer >= 2f) {
+				if (timer >= 0.5f && big == false) {
 					timer = 0f; 
 
 					tisch.pp31.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f );
 //					tisch.pp31.transform.Rotate  (180, 0, 0) ;
-					tisch.pp31.transform.localScale += new Vector3(12f, 12f, 12f);
+					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
 					tisch.pp32.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f);
-					tisch.pp32.transform.localScale += new Vector3 (12f, 12f, 12f);
+					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
 
+					cardsButton.SetActive (false);
 //					originalScale = t.pp31.transform.localScale;
 //					t.pp31.transform.localScale *= 3;
 					big = true;
 				}
-
-//						ttimer -= Time.deltaTime;
-//					if (ttimer <= 0)
-//						t.pp31.transform.localScale -= new Vector3 (shrink, shrink, shrink);
-//					if (t.pp31.transform.localScale == originalScale)
-//						big = false;
-
-//					Debug.Log("before sleep"+ Time.deltaTime);
-//					System.Threading.Thread.Sleep (3000);
-//					Debug.Log ("after sleep"+Time.deltaTime);
-//					Debug.Log ("before Wartennn"+Time.deltaTime);
-//					StartCoroutine ("Warten");
-//					Debug.Log ("after Wartennn"+Time.deltaTime);
-//					Debug.Log ("before Warten()"+Time.deltaTime);
-//					StartCoroutine (Warten ());
-//					Debug.Log ("after Warten()"+Time.deltaTime);
+					
 //					t.pp31.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
 //					t.pp32.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
 //					t.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
 //					t.pp32.transform.localScale -= new Vector3(20f, 20f, 20f);
 
-//					timer = 0f;
-//					big=false;
 
 				// FOR CARD FLIP BACK
 			}else if (big == true) {
@@ -745,43 +661,6 @@ public class RayCast : MonoBehaviour {
 
 
 		// ------------------------------------------------------------
-		// Steine, die zum Sieg führten, leuchten auf
-		// ------------------------------------------------------------
-		if (siegsteineHervorheben) {
-			timer2 = timer2 + Time.deltaTime;
-			if (timer2 >= 0.5f) {
-				if (sieger == 1) {
-					if (wechsel) {
-						for (int i = 0; i < gewonneneSteine.Count; i++) {
-							Renderer r = gewonneneSteine [i].GetComponent<Renderer> ();
-							r.material = blau;
-						}
-					} else {
-						for (int i = 0; i < gewonneneSteine.Count; i++) {
-							Renderer r = gewonneneSteine [i].GetComponent<Renderer> ();
-							r.material = gelb;
-						}
-					}
-				} else {
-					if (wechsel) {
-						for (int i = 0; i < gewonneneSteine.Count; i++) {
-							Renderer r = gewonneneSteine [i].GetComponent<Renderer> ();
-							r.material = blau;
-						}
-					} else {
-						for (int i = 0; i < gewonneneSteine.Count; i++) {
-							Renderer r = gewonneneSteine [i].GetComponent<Renderer> ();
-							r.material = rot;
-						}
-					}
-				}
-				wechsel = !wechsel;
-				timer2 = 0f;
-			}
-		}
-
-
-		// ------------------------------------------------------------
 		// Spielende wurde erreicht
 		// ------------------------------------------------------------
 		if (spielende)
@@ -816,150 +695,26 @@ public class RayCast : MonoBehaviour {
 			zugSpieler = false;
 			return;
 		}
-
-
-		// GEGNERZUG
-		if (!zugSpieler && spielstart && !ausgewaehlt && !spielende) {
-			ausgewaehlt = true;
-			StartCoroutine ("Warten");
-		}
+			
 	}
 
 
 
 	// ##########################################################################################################################
-	// -------------------------------------------------------- WARTEZEIT -------------------------------------------------------
+	// Wait to flip the card back 
 	// ##########################################################################################################################
-	// + Wartet eine bestimmte Zeit, bis der Zug des Computers ausgeführt wird
 	// --------------------------------------------------------------------------------------------------------------------------
 	IEnumerator WaitToFlipBack() {
 
 		yield return new WaitForSeconds(5f);
 		tisch.pp31.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp31.transform.localScale -= new Vector3(12f, 12f, 12f);
+		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
 		tisch.pp32.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp32.transform.localScale -= new Vector3 (12f, 12f, 12f);
-
+		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
+		big = false;
+		cardsButton.SetActive (true);
 	}
-
-
-
-	// ##########################################################################################################################
-	// ------------------------------------------------------ ZUG COMPUTER ------------------------------------------------------
-	// ##########################################################################################################################
-	// + Computer führt einen Zug basierend auf dem zuvor gewählten Schwierigkeitsgrad aus
-	// --------------------------------------------------------------------------------------------------------------------------
-	public void gegner(){
-		switch (schwierigkeit) {
-		case "Einfach":
-			einfach ();
-			break;
-		case "Mittel":
-			mittel ();
-			break;
-		case "Schwer":
-			schwierig ();
-			break;
-		}
-		ausgewaehlt = false;
-	}
-
-
-
-	// ##########################################################################################################################
-	// ----------------------------------------------- SCHWIERIGKEITSGRAD EINFACH -----------------------------------------------
-	// ##########################################################################################################################
-	// + Computer setzt einen Stein in eine zufällig ausgewählte Spalte
-	// --------------------------------------------------------------------------------------------------------------------------
-	public void einfach(){
-		// Prüft Gewinnmöglichkeit des Computers
-		pruefeSiegNaechstenZug (2);
-		if (sieger == 2) {
-			fuegeSteinHinzu (merk_s);
-			spielende = true;
-			siegsteineHervorheben = true;
-			print("Spieler 2 hat gewonnen!");
-			niederlagen++;
-			niederlage_txt.text = "Niederlagen: " + niederlagen;
-			werIstDran_txt.text = "Computer siegt!";
-			werIstDran_txt.transform.localPosition = new Vector3 (-1.95f, 5.35f, 8f);
-			return;
-		}
-
-		int zufallsSpalte = Random.Range(0, 6);
-		while (gueltigeSpalten [zufallsSpalte] == false) {
-			zufallsSpalte = Random.Range (0, 6);
-		}
-		fuegeSteinHinzu (zufallsSpalte);
-	}
-
-
-
-	// ##########################################################################################################################
-	// ----------------------------------------------- SCHWIERIGKEITSGRAD MITTEL ------------------------------------------------
-	// ##########################################################################################################################
-	// + Prüfung auf Gewinnmöglichkeiten beider Spieler (vorzeitiger Abbruch falls vorhanden)
-	// + Computer setzt zufällig einen Stein mit Präferenz zur Mitte
-	// + Felder, die durch einen Stein des Computers zum Sieg des Spielers führen, werden ignoriert
-	// --------------------------------------------------------------------------------------------------------------------------
-	public void mittel(){
-
-		// Überprüft Gewinnmöglichkeiten beider Spieler und bricht gegebenenfalls die Methode vorzeitig ab
-		bool vorzeitigerAbbruch = gewinnmoeglichkeitenPruefen ();
-		if (vorzeitigerAbbruch) return;
-
-		// Wählt eine zufällige Spalte aus mit Präferenz in die Mitte
-		naechsterSpielzug();
-		if (guteFelderComputer != null) {
-			int zufall = Random.Range(1, guteFelderComputer.Length / 2);
-			int z = int.Parse(guteFelderComputer.Substring (zufall * 2 - 2, 1));
-			int s = int.Parse(guteFelderComputer.Substring (zufall * 2 - 1, 1));
-			fuegeSteinHinzu (s);
-		} else {
-			fuegeSteinHinzu(int.Parse (schlechteFelderComputer.Substring (2, 1)));
-			return;
-		}
-	}
-
-
-
-	// ##########################################################################################################################
-	// ---------------------------------------------- SCHWIERIGKEITSGRAD SCHWIERIG ----------------------------------------------
-	// ##########################################################################################################################
-	// + Prüfung auf Gewinnmöglichkeiten beider Spieler (vorzeitiger Abbruch falls vorhanden)
-	// + Computer simuliert die nächsten Züge (seinen Zug und den des Spielers) und setzt entsprechend eines Bewertungssystems
-	// 		- Jeder mögliche nächste Zug des Computers wird gewichtet (7 Zugmöglichkeiten)
-	// 		- Jeder mögliche nächste Zug des Spielers wird gewichtet (7 Zugmöglichkeiten)
-	// 		- Der Zug mit der höchsten Gewichtung wird ausgeführt
-	// 		- Hat der Zug des Spielers die gleiche Gewichtung wie die des Computers, wird der Spielerzug ausgeführt
-	// 		- Gibt es mehrere gleichrangige Züge, wird zufällig einer von ihnen ausgewählt
-	// 		- Schlechte Züge, die zum Verlust des Computers führen, werden ausgeführt, wenn keine andere Möglichkeit besteht
-	// + Felder, die durch einen Stein des Computers zum Sieg des Spielers führen, werden ignoriert
-	// --------------------------------------------------------------------------------------------------------------------------
-	public void schwierig(){
-
-		// Überprüft Gewinnmöglichkeiten beider Spieler und bricht gegebenenfalls die Methode vorzeitig ab
-		bool vorzeitigerAbbruch = gewinnmoeglichkeitenPruefen ();
-		if (vorzeitigerAbbruch) return;
-
-		int besteBewertungSpieler = zuegeBewertenSpieler ();
-		int besteBewertungComputer = zuegeBewertenComputer ();
-
-		if (besteBewertungSpieler > 0 && besteBewertungSpieler >= besteBewertungComputer)
-			guteFelderComputer = guteFelderSpieler;
-
-		if (guteFelderComputer != null){
-			int zufall = Random.Range(1, guteFelderComputer.Length / 2);
-			int z = int.Parse(guteFelderComputer.Substring (zufall * 2 - 2, 1));
-			int s = int.Parse(guteFelderComputer.Substring (zufall * 2 - 1, 1));
-			fuegeSteinHinzu (s);
-		}else{
-			fuegeSteinHinzu(int.Parse (schlechteFelderComputer.Substring (2, 1)));
-			return;
-		}
-
-	}
-
+		
 
 
 	// ##########################################################################################################################
@@ -1460,6 +1215,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
                 {
+				HUDMenuAktivieren();
                 while(spielerAktion == false)
                     {
                     yield return new WaitForSeconds(1f);
@@ -1467,6 +1223,7 @@ IEnumerator Beginn()
                 }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1483,6 +1240,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
+				HUDMenuAktivieren();
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1490,6 +1248,7 @@ IEnumerator Beginn()
             }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1503,6 +1262,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
+				HUDMenuAktivieren();
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1510,6 +1270,7 @@ IEnumerator Beginn()
             }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1523,6 +1284,7 @@ IEnumerator Beginn()
             spielerAktion = false;
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
+				HUDMenuAktivieren();
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1530,6 +1292,7 @@ IEnumerator Beginn()
             }
             else
             {
+				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
                 //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
@@ -1537,12 +1300,51 @@ IEnumerator Beginn()
 
         }                
         // t.ShowDown();
+
         tisch.Reset();
         tisch.mainPot.Reset();
-}
 
+		// start button
+	
+	}
 
+	public void HUDMenuAktivieren(){
+		HUD_Check.SetActive (true);
+		HUD_Fold.SetActive (true);
+		HUD_Raise.SetActive (true);
+		HUD_Raise_1.SetActive (true);
+		HUD_Raise_5.SetActive (true);
+		HUD_Raise_25.SetActive (true);
+		HUD_Raise_100.SetActive (true);
+		HUD_Minus_1.SetActive (true);
+		HUD_Minus_5.SetActive (true);
+		HUD_Minus_25.SetActive (true);
+		HUD_Minus_100.SetActive (true);
+		HUD_Raise_minus.SetActive (true);
+		HUD_Raise_plus.SetActive (true);
+		HUD_Call.SetActive (true);
+		HUD_All_In.SetActive (true);
+		
+	}
 
+	public void HUDMenuDeaktivieren(){
+		
+		HUD_Check.SetActive (false);
+		HUD_Fold.SetActive (false);
+		HUD_Raise.SetActive (false);
+		HUD_Raise_1.SetActive (false);
+		HUD_Raise_5.SetActive (false);
+		HUD_Raise_25.SetActive (false);
+		HUD_Raise_100.SetActive (false);
+		HUD_Minus_1.SetActive (false);
+		HUD_Minus_5.SetActive (false);
+		HUD_Minus_25.SetActive (false);
+		HUD_Minus_100.SetActive (false);
+		HUD_Raise_minus.SetActive (false);
+		HUD_Raise_plus.SetActive (false);
+		HUD_Call.SetActive (false);
+		HUD_All_In.SetActive (false);
 
-
+	}
+		
 }
