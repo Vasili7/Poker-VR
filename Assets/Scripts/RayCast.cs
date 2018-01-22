@@ -534,7 +534,7 @@ public class RayCast : MonoBehaviour {
 				}			
 
 			// FOR CARD FLIP
-			} else if (hit.collider.gameObject.tag == "show cards" && big ==false) {
+			} else if (hit.collider.gameObject.tag == "show cards" && big == false) {
 
 				aktiviert = true;
 
@@ -548,15 +548,16 @@ public class RayCast : MonoBehaviour {
 
 				Vector3 originalScale = tisch.pp31.transform.localScale;
 
-				if (timer >= 2f) {
+				if (timer >= 0.5f && big == false) {
 					timer = 0f; 
 
 					tisch.pp31.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f );
 //					tisch.pp31.transform.Rotate  (180, 0, 0) ;
-					tisch.pp31.transform.localScale += new Vector3(10f, 10f, 10f);
+					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
 					tisch.pp32.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f);
-					tisch.pp32.transform.localScale += new Vector3 (10f, 10f, 10f);
+					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
 
+					cardsButton.SetActive (false);
 //					originalScale = t.pp31.transform.localScale;
 //					t.pp31.transform.localScale *= 3;
 					big = true;
@@ -707,10 +708,11 @@ public class RayCast : MonoBehaviour {
 
 		yield return new WaitForSeconds(5f);
 		tisch.pp31.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp31.transform.localScale -= new Vector3(10f, 10f, 10f);
+		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
 		tisch.pp32.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp32.transform.localScale -= new Vector3 (10f, 10f, 10f);
-
+		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
+		big = false;
+		cardsButton.SetActive (true);
 	}
 		
 

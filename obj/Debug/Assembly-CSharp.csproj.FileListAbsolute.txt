@@ -384,3 +384,6 @@ C:/Users/Mojdeh.aaz/Casino2/team2/obj/Debug/Assembly-CSharp.pdb
 /Users/vsli/Documents/_VRCasino_Disk_Backup/Temp/bin/Debug/UnityEngine.StandardEvents.dll.mdb
 /Users/vsli/Documents/_VRCasino_Disk_Backup/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
 /Users/vsli/Documents/_VRCasino_Disk_Backup/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
+C:\Users\Mojdeh.aaz\Casino2\team2\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Mojdeh.aaz\Casino2\team2\obj\Debug\Assembly-CSharp.dll
+C:\Users\Mojdeh.aaz\Casino2\team2\obj\Debug\Assembly-CSharp.pdb

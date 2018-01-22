@@ -6477,7 +6477,7 @@ RectTransform:
   m_Children:
   - {fileID: 663161181}
   m_Father: {fileID: 1750980205}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -4.5, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10554,6 +10554,8 @@ GameObject:
   - component: {fileID: 951457919}
   - component: {fileID: 951457918}
   - component: {fileID: 951457917}
+  - component: {fileID: 951457922}
+  - component: {fileID: 951457923}
   m_Layer: 5
   m_Name: Cards
   m_TagString: show cards
@@ -10568,7 +10570,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 951457915}
   m_LocalRotation: {x: -0, y: 0.99921244, z: 0.039680786, w: 0}
-  m_LocalPosition: {x: -357.25702, y: -155.472, z: -8.919}
+  m_LocalPosition: {x: -357.21902, y: -155.49397, z: -8.929}
   m_LocalScale: {x: 0.003, y: 0.006, z: 1.0000002}
   m_Children: []
   m_Father: {fileID: 1670426112}
@@ -10576,7 +10578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -4.5480003, y: 180.00002, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -357.25702, y: -155.472}
+  m_AnchoredPosition: {x: -357.21902, y: -155.49397}
   m_SizeDelta: {x: 80, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &951457917
@@ -10662,7 +10664,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 951457915}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -10675,7 +10677,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10689,6 +10691,53 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 951457915}
+--- !u!114 &951457922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951457915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d6327a777cc16479a60f757d1dd3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardsButton: {fileID: 951457915}
+  alpha: 0
+--- !u!23 &951457923
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951457915}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &956861017
 GameObject:
   m_ObjectHideFlags: 0
@@ -13069,7 +13118,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1132071793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.273, y: -0.138, z: 0.093}
+  m_LocalPosition: {x: -0.273, y: -0.138, z: 0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 395682020}
@@ -14577,7 +14626,7 @@ RectTransform:
   m_Children:
   - {fileID: 812143657}
   m_Father: {fileID: 1750980205}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -4.5, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19466,7 +19515,7 @@ RectTransform:
   m_Children:
   - {fileID: 1296354368}
   m_Father: {fileID: 1750980205}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -0.29000002, y: 271.94098, z: 4.2710004}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20338,9 +20387,9 @@ RectTransform:
   - {fileID: 1953500918}
   - {fileID: 1877257524}
   - {fileID: 1052221734}
+  - {fileID: 1690613925}
   - {fileID: 610799026}
   - {fileID: 1246159129}
-  - {fileID: 1690613925}
   - {fileID: 1489724658}
   - {fileID: 200157003}
   - {fileID: 1548443681}
