@@ -79,6 +79,8 @@ TagManager:
   - show cards
   - all in
   - call
+  - showed card 1
+  - showed card 2
   layers:
   - Default
   - TransparentFX
