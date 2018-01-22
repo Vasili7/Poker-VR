@@ -201,6 +201,7 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
+                    tisch.Reset();
                     StartCoroutine(Beginn());
 				}
 
@@ -250,12 +251,8 @@ public class RayCast : MonoBehaviour {
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
 
-					tisch.AddFirstJetons();
-					tisch.StartNewMatch();
-					tisch.DealFlop();
-					tisch.DealTurn();
-					tisch.DealRiver();
-
+                    tisch.Reset();
+                    StartCoroutine(Beginn());
 				}
 
 				// SPIELABBRUCH
@@ -333,6 +330,9 @@ public class RayCast : MonoBehaviour {
 							pot_amount.SetActive (true);
 							HUD_Call.SetActive (true);
 							HUD_All_In.SetActive (true);
+
+                                tisch.Reset();
+                                tisch.mainPot.Reset();
 
 							break;
 						}

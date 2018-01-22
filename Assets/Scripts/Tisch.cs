@@ -460,6 +460,7 @@ public class Tisch : MonoBehaviour
         {
             pList[i].Reset();
         }
+        mainPot.Reset();
     }
 }
 
