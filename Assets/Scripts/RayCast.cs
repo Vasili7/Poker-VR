@@ -93,11 +93,8 @@ public class RayCast : MonoBehaviour {
     public List<p1> playersInMainpot = new List<p1>();
     bool spielerAktion = false;
 
-<<<<<<< HEAD
 	public GameObject ausgang;
-=======
     Coroutine co;
->>>>>>> b711dc09a1bac8fdce26d76f30d93aa9c343ee30
 
 	void Start(){
         angeseheneObjekte = new List<GameObject> ();
@@ -590,10 +587,7 @@ public class RayCast : MonoBehaviour {
 	//			card2.SetActive (false);
 				big = false;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 181605d7ad585397ff954eb4e3f9eb9c0752a480
 				//Application quit
 			}else if(hit.collider.gameObject.tag=="Ausgang"){
 				aktiviert = true;
@@ -608,13 +602,10 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					Application.Quit ();
-<<<<<<< HEAD
 				}
 					
-=======
 					}
 
->>>>>>> 181605d7ad585397ff954eb4e3f9eb9c0752a480
 
 				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {

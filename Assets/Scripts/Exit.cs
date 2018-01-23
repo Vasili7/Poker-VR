@@ -10,19 +10,21 @@ using System.Collections;
  * --------------------------------------------------------------------------------------------------------------------------
 */
 
-public class Exit : MonoBehaviour {
+public class Exit : MonoBehaviour
+{
 
-	public GameObject mycamera;
-	// Application wird beendet sobald der Controller den Ausgang berührt
-	void OnTriggerEnter (Collider other) {
-<<<<<<< HEAD
-		if (other.gameObject.CompareTag ("MainCamera")
-			|| other.gameObject.name == "Dive_Camera") {
-=======
-		if (other.gameObject.CompareTag ("MainCamera") ||
-			other.gameObject.name == "Dive_Camera") {
->>>>>>> 181605d7ad585397ff954eb4e3f9eb9c0752a480
-			Application.Quit();
-		}
-	}
+    public GameObject mycamera;
+    // Application wird beendet sobald der Controller den Ausgang berührt
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("MainCamera")
+            || other.gameObject.name == "Dive_Camera")
+        {
+            if (other.gameObject.CompareTag("MainCamera") ||
+                other.gameObject.name == "Dive_Camera")
+            {
+                Application.Quit();
+            }
+        }
+    }
 }
