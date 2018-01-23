@@ -14,7 +14,8 @@ public class Exit : MonoBehaviour {
 
 	// Application wird beendet sobald der Controller den Ausgang berührt
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.CompareTag ("MainCamera")) {
+		if (other.gameObject.CompareTag ("MainCamera")
+			|| other.gameObject.name == "Dive_Camera") {
 			Application.Quit();
 		}
 	}

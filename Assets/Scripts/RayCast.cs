@@ -577,6 +577,24 @@ public class RayCast : MonoBehaviour {
 
 				big = false;
 
+
+				//Application quit
+			}else if(hit.collider.gameObject.tag=="Ausgang"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 1f) {
+					timer = 0f;
+
+					Application.Quit ();
+				}
+					
+
 				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {
 				if (spielstart && !spielende) {
@@ -1300,6 +1318,9 @@ IEnumerator Beginn()
         tisch.mainPot.Reset();
 
 		// start button
+
+		if(Bank_amount.ToString() != "0" || bank != 0)
+			buttonStart.SetActive(true);
 	
 	}
 
