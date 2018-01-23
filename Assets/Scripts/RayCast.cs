@@ -1319,7 +1319,7 @@ IEnumerator Beginn()
 
 		// start button
 
-		if(Bank_amount.ToString() != "0" || bank != 0)
+//		if(Bank_amount.ToString() != "0" || bank != 0)
 			buttonStart.SetActive(true);
 	
 	}
