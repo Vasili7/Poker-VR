@@ -85,6 +85,7 @@ public class RayCast : MonoBehaviour {
 
 	public GameObject cardsButton;
 	static bool big = false;
+	public GameObject card1,card2;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch tisch = new Tisch() ;
@@ -92,7 +93,11 @@ public class RayCast : MonoBehaviour {
     public List<p1> playersInMainpot = new List<p1>();
     bool spielerAktion = false;
 
+<<<<<<< HEAD
+	public GameObject ausgang;
+=======
     Coroutine co;
+>>>>>>> b711dc09a1bac8fdce26d76f30d93aa9c343ee30
 
 	void Start(){
         angeseheneObjekte = new List<GameObject> ();
@@ -108,6 +113,9 @@ public class RayCast : MonoBehaviour {
 		buttonRestart.SetActive (false);
 
 		buttonStart.SetActive (true);
+
+		card1.SetActive (false);
+		card2.SetActive (false);
 	
 		Bet.text = Set_Bet.ToString ();
 
@@ -554,15 +562,19 @@ public class RayCast : MonoBehaviour {
 					timer = 0f; 
 
 					tisch.pp31.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f );
-//					tisch.pp31.transform.Rotate  (180, 0, 0) ;
 					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
 					tisch.pp32.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f);
 					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
 
 					cardsButton.SetActive (false);
-//					originalScale = t.pp31.transform.localScale;
-//					t.pp31.transform.localScale *= 3;
 					big = true;
+
+	//				card1.SetActive (true);
+	//				card2.SetActive (true);
+	//				card1 = tisch.pp31;
+	//				card1 = tisch.pp31;
+	//				card2 = tisch.pp32;
+				
 				}
 					
 //					t.pp31.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
@@ -574,10 +586,14 @@ public class RayCast : MonoBehaviour {
 				// FOR CARD FLIP BACK
 			}else if (big == true) {
 				StartCoroutine (WaitToFlipBack ());
-
+	//			card1.SetActive (false);
+	//			card2.SetActive (false);
 				big = false;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 181605d7ad585397ff954eb4e3f9eb9c0752a480
 				//Application quit
 			}else if(hit.collider.gameObject.tag=="Ausgang"){
 				aktiviert = true;
@@ -592,8 +608,13 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					Application.Quit ();
+<<<<<<< HEAD
 				}
 					
+=======
+					}
+
+>>>>>>> 181605d7ad585397ff954eb4e3f9eb9c0752a480
 
 				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {
@@ -1318,9 +1339,13 @@ IEnumerator Beginn()
         tisch.mainPot.Reset();
 
 		// start button
+<<<<<<< HEAD
 
 		if(Bank_amount.ToString() != "0" || bank != 0)
 			buttonStart.SetActive(true);
+=======
+		buttonStart.SetActive(true);
+>>>>>>> 181605d7ad585397ff954eb4e3f9eb9c0752a480
 	
 	}
 
