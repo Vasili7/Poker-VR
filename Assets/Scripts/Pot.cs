@@ -74,5 +74,8 @@ public class Pot : MonoBehaviour {
         maximumAmountPutIn = 0;
         smallBlind = 0;
         bigBlind = 0;
+        playersInPot.Clear();
     }
+
+
 }

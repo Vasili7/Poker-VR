@@ -6,15 +6,15 @@ public class Jetons : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Test();
+        WerteZuweisen();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-    // 1 5 25 100 500
-    public void Test()
+    // 1 5 25 100
+    public void WerteZuweisen()
     {
         if(this.name == "v1(Clone)")
         {
@@ -31,10 +31,6 @@ public class Jetons : MonoBehaviour {
         if(this.name == "v100(Clone)")
         {
             wert = 100;
-        } 
-        if(this.name == "v500(Clone)")
-        {
-            wert = 500;
         } 
     }
 }

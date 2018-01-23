@@ -81,6 +81,10 @@ TagManager:
   - call
   - showed card 1
   - showed card 2
+  - pj1
+  - pj5
+  - pj25
+  - pj100
   layers:
   - Default
   - TransparentFX

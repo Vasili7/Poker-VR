@@ -45,6 +45,51 @@ public class Tisch : MonoBehaviour
         //amountInPot = mainPot.amountInPot;
         //player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
         //playersInMainpot = mainPot.playersInPot;
+        //PotJetons();
+    }
+
+    public void PotJetons()
+    {
+        int i = mainPot.amountInPot;
+
+        if(i >= 1 && i < 5)
+        {
+            while (i >= 1 && i < 5)
+            {
+                goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("pj1").transform.position, j1.transform.rotation);
+                i++;
+                break;
+            } 
+        }
+        if (i >= 100)
+        {
+            while (i > 100)
+            {
+                goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("pj100").transform.position, j100.transform.rotation);
+                i += 100;
+                break;
+            }
+        }
+        if (i >= 25 && i < 100)
+        {
+            while (i > 25 && i < 100)
+            {
+                goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("pj25").transform.position, j25.transform.rotation);
+                i += 25;
+                break;
+            }
+        }
+        if (i >= 5 && i < 25)
+        {
+            while (i > 5 && i < 25)
+            {
+                goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("pj5").transform.position, j5.transform.rotation);
+                i += 5;
+                break;
+            }
+        }
+
+        //goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("pj1").transform.position, j1.transform.rotation);
     }
 
 	// Position-Tag is needed to instatiate jetons
@@ -57,19 +102,19 @@ public class Tisch : MonoBehaviour
             player1.chipStack++;
             player1.myJetons.Add(j1);
         }
-        for (int i = 0; i< 30; i++)
+        for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("1j5").transform.position, j5.transform.rotation);
             player1.chipStack = player1.chipStack + 5;
             player1.myJetons.Add(j5);
         }
-        for (int i = 0; i< 30; i++)
+        for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("1j25").transform.position, j25.transform.rotation);
             player1.chipStack = player1.chipStack + 25;
             player1.myJetons.Add(j25);
         }
-        for (int i = 0; i< 10; i++)
+        for (int i = 0; i< 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("1j100").transform.position, j100.transform.rotation);
             player1.chipStack = player1.chipStack + 100;
@@ -82,19 +127,19 @@ public class Tisch : MonoBehaviour
             player2.chipStack++;
             player2.myJetons.Add(j1);
         }
-        for (int i = 0; i< 30; i++)
+        for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("2j5").transform.position, j5.transform.rotation);
             player2.chipStack = player2.chipStack + 5;
             player2.myJetons.Add(j5);
         }
-        for (int i = 0; i< 30; i++)
+        for (int i = 0; i< 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("2j25").transform.position, j25.transform.rotation);
             player2.chipStack = player2.chipStack + 25;
             player2.myJetons.Add(j25);
         }
-        for (int i = 0; i< 10; i++)
+        for (int i = 0; i< 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("2j100").transform.position, j100.transform.rotation);
             player2.chipStack = player2.chipStack + 100;
@@ -107,19 +152,19 @@ public class Tisch : MonoBehaviour
             player3.chipStack++;
             player3.myJetons.Add(j1);
         }
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("3j5").transform.position, j5.transform.rotation);
             player3.chipStack = player3.chipStack + 5;
             player3.myJetons.Add(j5);
         }
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("3j25").transform.position, j25.transform.rotation);
             player3.chipStack = player3.chipStack + 25;
             player3.myJetons.Add(j25);
         }
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("3j100").transform.position, j100.transform.rotation);
             player3.chipStack = player3.chipStack + 100;
@@ -132,19 +177,19 @@ public class Tisch : MonoBehaviour
             player4.chipStack++;
             player4.myJetons.Add(j1);
         }
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("4j5").transform.position, j5.transform.rotation);
             player4.chipStack = player4.chipStack + 5;
             player4.myJetons.Add(j5);
         }
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("4j25").transform.position, j25.transform.rotation);
             player4.chipStack = player4.chipStack + 25;
             player4.myJetons.Add(j25);
         }
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("4j100").transform.position, j100.transform.rotation);
             player4.chipStack = player4.chipStack + 100;
@@ -157,19 +202,19 @@ public class Tisch : MonoBehaviour
             player5.chipStack++;
             player5.myJetons.Add(j1);
         }
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("5j5").transform.position, j5.transform.rotation);
             player5.chipStack = player5.chipStack + 5;
             player5.myJetons.Add(j5);
         }
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 3; i++)
         {
             goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("5j25").transform.position, j25.transform.rotation);
             player5.chipStack = player5.chipStack + 25;
             player5.myJetons.Add(j25);
         }
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 1; i++)
         {
             goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("5j100").transform.position, j100.transform.rotation);
             player5.chipStack = player5.chipStack + 100;
@@ -204,7 +249,7 @@ public class Tisch : MonoBehaviour
     public void AddPlayer(p1 player)
     {
        
-        if (!pList.Contains(player) && player.isBusted == false)
+        if (!pList.Contains(player))// && player.isBusted == false)
         {
             pList.Add(player);
         }
@@ -345,6 +390,7 @@ public class Tisch : MonoBehaviour
     public void DealFlop()
     { 
         BurnCard();
+        mainPot.minimumRaise = 0;
         mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc1");
         DealBoardCard("bc2");
@@ -353,12 +399,14 @@ public class Tisch : MonoBehaviour
     public void DealTurn()
     {
         BurnCard();
+        mainPot.minimumRaise = 0;
         mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc4");
     }
     public void DealRiver()
     {
         BurnCard();
+        mainPot.minimumRaise = 0;
         mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc5");
     }
@@ -427,7 +475,7 @@ public class Tisch : MonoBehaviour
     public void RandomChoose(p1 player)
     {
 	    // fold, allin + check bringt die Reihenfolge durcheinander, deswegen deaktiviert
-        int randomIndex = UnityEngine.Random.Range(3, 5);
+        int randomIndex = UnityEngine.Random.Range(1, 6);
         switch (randomIndex)
         {
             case 1:
@@ -437,13 +485,13 @@ public class Tisch : MonoBehaviour
                 player.Check(mainPot);
                 break;		
             case 3:
-                player.Raise(100, mainPot);
+                player.Raise(10, mainPot);
                 break;
             case 4:
                 player.Call(mainPot);
                 break;
             case 5:
-                player.Bet(150, mainPot);
+                player.Bet(5, mainPot);
                 break;
             case 6:
                 player.AllIn(mainPot);
@@ -454,15 +502,12 @@ public class Tisch : MonoBehaviour
 
     public void Reset()
     {
-        for (int i = 0; i < pList.Count(); i++)
-        {
-            pList[i].folded = false;
-            pList[i].Reset();
-        }
+        // Player müssen noch resetet werden!
         for (int i = 0; i < tableHand.Count(); i++)
         {
             tableHand[i].transform.Rotate(130, 0, 0);
         }
+
         mainPot.Reset();
         AddAllCardsToDeck();
         tableHand.Clear();
