@@ -85,12 +85,15 @@ public class RayCast : MonoBehaviour {
 
 	public GameObject cardsButton;
 	static bool big = false;
+	public GameObject card1,card2;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch tisch = new Tisch() ;
     public Pot mPot;
     public List<p1> playersInMainpot = new List<p1>();
     bool spielerAktion = false;
+
+	public GameObject ausgang;
 
 	void Start(){
         angeseheneObjekte = new List<GameObject> ();
@@ -106,6 +109,9 @@ public class RayCast : MonoBehaviour {
 		buttonRestart.SetActive (false);
 
 		buttonStart.SetActive (true);
+
+		card1.SetActive (false);
+		card2.SetActive (false);
 	
 		Bet.text = Set_Bet.ToString ();
 
@@ -552,15 +558,19 @@ public class RayCast : MonoBehaviour {
 					timer = 0f; 
 
 					tisch.pp31.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f );
-//					tisch.pp31.transform.Rotate  (180, 0, 0) ;
 					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
 					tisch.pp32.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f);
 					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
 
 					cardsButton.SetActive (false);
-//					originalScale = t.pp31.transform.localScale;
-//					t.pp31.transform.localScale *= 3;
 					big = true;
+
+	//				card1.SetActive (true);
+	//				card2.SetActive (true);
+	//				card1 = tisch.pp31;
+	//				card1 = tisch.pp31;
+	//				card2 = tisch.pp32;
+				
 				}
 					
 //					t.pp31.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
@@ -572,8 +582,26 @@ public class RayCast : MonoBehaviour {
 				// FOR CARD FLIP BACK
 			}else if (big == true) {
 				StartCoroutine (WaitToFlipBack ());
-
+	//			card1.SetActive (false);
+	//			card2.SetActive (false);
 				big = false;
+
+				//Application quit
+			}else if(hit.collider.gameObject.tag=="Ausgang"){
+				aktiviert = true;
+
+				timer = timer + Time.deltaTime;
+				this.lastHit = hit;
+				angeseheneObjekte.Add (lastHit.transform.gameObject);
+				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+
+
+				if (timer >= 1f) {
+					timer = 0f;
+
+					Application.Quit ();
+					}
+
 
 				// SPIELERZUG
 			} else if (hit.collider.gameObject.tag == "Spalte") {
@@ -1305,6 +1333,7 @@ IEnumerator Beginn()
         tisch.mainPot.Reset();
 
 		// start button
+		buttonStart.SetActive(true);
 	
 	}
 

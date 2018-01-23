@@ -12,9 +12,11 @@ using System.Collections;
 
 public class Exit : MonoBehaviour {
 
+	public GameObject mycamera;
 	// Application wird beendet sobald der Controller den Ausgang berührt
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.CompareTag ("MainCamera")) {
+		if (other.gameObject.CompareTag ("MainCamera") ||
+			other.gameObject.name == "Dive_Camera") {
 			Application.Quit();
 		}
 	}
