@@ -456,11 +456,12 @@ public class Tisch : MonoBehaviour
     {
         for (int i = 0; i < pList.Count(); i++)
         {
+            pList[i].folded = false;
             pList[i].Reset();
         }
         for (int i = 0; i < tableHand.Count(); i++)
         {
-            tableHand[i].transform.Rotate(0, 0, 0);
+            tableHand[i].transform.Rotate(130, 0, 0);
         }
         mainPot.Reset();
         AddAllCardsToDeck();

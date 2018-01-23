@@ -266,7 +266,7 @@ public class RayCast : MonoBehaviour {
 							pot_amount.SetActive (true);
 							break;
 
-                            StopCoroutine(Beginn());
+                            StopCoroutine(co);
                             tisch.Reset();
 
 						}
