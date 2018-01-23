@@ -20,11 +20,9 @@ public class Exit : MonoBehaviour
         if (other.gameObject.CompareTag("MainCamera")
             || other.gameObject.name == "Dive_Camera")
         {
-            if (other.gameObject.CompareTag("MainCamera") ||
-                other.gameObject.name == "Dive_Camera")
-            {
+            
                 Application.Quit();
-            }
+            
         }
     }
 }

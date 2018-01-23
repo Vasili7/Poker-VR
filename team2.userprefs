@@ -1,15 +1,16 @@
-﻿<Properties StartupConfiguration="{E16AFF02-8AE6-E962-67A5-E2F805F00927}|Komponententests">
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RayCast.cs">
+﻿<Properties StartupConfiguration="{E16AFF02-8AE6-E962-67A5-E2F805F00927}|Komponententests" StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RayCast.cs">
     <Files>
-      <File FileName="Assets/Scripts/Exit.cs" Line="30" Column="2" />
-      <File FileName="Assets/Scripts/RayCast.cs" Line="653" Column="11" />
+      <File FileName="Assets\Scripts\Exit.cs" Line="25" Column="13" />
+      <File FileName="Assets\Scripts\RayCast.cs" Line="220" Column="67" />
+      <File FileName="Assets\Scripts\Tisch.cs" Line="372" Column="102" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

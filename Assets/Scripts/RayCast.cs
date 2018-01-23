@@ -82,10 +82,12 @@ public class RayCast : MonoBehaviour {
 	public GameObject pot,pot_amount;
 	public TextMesh pot_amount_txt;
 	private static int pot_amount_int=0;
+	public TextMesh insgesamt_gespielt;
+	static int insgesamt=0;
 
 	public GameObject cardsButton;
 	static bool big = false;
-	public GameObject card1,card2;
+	public GameObject show_card1,show_card2;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch tisch = new Tisch() ;
@@ -109,9 +111,6 @@ public class RayCast : MonoBehaviour {
 		buttonRestart.SetActive (false);
 
 		buttonStart.SetActive (true);
-
-		card1.SetActive (false);
-		card2.SetActive (false);
 	
 		Bet.text = Set_Bet.ToString ();
 
@@ -176,6 +175,9 @@ public class RayCast : MonoBehaviour {
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
 
+					insgesamt++;
+					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
+
 					buttonEnd.SetActive (true);
 					buttonEndJa.SetActive (false);
 					buttonEndNein.SetActive (false);
@@ -213,6 +215,9 @@ public class RayCast : MonoBehaviour {
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
+
+					insgesamt++;
+					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
 
 					tisch.AddFirstJetons();
 					tisch.StartNewMatch();
@@ -554,14 +559,16 @@ public class RayCast : MonoBehaviour {
 
 				Vector3 originalScale = tisch.pp31.transform.localScale;
 
-				if (timer >= 0.5f && big == false) {
+				if (timer >= 0.2f && big == false) {
 					timer = 0f; 
 
-					tisch.pp31.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f );
-					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
-					tisch.pp32.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f);
-					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
+					tisch.pp31.transform.Rotate (new Vector3 (130, 0, 0)  * 10f );
+//					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
+					tisch.pp32.transform.Rotate (new Vector3 (130, 0, 0)  * 10f);
+//					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
 
+					tisch.pp31.transform.position = show_card1.transform.position;
+					tisch.pp32.transform.position = show_card2.transform.position;
 					cardsButton.SetActive (false);
 					big = true;
 
@@ -735,10 +742,13 @@ public class RayCast : MonoBehaviour {
 	IEnumerator WaitToFlipBack() {
 
 		yield return new WaitForSeconds(5f);
-		tisch.pp31.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
-		tisch.pp32.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
+		tisch.pp31.transform.Rotate (new Vector3 (-130, 0, 0)  * 10f);
+//		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
+		tisch.pp32.transform.Rotate (new Vector3 (-130, 0, 0)  * 10f);
+//		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
+		tisch.pp31.transform.position = GameObject.FindGameObjectWithTag("p31").transform.position;
+		tisch.pp32.transform.position = GameObject.FindGameObjectWithTag("p32").transform.position;
+
 		big = false;
 		cardsButton.SetActive (true);
 	}
