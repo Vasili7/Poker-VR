@@ -155,6 +155,8 @@ public class p1 : MonoBehaviour
     public void Reset()
     {
         this.amountInPot = 0;
+        folded = false;
+        isBusted = false;
         //this.chipStack = 0;
         //this.folded = false;
         myHand[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position; 
