@@ -94,7 +94,6 @@ public class RayCast : MonoBehaviour {
     bool spielerAktion = false;
 
 	public GameObject ausgang;
-    Coroutine co;
 
 	void Start(){
         angeseheneObjekte = new List<GameObject> ();
@@ -182,7 +181,7 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
-                    co = StartCoroutine(Beginn());
+                    StartCoroutine(Beginn());
 				}
 
 				// NEUSTART
@@ -199,6 +198,8 @@ public class RayCast : MonoBehaviour {
 					siegsteineHervorheben = false;
 
 					// Tisch löschen
+			//		t.Reset();
+			//		t.RemoveJetons ();
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
 					spielende = false;
@@ -213,9 +214,11 @@ public class RayCast : MonoBehaviour {
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
 
-                    StopCoroutine(co);
-                    tisch.Reset();
-                    StartCoroutine(Beginn());
+					tisch.AddFirstJetons();
+					tisch.StartNewMatch();
+					tisch.DealFlop();
+					tisch.DealTurn();
+					tisch.DealRiver();
 
 				}
 
@@ -270,10 +273,6 @@ public class RayCast : MonoBehaviour {
 							pot.SetActive (true);
 							pot_amount.SetActive (true);
 							break;
-
-                            StopCoroutine(co);
-                            tisch.Reset();
-
 						}
 
 					}
@@ -587,7 +586,6 @@ public class RayCast : MonoBehaviour {
 	//			card2.SetActive (false);
 				big = false;
 
-
 				//Application quit
 			}else if(hit.collider.gameObject.tag=="Ausgang"){
 				aktiviert = true;
@@ -602,8 +600,6 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					Application.Quit ();
-				}
-					
 					}
 
 
@@ -1239,7 +1235,7 @@ public class RayCast : MonoBehaviour {
 
 IEnumerator Beginn()
 {
-        //tisch.AddFirstJetons();
+        tisch.AddFirstJetons();
         tisch.StartNewMatch();
         for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
         //for (int i = tisch.roundCount; i < tisch.mainPot.playersInPot.Count(); i++)
@@ -1257,7 +1253,11 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
+                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+                //p1 player = tisch.mainPot.playersInPot[i];
+                //player.Bet(111, tisch.mainPot);
+                //tisch.AddFirstJetons();
             }
 
         }   
@@ -1278,6 +1278,7 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
+                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
 
@@ -1299,6 +1300,7 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
+                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
 
@@ -1320,6 +1322,7 @@ IEnumerator Beginn()
             {
 				HUDMenuDeaktivieren();
                 yield return new WaitForSeconds(5f);
+                //tisch.mainPot.playersInPot[i].Call(tisch.mainPot);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
 
@@ -1330,13 +1333,7 @@ IEnumerator Beginn()
         tisch.mainPot.Reset();
 
 		// start button
-<<<<<<< HEAD
-
-//		if(Bank_amount.ToString() != "0" || bank != 0)
-			buttonStart.SetActive(true);
-=======
 		buttonStart.SetActive(true);
->>>>>>> 181605d7ad585397ff954eb4e3f9eb9c0752a480
 	
 	}
 
