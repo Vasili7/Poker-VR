@@ -52,44 +52,33 @@ public class Tisch : MonoBehaviour
     {
         int i = mainPot.amountInPot;
 
-        if(i >= 1 && i < 5)
+        while(i > 0)
         {
-            while (i >= 1 && i < 5)
-            {
-                goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("pj1").transform.position, j1.transform.rotation);
-                i++;
-                break;
-            } 
-        }
-        if (i >= 100)
-        {
-            while (i > 100)
+            if (i >= 100)
             {
                 goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("pj100").transform.position, j100.transform.rotation);
-                i += 100;
-                break;
+                i -= 100;
+                continue;
             }
-        }
-        if (i >= 25 && i < 100)
-        {
-            while (i > 25 && i < 100)
+            if (i >= 25 && i < 100)
             {
                 goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("pj25").transform.position, j25.transform.rotation);
-                i += 25;
-                break;
+                i -= 25;
+                continue;
             }
-        }
-        if (i >= 5 && i < 25)
-        {
-            while (i > 5 && i < 25)
+            if (i >= 5 && i < 25)
             {
                 goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("pj5").transform.position, j5.transform.rotation);
-                i += 5;
-                break;
+                i -= 5;
+                continue;
+            }
+            if (i >= 1 && i < 5)
+            {
+                goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("pj1").transform.position, j1.transform.rotation);
+                i--;
+                continue;
             }
         }
-
-        //goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("pj1").transform.position, j1.transform.rotation);
     }
 
 	// Position-Tag is needed to instatiate jetons
