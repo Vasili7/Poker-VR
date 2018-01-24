@@ -349,12 +349,12 @@ public class RayCast : MonoBehaviour {
                     tisch.player3.Raise(Set_Bet, tisch.mainPot);
                     spielerAktion = true;
 
-	//				bank -= int.Parse (Bet.text); //from Bank
-	//				pot_amount_int += int.Parse (Bet.text); //to pot
-	//				Bank_amount.text = bank.ToString();
-	//				pot_amount_txt.text = pot_amount_int.ToString ();
-	//				Bet.text = "0";
-	//				Set_Bet = 0;
+					bank -= int.Parse (Bet.text); //from Bank
+					pot_amount_int += int.Parse (Bet.text); //to pot
+					Bank_amount.text = bank.ToString();
+					pot_amount_txt.text = pot_amount_int.ToString ();
+					Bet.text = "0";
+					Set_Bet = 0;
 				}
 
 				//RAISE MINUS 1
