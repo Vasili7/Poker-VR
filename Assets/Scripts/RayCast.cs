@@ -577,22 +577,22 @@ public class RayCast : MonoBehaviour {
 
 					cardsButton.SetActive (false);
 					big = true;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 				
 				}
 					
-=======
+//=======
 
-				}
->>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
+//				}
+//>>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
 
 				// FOR CARD FLIP BACK
 			} else if (big == true) {
 				StartCoroutine (WaitToFlipBack ());
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 
->>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
+//>>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
 				big = false;
 
 				//Application quit
@@ -618,11 +618,11 @@ public class RayCast : MonoBehaviour {
 					}
 					timer = 0f;
 				}
-			}
-		}
+
+
 
 		// SPIELERZUG
-		/*		} else if (hit.collider.gameObject.tag == "Spalte") {
+				} else if (hit.collider.gameObject.tag == "Spalte") {
 				if (spielstart && !spielende) {
 					aktiviert = true;
 					this.lastHit = hit;
@@ -663,14 +663,14 @@ public class RayCast : MonoBehaviour {
 					aktiviert = false;
 				}
 				timer = 0f;
-			}*/
-	}
+			}
+	
 
 
 	// ------------------------------------------------------------
 	// Einstellungen für ein neues Spiel
 	// ------------------------------------------------------------
-	/*		if (neuesSpiel) {
+			if (neuesSpiel) {
 			neuesSpiel = false;
 			spielende = false;
 			spielstart = true;
@@ -744,7 +744,7 @@ public class RayCast : MonoBehaviour {
 			
 	}
 
-*/
+}
 
 	// ##########################################################################################################################
 	// Wait to flip the card back 
