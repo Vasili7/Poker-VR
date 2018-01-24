@@ -110,18 +110,18 @@ public class KartenBewegungZumSpieler : MonoBehaviour
             {
                 case 1:
                     schwierigkeit_txt.text = "Spielstärke: Einfach";
-                    SpielSteinEinwurfLEAP.schwierigkeit = "Einfach";
+     //               SpielSteinEinwurfLEAP.schwierigkeit = "Einfach";
                     schwierigkeit_txt.transform.localPosition = new Vector3(16.092f, 0.355f, -9.414f);
 
                     break;
                 case 2:
                     schwierigkeit_txt.text = "Spielstärke: Mittel";
-                    SpielSteinEinwurfLEAP.schwierigkeit = "Mittel";
+   //                 SpielSteinEinwurfLEAP.schwierigkeit = "Mittel";
                     schwierigkeit_txt.transform.localPosition = new Vector3(16.092f, 0.355f, -9.414f);
                     break;
                 case 3:
                     schwierigkeit_txt.text = "Spielstärke: Schwer";
-                    SpielSteinEinwurfLEAP.schwierigkeit = "Schwer";
+ //                   SpielSteinEinwurfLEAP.schwierigkeit = "Schwer";
                     schwierigkeit_txt.transform.localPosition = new Vector3(16.092f, 0.355f, -9.414f);
                     break;
             }
@@ -130,7 +130,7 @@ public class KartenBewegungZumSpieler : MonoBehaviour
             Bewegung.geschwindigkeit = 0;
             Player.transform.position = new Vector3(15.673f, 0.177f, -7.725f);
             Player.transform.rotation = Quaternion.Euler(15.673f, 0.177f, -7.725f);
-            SpielSteinEinwurfLEAP.neuesSpiel = true;
+   //         SpielSteinEinwurfLEAP.neuesSpiel = true;
             buttonEnd.SetActive(true);
             buttonRestart.SetActive(true);
             buttonLeicht.SetActive(false);

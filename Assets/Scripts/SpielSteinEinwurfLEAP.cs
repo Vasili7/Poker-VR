@@ -86,7 +86,7 @@ public class SpielSteinEinwurfLEAP : MonoBehaviour {
 	void Update () {
 
 		if (neuesSpiel) {
-
+			
             /*
             kbzs.BewegeKarten();
             kbzs.fuegeJetonsHinzu();
@@ -645,7 +645,6 @@ public class SpielSteinEinwurfLEAP : MonoBehaviour {
 		else
 			bewertungComputer = summe * typ + bewertungComputer;
 	}
-
 
 
 	// ##########################################################################################################################

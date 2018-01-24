@@ -28,8 +28,8 @@ public class ConnectFour_Restart : MonoBehaviour {
 			}
 
 			// Einstellungen für den Spielstart
-			SpielSteinEinwurfLEAP.siegsteineHervorheben = false;
-			SpielSteinEinwurfLEAP.neuesSpiel = true;
+	//		SpielSteinEinwurfLEAP.siegsteineHervorheben = false;
+	//		SpielSteinEinwurfLEAP.neuesSpiel = true;
 			Player.transform.position = new Vector3 (15.673f, 0.177f, -7.725f);
 		}
 	}

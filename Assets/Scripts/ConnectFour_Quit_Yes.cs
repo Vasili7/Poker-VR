@@ -23,7 +23,7 @@ public class ConnectFour_Quit_Yes : MonoBehaviour {
 	void OnTriggerEnter(Collider col) {
 		if(col.gameObject.name == "bone3") {
 
-			SpielSteinEinwurfLEAP.siegsteineHervorheben = false;
+//			SpielSteinEinwurfLEAP.siegsteineHervorheben = false;
 			GameObject[] spielSteinGelb = GameObject.FindGameObjectsWithTag ("Gelber Spielstein");
 			for(int i=0; i < spielSteinGelb.Length; i++) {
 				Destroy (spielSteinGelb [i]);
@@ -38,8 +38,8 @@ public class ConnectFour_Quit_Yes : MonoBehaviour {
 			niederlage_txt.text = "";
 			Bewegung.geschwindigkeit = 2;	//Referenziert die Klasse "Bewegung"
 			Bewegung.spielstart = false;
-			SpielSteinEinwurfLEAP.neuesSpiel = false;
-			SpielSteinEinwurfLEAP.spielstart = false;
+//			SpielSteinEinwurfLEAP.neuesSpiel = false;
+//			SpielSteinEinwurfLEAP.spielstart = false;
 			Player.transform.position = new Vector3 (6F,-0.5F,6F);
 			buttonEnd.SetActive (false);
 			buttonEndYes.SetActive (false);

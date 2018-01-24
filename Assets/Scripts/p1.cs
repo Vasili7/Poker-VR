@@ -35,7 +35,8 @@ public class p1 : MonoBehaviour
     void Update () 
     {
         //amountInPot = pot.amountInPot;
-		bank_amount.text = bank.ToString(); 
+		bank_amount.text = bank.ToString();
+		pot_amount.text = amountInPot.ToString ();
     }
 
     //leave the round
