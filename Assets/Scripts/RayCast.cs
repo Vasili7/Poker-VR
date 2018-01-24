@@ -90,19 +90,19 @@ public class RayCast : MonoBehaviour {
 	static int insgesamt =0;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
-    public Tisch tisch = new Tisch() ;
-    public Pot mPot;
-    public List<p1> playersInMainpot = new List<p1>();
-    bool spielerAktion = false;
+	public Tisch tisch = new Tisch() ;
+	public Pot mPot;
+	public List<p1> playersInMainpot = new List<p1>();
+	bool spielerAktion = false;
 
 	public p1 playerr;
 
 	public GameObject ausgang;
 
-    Coroutine co;
+	Coroutine co;
 
 	void Start(){
-        angeseheneObjekte = new List<GameObject> ();
+		angeseheneObjekte = new List<GameObject> ();
 		pointer = new PointerEventData (EventSystem.current);
 
 		HUDMenuDeaktivieren ();
@@ -115,17 +115,17 @@ public class RayCast : MonoBehaviour {
 		buttonRestart.SetActive (false);
 
 		buttonStart.SetActive (true);
-	
+
 		Bet.text = Set_Bet.ToString ();
 
 		big = false;
 
 		//	Bank_amount = GetComponent<TextMesh> ();
-//		Bank_amount.text = bank.ToString ();
-        //StartCoroutine(Beginn());   
-        co = StartCoroutine(Beginn());
-        StopCoroutine(co);
-    }
+		//		Bank_amount.text = bank.ToString ();
+		//StartCoroutine(Beginn());   
+		co = StartCoroutine(Beginn());
+		StopCoroutine(co);
+	}
 
 
 	// ##########################################################################################################################
@@ -138,7 +138,7 @@ public class RayCast : MonoBehaviour {
 		Vector3 forward = transform.TransformDirection (Vector3.forward) * 20;
 		Debug.DrawRay (transform.position, forward, Color.red);
 
-//		Bank_amount.text = bank.ToString ();
+		//		Bank_amount.text = bank.ToString ();
 
 		// ------------------------------------------------------------
 		// Spielstart, Spielabbruch, Spielerzug & Gegnerzug
@@ -146,8 +146,7 @@ public class RayCast : MonoBehaviour {
 		if (Physics.Raycast (transform.position, forward, out hit)) {
 
 			// SPIELSTART
-			if (hit.collider.gameObject.tag == "Spiel starten") 
-			{
+			if (hit.collider.gameObject.tag == "Spiel starten") {
 
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
@@ -164,15 +163,15 @@ public class RayCast : MonoBehaviour {
 					Bewegung.geschwindigkeit = 0;
 
 					// Tisch löschen
-			//		t.Reset();
-			//		t.RemoveJetons ();
+					//		t.Reset();
+					//		t.RemoveJetons ();
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
 					spielende = false;
 					Player.transform.position = new Vector3 (15.673f, 0.177f, -7.725f);
 
-					ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+					ExecuteEvents.Execute (lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
 					HUDMenuAktivieren ();
 
@@ -190,8 +189,8 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
-                    co = StartCoroutine(Beginn());
-                }
+					co = StartCoroutine (Beginn ());
+				}
 
 				// NEUSTART
 			} else if (hit.collider.gameObject.tag == "Neustart") {
@@ -211,7 +210,7 @@ public class RayCast : MonoBehaviour {
 					spielende = false;
 					Player.transform.position = new Vector3 (15.673f, 0.177f, -7.725f);
 
-					ExecuteEvents.Execute(lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
+					ExecuteEvents.Execute (lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
 					HUDMenuAktivieren ();
 
@@ -223,12 +222,12 @@ public class RayCast : MonoBehaviour {
 					insgesamt++;
 					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
 
-                    // Runde sofort beenden und neu beginnen
-                    StopCoroutine(co);
-                    tisch.Reset();
-                    PlayerReset();
-                    tisch.mainPot.Reset();
-                    StartCoroutine(Beginn());
+					// Runde sofort beenden und neu beginnen
+					StopCoroutine (co);
+					tisch.Reset ();
+					PlayerReset ();
+					tisch.mainPot.Reset ();
+					StartCoroutine (Beginn ());
 
 				}
 
@@ -239,7 +238,7 @@ public class RayCast : MonoBehaviour {
 					timer = timer + Time.deltaTime;
 					this.lastHit = hit;
 					angeseheneObjekte.Add (lastHit.transform.gameObject);
-					ExecuteEvents.Execute(hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
+					ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
 					if (timer >= 2f) {
 						timer = 0f;
@@ -268,10 +267,10 @@ public class RayCast : MonoBehaviour {
 							buttonStart.SetActive (true);
 
 							// Tisch löschen
-                            StopCoroutine(co);
-                            tisch.Reset();
-                            PlayerReset();
-                            tisch.mainPot.Reset();
+							StopCoroutine (co);
+							tisch.Reset ();
+							PlayerReset ();
+							tisch.mainPot.Reset ();
 
 							// Einstellungen für das Spielende
 							spielstart = false;
@@ -297,7 +296,7 @@ public class RayCast : MonoBehaviour {
 				}
 
 				//CHECK
-			}else if(hit.collider.gameObject.tag=="Check"){
+			} else if (hit.collider.gameObject.tag == "Check") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -309,13 +308,13 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-                    tisch.player3.Check(tisch.mainPot);
-                    spielerAktion = true;
+					tisch.player3.Check (tisch.mainPot);
+					spielerAktion = true;
 
-	//				HUD_Check.SetActive (false);
+					//				HUD_Check.SetActive (false);
 				}
 				//FOLD
-			}else if(hit.collider.gameObject.tag=="Fold"){
+			} else if (hit.collider.gameObject.tag == "Fold") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -327,14 +326,14 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-                    tisch.player3.Fold(tisch.mainPot);
-                    spielerAktion = true;
+					tisch.player3.Fold (tisch.mainPot);
+					spielerAktion = true;
 
-		//			HUD_Fold.SetActive (false);
+					//			HUD_Fold.SetActive (false);
 				}
 
 				//RAISE
-			}else if(hit.collider.gameObject.tag=="raise"){
+			} else if (hit.collider.gameObject.tag == "raise") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -346,19 +345,19 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-                    tisch.player3.Raise(Set_Bet, tisch.mainPot);
-                    spielerAktion = true;
+					tisch.player3.Raise (Set_Bet, tisch.mainPot);
+					spielerAktion = true;
 
 					bank -= int.Parse (Bet.text); //from Bank
 					pot_amount_int += int.Parse (Bet.text); //to pot
-					Bank_amount.text = bank.ToString();
+					Bank_amount.text = bank.ToString ();
 					pot_amount_txt.text = pot_amount_int.ToString ();
 					Bet.text = "0";
 					Set_Bet = 0;
 				}
 
 				//RAISE MINUS 1
-			}else if(hit.collider.gameObject.tag=="minus 1"){
+			} else if (hit.collider.gameObject.tag == "minus 1") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -370,13 +369,13 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-					if (int.Parse (Bet.text)-1 > 0)
+					if (int.Parse (Bet.text) - 1 > 0)
 						Set_Bet--;
 					Bet.text = Set_Bet.ToString ();
 
 				}
 				//RAISE MINUS 5
-			}else if(hit.collider.gameObject.tag=="minus 5"){
+			} else if (hit.collider.gameObject.tag == "minus 5") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -388,13 +387,13 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-					if (int.Parse (Bet.text)-5 > 0)
+					if (int.Parse (Bet.text) - 5 > 0)
 						Set_Bet -= 5;
 					Bet.text = Set_Bet.ToString ();
 				}
 
 				//RAISE MINUS 25
-			}else if(hit.collider.gameObject.tag=="minus 25"){
+			} else if (hit.collider.gameObject.tag == "minus 25") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -406,13 +405,13 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-					if (int.Parse (Bet.text)-25 > 0)
+					if (int.Parse (Bet.text) - 25 > 0)
 						Set_Bet -= 25;
 					Bet.text = Set_Bet.ToString ();
 
 				}
 				//RAISE MINUS 100
-			}else if(hit.collider.gameObject.tag=="minus 100"){
+			} else if (hit.collider.gameObject.tag == "minus 100") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -424,13 +423,13 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-					if (int.Parse (Bet.text)-100 > 0)
+					if (int.Parse (Bet.text) - 100 > 0)
 						Set_Bet -= 100;
 					Bet.text = Set_Bet.ToString ();
 
 				}
 				//RAISE PLUS 1
-			}else if(hit.collider.gameObject.tag=="raise 1"){
+			} else if (hit.collider.gameObject.tag == "raise 1") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -449,7 +448,7 @@ public class RayCast : MonoBehaviour {
 					}
 				}
 				//RAISE PLUS 5
-			}else if(hit.collider.gameObject.tag=="raise 5"){
+			} else if (hit.collider.gameObject.tag == "raise 5") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -462,13 +461,13 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet+5 <= playerr.bank) {
+					if (new_bet + 5 <= playerr.bank) {
 						Set_Bet += 5;
 						Bet.text = Set_Bet.ToString ();
 					}
 				}
 				//RAISE PLUS 25
-			}else if(hit.collider.gameObject.tag=="raise 25"){
+			} else if (hit.collider.gameObject.tag == "raise 25") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -481,13 +480,13 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet+25 <= playerr.bank) {
+					if (new_bet + 25 <= playerr.bank) {
 						Set_Bet += 25;
 						Bet.text = Set_Bet.ToString ();
 					}
 				}
 				//RAISE PLUS 100
-			}else if(hit.collider.gameObject.tag=="raise 100"){
+			} else if (hit.collider.gameObject.tag == "raise 100") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -500,13 +499,13 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet+100 <= playerr.bank) {
+					if (new_bet + 100 <= playerr.bank) {
 						Set_Bet += 100;
 						Bet.text = Set_Bet.ToString ();
 					}
 				}
 				//CALL
-			}else if(hit.collider.gameObject.tag=="call"){
+			} else if (hit.collider.gameObject.tag == "call") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -517,13 +516,13 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-                    tisch.player3.Call(tisch.mainPot);
-                    spielerAktion = true;
+					tisch.player3.Call (tisch.mainPot);
+					spielerAktion = true;
 
 				}
 
 				//ALL IN
-			}else if(hit.collider.gameObject.tag=="all in"){
+			} else if (hit.collider.gameObject.tag == "all in") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -535,25 +534,25 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 2f) {
 					timer = 0f;
 
-                    tisch.player3.AllIn(tisch.mainPot);
-                    spielerAktion = true;
+					tisch.player3.AllIn (tisch.mainPot);
+					spielerAktion = true;
 
-//					Bet.text = Bank_amount.text;
-//					Set_Bet = bank;
-//					Bank_amount.text = "0";
-//					bank = 0;
+					//					Bet.text = Bank_amount.text;
+					//					Set_Bet = bank;
+					//					Bank_amount.text = "0";
+					//					bank = 0;
 
-//					int new_bet = int.Parse (Bet.text);
-//					if (new_bet+bank <= bank) {
-//					Set_Bet=0;
-//					Set_Bet = bank;
-//					Bet.text = Set_Bet.ToString ();
+					//					int new_bet = int.Parse (Bet.text);
+					//					if (new_bet+bank <= bank) {
+					//					Set_Bet=0;
+					//					Set_Bet = bank;
+					//					Bet.text = Set_Bet.ToString ();
 
-//					}
+					//					}
 
 				}			
 
-			// FOR CARD FLIP
+				// FOR CARD FLIP
 			} else if (hit.collider.gameObject.tag == "show cards" && big == false) {
 
 				aktiviert = true;
@@ -568,27 +567,36 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 0.5f && big == false) {
 					timer = 0f; 
 
-					tisch.pp31.transform.Rotate (new Vector3 (130, 0, 0)  * 10f );
-//					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
-					tisch.pp32.transform.Rotate (new Vector3 (130, 0, 0)  * 10f);
-//					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
+					tisch.pp31.transform.Rotate (new Vector3 (130, 0, 0) * 10f);
+					//					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
+					tisch.pp32.transform.Rotate (new Vector3 (130, 0, 0) * 10f);
+					//					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
 
-					tisch.pp31.transform.position = GameObject.FindGameObjectWithTag("showed card 1").transform.position;
-					tisch.pp32.transform.position = GameObject.FindGameObjectWithTag("showed card 2").transform.position;
+					tisch.pp31.transform.position = GameObject.FindGameObjectWithTag ("showed card 1").transform.position;
+					tisch.pp32.transform.position = GameObject.FindGameObjectWithTag ("showed card 2").transform.position;
 
 					cardsButton.SetActive (false);
 					big = true;
+<<<<<<< HEAD
 				
 				}
 					
+=======
+
+				}
+>>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
 
 				// FOR CARD FLIP BACK
-			}else if (big == true) {
+			} else if (big == true) {
 				StartCoroutine (WaitToFlipBack ());
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
 				big = false;
 
 				//Application quit
-			}else if(hit.collider.gameObject.tag=="Ausgang"){
+			} else if (hit.collider.gameObject.tag == "Ausgang") {
 				aktiviert = true;
 
 				timer = timer + Time.deltaTime;
@@ -601,11 +609,20 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					Application.Quit ();
+				} else {
+					if (aktiviert) {
+						for (int i = 0; i < angeseheneObjekte.Count; i++)
+							ExecuteEvents.Execute (angeseheneObjekte [i], pointer, ExecuteEvents.pointerExitHandler);
+						angeseheneObjekte.Clear ();
+						aktiviert = false;
 					}
+					timer = 0f;
+				}
+			}
+		}
 
-
-				// SPIELERZUG
-			} else if (hit.collider.gameObject.tag == "Spalte") {
+		// SPIELERZUG
+		/*		} else if (hit.collider.gameObject.tag == "Spalte") {
 				if (spielstart && !spielende) {
 					aktiviert = true;
 					this.lastHit = hit;
@@ -646,14 +663,14 @@ public class RayCast : MonoBehaviour {
 					aktiviert = false;
 				}
 				timer = 0f;
-			}
-		}
+			}*/
+	}
 
 
-		// ------------------------------------------------------------
-		// Einstellungen für ein neues Spiel
-		// ------------------------------------------------------------
-		if (neuesSpiel) {
+	// ------------------------------------------------------------
+	// Einstellungen für ein neues Spiel
+	// ------------------------------------------------------------
+	/*		if (neuesSpiel) {
 			neuesSpiel = false;
 			spielende = false;
 			spielstart = true;
@@ -727,7 +744,7 @@ public class RayCast : MonoBehaviour {
 			
 	}
 
-
+*/
 
 	// ##########################################################################################################################
 	// Wait to flip the card back 
@@ -737,16 +754,16 @@ public class RayCast : MonoBehaviour {
 
 		yield return new WaitForSeconds(5f);
 		tisch.pp31.transform.Rotate (new Vector3 (-130, 0, 0)  * 10f);
-//		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
+		//		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
 		tisch.pp32.transform.Rotate (new Vector3 (-130, 0, 0)  * 10f);
-//		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
+		//		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
 
 		tisch.pp31.transform.position = GameObject.FindGameObjectWithTag("p31").transform.position;
 		tisch.pp32.transform.position = GameObject.FindGameObjectWithTag("p32").transform.position;
 		big = false;
 		cardsButton.SetActive (true);
 	}
-		
+
 
 
 	// ##########################################################################################################################
@@ -1237,129 +1254,129 @@ public class RayCast : MonoBehaviour {
 		}
 	}
 
-    public void PlayerReset()
-    {
-        for (int i = 0; i < tisch.pList.Count(); i++)
-        {
-            tisch.pList[i].Reset();
-        }
-    }
+	public void PlayerReset()
+	{
+		for (int i = 0; i < tisch.pList.Count(); i++)
+		{
+			tisch.pList[i].Reset();
+		}
+	}
 
-IEnumerator Beginn()
-{
-        HUDMenuDeaktivieren();
-        yield return new WaitForSeconds(1f);
-        tisch.AddFirstJetons();
-        tisch.StartNewMatch();
-        for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
-        {
-            spielerAktion = false;
-            tisch.PotJetons();
-            switch(tisch.mainPot.playersInPot[i].name)
-            {
-                case "Player1":
-                    HUDMenuDeaktivieren();
-                    yield return new WaitForSeconds(5f);
-                    // SMALL BLIND
-                    tisch.mainPot.playersInPot[i].PaySmallBlind(1, tisch.mainPot);
-                    break;
-                case "Player2":
-                    HUDMenuDeaktivieren();
-                    yield return new WaitForSeconds(5f);
-                    // SMALL BLIND
-                    tisch.mainPot.playersInPot[i].PayBigBlind(2, tisch.mainPot);
-                    break;
-                case "Dive_Camera":
-                    HUDMenuAktivieren();
-                    while(spielerAktion == false)
-                        {
-                        yield return new WaitForSeconds(1f);
-                        }
-                    break;
-                default:
-                    HUDMenuDeaktivieren();
-                    yield return new WaitForSeconds(5f);
-                    tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-                    break;
-            }
-        }   
-        yield return new WaitForSeconds(5f);
-        tisch.DealFlop();
-        for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
-        {
-            spielerAktion = false;
-            tisch.PotJetons();
-            switch (tisch.mainPot.playersInPot[i].name)
-            {
-                case "Dive_Camera":
-                    HUDMenuAktivieren();
-                    while (spielerAktion == false)
-                    {
-                        yield return new WaitForSeconds(1f);
-                    }
-                    break;
-                default:
-                    HUDMenuDeaktivieren();
-                    yield return new WaitForSeconds(5f);
-                    tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-                    break;
-            }
-        }    
-        yield return new WaitForSeconds(5f);
-        tisch.DealTurn();
-        for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
-        {
-            spielerAktion = false;
-            tisch.PotJetons();
-            switch (tisch.mainPot.playersInPot[i].name)
-            {
-                case "Dive_Camera":
-                    HUDMenuAktivieren();
-                    while (spielerAktion == false)
-                    {
-                        yield return new WaitForSeconds(1f);
-                    }
-                    break;
-                default:
-                    HUDMenuDeaktivieren();
-                    yield return new WaitForSeconds(5f);
-                    tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-                    break;
-            }
-        }                
-        yield return new WaitForSeconds(5f);
-        tisch.DealRiver();
-        for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
-        {
-            spielerAktion = false;
-            tisch.PotJetons();
-            switch (tisch.mainPot.playersInPot[i].name)
-            {
-                case "Dive_Camera":
-                    HUDMenuAktivieren();
-                    while (spielerAktion == false)
-                    {
-                        yield return new WaitForSeconds(1f);
-                    }
-                    break;
-                default:
-                    HUDMenuDeaktivieren();
-                    yield return new WaitForSeconds(5f);
-                    tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-                    break;
-            }
-        }                
-        // t.ShowDown();
-        tisch.PotJetons();
+	IEnumerator Beginn()
+	{
+		HUDMenuDeaktivieren();
+		yield return new WaitForSeconds(1f);
+		tisch.AddFirstJetons();
+		tisch.StartNewMatch();
+		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
+		{
+			spielerAktion = false;
+			tisch.PotJetons();
+			switch(tisch.mainPot.playersInPot[i].name)
+			{
+			case "Player1":
+				HUDMenuDeaktivieren();
+				yield return new WaitForSeconds(5f);
+				// SMALL BLIND
+				tisch.mainPot.playersInPot[i].PaySmallBlind(1, tisch.mainPot);
+				break;
+			case "Player2":
+				HUDMenuDeaktivieren();
+				yield return new WaitForSeconds(5f);
+				// SMALL BLIND
+				tisch.mainPot.playersInPot[i].PayBigBlind(2, tisch.mainPot);
+				break;
+			case "Dive_Camera":
+				HUDMenuAktivieren();
+				while(spielerAktion == false)
+				{
+					yield return new WaitForSeconds(1f);
+				}
+				break;
+			default:
+				HUDMenuDeaktivieren();
+				yield return new WaitForSeconds(5f);
+				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+				break;
+			}
+		}   
+		yield return new WaitForSeconds(5f);
+		tisch.DealFlop();
+		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
+		{
+			spielerAktion = false;
+			tisch.PotJetons();
+			switch (tisch.mainPot.playersInPot[i].name)
+			{
+			case "Dive_Camera":
+				HUDMenuAktivieren();
+				while (spielerAktion == false)
+				{
+					yield return new WaitForSeconds(1f);
+				}
+				break;
+			default:
+				HUDMenuDeaktivieren();
+				yield return new WaitForSeconds(5f);
+				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+				break;
+			}
+		}    
+		yield return new WaitForSeconds(5f);
+		tisch.DealTurn();
+		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
+		{
+			spielerAktion = false;
+			tisch.PotJetons();
+			switch (tisch.mainPot.playersInPot[i].name)
+			{
+			case "Dive_Camera":
+				HUDMenuAktivieren();
+				while (spielerAktion == false)
+				{
+					yield return new WaitForSeconds(1f);
+				}
+				break;
+			default:
+				HUDMenuDeaktivieren();
+				yield return new WaitForSeconds(5f);
+				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+				break;
+			}
+		}                
+		yield return new WaitForSeconds(5f);
+		tisch.DealRiver();
+		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
+		{
+			spielerAktion = false;
+			tisch.PotJetons();
+			switch (tisch.mainPot.playersInPot[i].name)
+			{
+			case "Dive_Camera":
+				HUDMenuAktivieren();
+				while (spielerAktion == false)
+				{
+					yield return new WaitForSeconds(1f);
+				}
+				break;
+			default:
+				HUDMenuDeaktivieren();
+				yield return new WaitForSeconds(5f);
+				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+				break;
+			}
+		}                
+		// t.ShowDown();
+		tisch.PotJetons();
 
 
-        tisch.Reset();
-        tisch.mainPot.Reset();
+		tisch.Reset();
+		tisch.mainPot.Reset();
 
 		// start button
 		buttonStart.SetActive(true);
-	
-        StopCoroutine(co);
+
+		StopCoroutine(co);
 	}
 
 	public void HUDMenuAktivieren(){
@@ -1378,11 +1395,11 @@ IEnumerator Beginn()
 		HUD_Raise_plus.SetActive (true);
 		HUD_Call.SetActive (true);
 		HUD_All_In.SetActive (true);
-		
+
 	}
 
 	public void HUDMenuDeaktivieren(){
-		
+
 		HUD_Check.SetActive (false);
 		HUD_Fold.SetActive (false);
 		HUD_Raise.SetActive (false);
@@ -1400,5 +1417,5 @@ IEnumerator Beginn()
 		HUD_All_In.SetActive (false);
 
 	}
-		
+
 }
