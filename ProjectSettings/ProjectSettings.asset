@@ -246,39 +246,39 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: 946497a722507aa4885ba27db247066c, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
   - m_BuildTarget: Android
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9ab80fd61be86d9478d2efd28a6d6576, type: 3}
+      m_Icon: {fileID: 2800000, guid: e62fb751b1aa3ce43b2388e2ae428ea3, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9ab80fd61be86d9478d2efd28a6d6576, type: 3}
+      m_Icon: {fileID: 2800000, guid: 1f86492154d49f646a1a806d665f7bcf, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9ab80fd61be86d9478d2efd28a6d6576, type: 3}
+      m_Icon: {fileID: 2800000, guid: 5ad57aacc04a85741915fcaab794f436, type: 3}
       m_Width: 96
       m_Height: 96
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9ab80fd61be86d9478d2efd28a6d6576, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7218a073ec8a1084a804188ca431d3b3, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9ab80fd61be86d9478d2efd28a6d6576, type: 3}
+      m_Icon: {fileID: 2800000, guid: 58cdb40fa3e0c724e87a2e692f16e88c, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9ab80fd61be86d9478d2efd28a6d6576, type: 3}
+      m_Icon: {fileID: 2800000, guid: 43288a0670e1f264183952ca3a6d7733, type: 3}
       m_Width: 36
       m_Height: 36
       m_Kind: 0

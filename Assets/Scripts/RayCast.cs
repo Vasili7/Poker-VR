@@ -563,9 +563,6 @@ public class RayCast : MonoBehaviour {
 				angeseheneObjekte.Add (lastHit.transform.gameObject);
 				ExecuteEvents.Execute (hit.transform.gameObject, pointer, ExecuteEvents.pointerEnterHandler);
 
-//				float ttimer = 5f;
-//				float shrink = .25f;
-
 				Vector3 originalScale = tisch.pp31.transform.localScale;
 
 				if (timer >= 0.5f && big == false) {
@@ -581,26 +578,13 @@ public class RayCast : MonoBehaviour {
 
 					cardsButton.SetActive (false);
 					big = true;
-
-	//				card1.SetActive (true);
-	//				card2.SetActive (true);
-	//				card1 = tisch.pp31;
-	//				card1 = tisch.pp31;
-	//				card2 = tisch.pp32;
 				
 				}
 					
-//					t.pp31.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
-//					t.pp32.transform.Rotate (new Vector3 (200, 0, 0) * Time.deltaTime * 10f);
-//					t.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
-//					t.pp32.transform.localScale -= new Vector3(20f, 20f, 20f);
-
 
 				// FOR CARD FLIP BACK
 			}else if (big == true) {
 				StartCoroutine (WaitToFlipBack ());
-	//			card1.SetActive (false);
-	//			card2.SetActive (false);
 				big = false;
 
 				//Application quit
