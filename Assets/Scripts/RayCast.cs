@@ -77,7 +77,7 @@ public class RayCast : MonoBehaviour {
 	private static int Set_Bet=0;
 
 	public TextMesh Bank_amount;
-	private static int bank = 200;
+	public static int bank=200;
 
 	public GameObject pot,pot_amount;
 	public TextMesh pot_amount_txt;
@@ -85,13 +85,17 @@ public class RayCast : MonoBehaviour {
 
 	public GameObject cardsButton;
 	static bool big = false;
-	public GameObject card1,card2;
+	public GameObject show_card1,show_card2;
+	public TextMesh insgesamt_gespielt;
+	static int insgesamt =0;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
     public Tisch tisch = new Tisch() ;
     public Pot mPot;
     public List<p1> playersInMainpot = new List<p1>();
     bool spielerAktion = false;
+
+	public p1 playerr;
 
 	public GameObject ausgang;
 
@@ -111,15 +115,13 @@ public class RayCast : MonoBehaviour {
 		buttonRestart.SetActive (false);
 
 		buttonStart.SetActive (true);
-
-		card1.SetActive (false);
-		card2.SetActive (false);
 	
 		Bet.text = Set_Bet.ToString ();
 
 		big = false;
+
 		//	Bank_amount = GetComponent<TextMesh> ();
-		Bank_amount.text = bank.ToString ();
+//		Bank_amount.text = bank.ToString ();
         //StartCoroutine(Beginn());   
         co = StartCoroutine(Beginn());
         StopCoroutine(co);
@@ -136,7 +138,7 @@ public class RayCast : MonoBehaviour {
 		Vector3 forward = transform.TransformDirection (Vector3.forward) * 20;
 		Debug.DrawRay (transform.position, forward, Color.red);
 
-		Bank_amount.text = bank.ToString ();
+//		Bank_amount.text = bank.ToString ();
 
 		// ------------------------------------------------------------
 		// Spielstart, Spielabbruch, Spielerzug & Gegnerzug
@@ -180,6 +182,9 @@ public class RayCast : MonoBehaviour {
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
 
+					insgesamt++;
+					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
+
 					buttonEnd.SetActive (true);
 					buttonEndJa.SetActive (false);
 					buttonEndNein.SetActive (false);
@@ -214,6 +219,9 @@ public class RayCast : MonoBehaviour {
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
+
+					insgesamt++;
+					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
 
                     // Runde sofort beenden und neu beginnen
                     StopCoroutine(co);
@@ -341,12 +349,12 @@ public class RayCast : MonoBehaviour {
                     tisch.player3.Raise(Set_Bet, tisch.mainPot);
                     spielerAktion = true;
 
-					bank -= int.Parse (Bet.text); //from Bank
-					pot_amount_int += int.Parse (Bet.text); //to pot
-					Bank_amount.text = bank.ToString();
-					pot_amount_txt.text = pot_amount_int.ToString ();
-					Bet.text = "0";
-					Set_Bet = 0;
+	//				bank -= int.Parse (Bet.text); //from Bank
+	//				pot_amount_int += int.Parse (Bet.text); //to pot
+	//				Bank_amount.text = bank.ToString();
+	//				pot_amount_txt.text = pot_amount_int.ToString ();
+	//				Bet.text = "0";
+	//				Set_Bet = 0;
 				}
 
 				//RAISE MINUS 1
@@ -435,7 +443,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet + 1 <= bank) {
+					if (new_bet + 1 <= playerr.bank) {
 						Set_Bet++;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -454,7 +462,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet+5 <= bank) {
+					if (new_bet+5 <= playerr.bank) {
 						Set_Bet += 5;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -473,7 +481,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet+25 <= bank) {
+					if (new_bet+25 <= playerr.bank) {
 						Set_Bet += 25;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -492,7 +500,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet+100 <= bank) {
+					if (new_bet+100 <= playerr.bank) {
 						Set_Bet += 100;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -537,9 +545,9 @@ public class RayCast : MonoBehaviour {
 
 //					int new_bet = int.Parse (Bet.text);
 //					if (new_bet+bank <= bank) {
-					Set_Bet=0;
-					Set_Bet = bank;
-					Bet.text = Set_Bet.ToString ();
+//					Set_Bet=0;
+//					Set_Bet = bank;
+//					Bet.text = Set_Bet.ToString ();
 
 //					}
 
@@ -563,10 +571,13 @@ public class RayCast : MonoBehaviour {
 				if (timer >= 0.5f && big == false) {
 					timer = 0f; 
 
-					tisch.pp31.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f );
-					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
-					tisch.pp32.transform.Rotate (new Vector3 (-90, 0, 0)  * 10f);
-					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
+					tisch.pp31.transform.Rotate (new Vector3 (130, 0, 0)  * 10f );
+//					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
+					tisch.pp32.transform.Rotate (new Vector3 (130, 0, 0)  * 10f);
+//					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
+
+					tisch.pp31.transform.position = GameObject.FindGameObjectWithTag("showed card 1").transform.position;
+					tisch.pp32.transform.position = GameObject.FindGameObjectWithTag("showed card 2").transform.position;
 
 					cardsButton.SetActive (false);
 					big = true;
@@ -741,10 +752,13 @@ public class RayCast : MonoBehaviour {
 	IEnumerator WaitToFlipBack() {
 
 		yield return new WaitForSeconds(5f);
-		tisch.pp31.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
-		tisch.pp32.transform.Rotate (new Vector3 (90, 0, 0)  * 10f);
-		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
+		tisch.pp31.transform.Rotate (new Vector3 (-130, 0, 0)  * 10f);
+//		tisch.pp31.transform.localScale -= new Vector3(20f, 20f, 20f);
+		tisch.pp32.transform.Rotate (new Vector3 (-130, 0, 0)  * 10f);
+//		tisch.pp32.transform.localScale -= new Vector3 (20f, 20f, 20f);
+
+		tisch.pp31.transform.position = GameObject.FindGameObjectWithTag("p31").transform.position;
+		tisch.pp32.transform.position = GameObject.FindGameObjectWithTag("p32").transform.position;
 		big = false;
 		cardsButton.SetActive (true);
 	}

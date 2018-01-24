@@ -21,6 +21,7 @@ public class p1 : MonoBehaviour
 	public TextMesh Niederlagen_txt;
 	public TextMesh bank_amount;
 	public TextMesh pot_amount;
+	public int bank=200;
 
 
     // Use this for initialization
@@ -34,6 +35,7 @@ public class p1 : MonoBehaviour
     void Update () 
     {
         //amountInPot = pot.amountInPot;
+		bank_amount.text = bank.ToString(); 
     }
 
     //leave the round
@@ -61,6 +63,8 @@ public class p1 : MonoBehaviour
         }
         chipStack -= amount;
         amountInPot += amount;
+		bank -= amount;
+		bank_amount.text = bank.ToString ();
         mainPot.Add(amount);
         //if (mainPot.getMaximumAmountPutIn() >= amount)
         //{ }
@@ -82,6 +86,8 @@ public class p1 : MonoBehaviour
         }
         chipStack -= amount;
         amountInPot += amount;
+		bank -= amount;
+		bank_amount.text = bank.ToString ();
         mainPot.Add(amount);
         mainPot.AddPlayer(this);
     }
@@ -109,6 +115,8 @@ public class p1 : MonoBehaviour
         mainPot.AddPlayer(this);
         mainPot.Add(chipStack);
         amountInPot += chipStack;
+		bank = 0;
+		bank_amount.text = bank.ToString ();
         chipStack = 0;
         if (amountInPot > mainPot.getMaximumAmountPutIn())
             mainPot.setMaximumAmount(amountInPot);
