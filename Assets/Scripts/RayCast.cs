@@ -743,7 +743,6 @@ public class RayCast : MonoBehaviour {
 		}
 			
 	}
-
 }
 
 	// ##########################################################################################################################
@@ -1268,103 +1267,103 @@ public class RayCast : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		tisch.AddFirstJetons();
 		tisch.StartNewMatch();
-		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
+        for (int i = 0; i < tisch.pList.Count(); i++)
 		{
+            HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
-			switch(tisch.mainPot.playersInPot[i].name)
-			{
-			case "Player1":
-				HUDMenuDeaktivieren();
-				yield return new WaitForSeconds(5f);
-				// SMALL BLIND
-				tisch.mainPot.playersInPot[i].PaySmallBlind(1, tisch.mainPot);
-				break;
-			case "Player2":
-				HUDMenuDeaktivieren();
-				yield return new WaitForSeconds(5f);
-				// SMALL BLIND
-				tisch.mainPot.playersInPot[i].PayBigBlind(2, tisch.mainPot);
-				break;
-			case "Dive_Camera":
-				HUDMenuAktivieren();
-				while(spielerAktion == false)
-				{
-					yield return new WaitForSeconds(1f);
-				}
-				break;
-			default:
-				HUDMenuDeaktivieren();
-				yield return new WaitForSeconds(5f);
-				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-				break;
-			}
+            if (tisch.pList[i].name == "Player1") 
+            {
+                yield return new WaitForSeconds(1f);
+                // SMALL BLIND
+                tisch.pList[i].PaySmallBlind(1, tisch.mainPot);
+            }
+            else if (tisch.pList[i].name == "Player2") 
+            {
+                yield return new WaitForSeconds(1f);
+                // BIG BLIND
+                tisch.pList[i].PayBigBlind(2, tisch.mainPot);
+            }
+            else if (tisch.pList[i].name == "Dive_Camera") 
+            {
+                HUDMenuAktivieren();
+                while (spielerAktion == false)
+                {
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+            else
+            {
+                //HUDMenuDeaktivieren();
+                yield return new WaitForSeconds(1f);
+                tisch.RandomChoose(tisch.pList[i]);
+            }
 		}   
-		yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 		tisch.DealFlop();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
+            HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
-			switch (tisch.mainPot.playersInPot[i].name)
-			{
-			case "Dive_Camera":
-				HUDMenuAktivieren();
-				while (spielerAktion == false)
-				{
-					yield return new WaitForSeconds(1f);
-				}
-				break;
-			default:
-				HUDMenuDeaktivieren();
-				yield return new WaitForSeconds(5f);
-				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-				break;
-			}
+            if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
+            {
+                HUDMenuAktivieren();
+                while (spielerAktion == false)
+                {
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+            else
+            {
+                //HUDMenuDeaktivieren();
+                yield return new WaitForSeconds(1f);
+                tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+            }
 		}    
-		yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 		tisch.DealTurn();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
+            HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
-			switch (tisch.mainPot.playersInPot[i].name)
-			{
-			case "Dive_Camera":
-				HUDMenuAktivieren();
-				while (spielerAktion == false)
-				{
-					yield return new WaitForSeconds(1f);
-				}
-				break;
-			default:
-				HUDMenuDeaktivieren();
-				yield return new WaitForSeconds(5f);
-				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-				break;
-			}
+            if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
+            {
+                HUDMenuAktivieren();
+                while (spielerAktion == false)
+                {
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+            else
+            {
+                //HUDMenuDeaktivieren();
+                yield return new WaitForSeconds(1f);
+                tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+            }
 		}                
-		yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 		tisch.DealRiver();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
+            HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
-			switch (tisch.mainPot.playersInPot[i].name)
-			{
-			case "Dive_Camera":
-				HUDMenuAktivieren();
-				while (spielerAktion == false)
-				{
-					yield return new WaitForSeconds(1f);
-				}
-				break;
-			default:
-				HUDMenuDeaktivieren();
-				yield return new WaitForSeconds(5f);
-				tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
-				break;
-			}
+            if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
+            {
+                HUDMenuAktivieren();
+                while (spielerAktion == false)
+                {
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+            else
+            {
+                //HUDMenuDeaktivieren();
+                yield return new WaitForSeconds(1f);
+                tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
+            }
 		}                
 		// t.ShowDown();
 		tisch.PotJetons();
@@ -1417,5 +1416,4 @@ public class RayCast : MonoBehaviour {
 		HUD_All_In.SetActive (false);
 
 	}
-
 }

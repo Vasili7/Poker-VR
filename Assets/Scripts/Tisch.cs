@@ -31,6 +31,7 @@ public class Tisch : MonoBehaviour
     // Liste von allen Spielern, von der Klasse p1 
     public List<p1> pList = new List<p1>();
     public List<p1> playersInMainpot = new List<p1>();
+    public List<Jetons> JetonsInPot = new List<Jetons>();
 
     public Pot mainPot;
 
@@ -51,7 +52,6 @@ public class Tisch : MonoBehaviour
     public void PotJetons()
     {
         int i = mainPot.amountInPot;
-
         while(i > 0)
         {
             if (i >= 100)
@@ -79,6 +79,7 @@ public class Tisch : MonoBehaviour
                 continue;
             }
         }
+
     }
 
 	// Position-Tag is needed to instatiate jetons
@@ -258,11 +259,11 @@ public class Tisch : MonoBehaviour
         AddPlayer(player3);
         AddPlayer(player4);
         AddPlayer(player5);
-        mainPot.AddPlayer(player1);
-        mainPot.AddPlayer(player2);
-        mainPot.AddPlayer(player3);
-        mainPot.AddPlayer(player4);
-        mainPot.AddPlayer(player5);
+        //mainPot.AddPlayer(player1);
+        //mainPot.AddPlayer(player2);
+        //mainPot.AddPlayer(player3);
+        //mainPot.AddPlayer(player4);
+        //mainPot.AddPlayer(player5);
     }
     public void AddAllCardsToDeck()
     {
@@ -407,7 +408,7 @@ public class Tisch : MonoBehaviour
             if (i == 0)
             {
                 deck[i].transform.position = GameObject.FindGameObjectWithTag(bc).transform.position;
-                deck[i].transform.Rotate(-130, 0, 0);
+                deck[i].transform.Rotate(180, 0, 0);
                 tableHand.Add(deck[i]);
                 // bc werden den Spieler zugeordnet, die noch in der Liste sind
                 for (int a = 0; a < mainPot.playersInPot.Count(); a++)
@@ -438,24 +439,26 @@ public class Tisch : MonoBehaviour
     // Showdown
     public void ShowDown()
     {
-		
-/*		// HUD for gewonnere und verlorene Runden und bank
-		int bank = player3.bank_amount; 
-		// wenn gewonnen
-		player3.gewonnenRunden++;
-		player3.siege_txt.text = "Siege:" + player3.gewonnenRunden;
 
-		bank += amountInPot;
-		player3.bank_amount.text = bank.ToString ();
+        /*		// HUD for gewonnere und verlorene Runden und bank
+                int bank = player3.bank_amount; 
+                // wenn gewonnen
+                player3.gewonnenRunden++;
+                player3.siege_txt.text = "Siege:" + player3.gewonnenRunden;
+
+                bank += amountInPot;
+                player3.bank_amount.text = bank.ToString ();
 
 
-		//wenn verloren
-		player3.verlorenenRunden++;
-		player3.Niederlagen_txt.text = "Niederlage:" + player3.verlorenenRunden;
+                //wenn verloren
+                player3.verlorenenRunden++;
+                player3.Niederlagen_txt.text = "Niederlage:" + player3.verlorenenRunden;
 
-		bank -= amountInPot;
-		player3.bank_amount.text = bank.ToString ();
-*/
+                bank -= amountInPot;
+                player3.bank_amount.text = bank.ToString ();
+
+                player.CollectMoney(); 
+        */
       }
 
 
@@ -463,27 +466,17 @@ public class Tisch : MonoBehaviour
     // Random method for AI
     public void RandomChoose(p1 player)
     {
-	    // fold, allin + check bringt die Reihenfolge durcheinander, deswegen deaktiviert
-        int randomIndex = UnityEngine.Random.Range(1, 6);
+        int randomIndex = UnityEngine.Random.Range(1, 3);
         switch (randomIndex)
         {
             case 1:
                 player.Fold(mainPot);
-                break;
-            case 2:
-                player.Check(mainPot);
                 break;		
-            case 3:
+            case 2:
                 player.Raise(10, mainPot);
                 break;
-            case 4:
+            case 3:
                 player.Call(mainPot);
-                break;
-            case 5:
-                player.Bet(5, mainPot);
-                break;
-            case 6:
-                player.AllIn(mainPot);
                 break;
         }
     }
@@ -494,7 +487,7 @@ public class Tisch : MonoBehaviour
         // Player müssen noch resetet werden!
         for (int i = 0; i < tableHand.Count(); i++)
         {
-            tableHand[i].transform.Rotate(130, 0, 0);
+            tableHand[i].transform.Rotate(-180, 0, 0);
         }
 
         mainPot.Reset();

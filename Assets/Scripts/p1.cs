@@ -35,7 +35,7 @@ public class p1 : MonoBehaviour
     void Update () 
     {
         //amountInPot = pot.amountInPot;
-		bank_amount.text = bank.ToString();
+		//bank_amount.text = bank.ToString();
 		pot_amount.text = amountInPot.ToString ();
     }
 
@@ -57,11 +57,11 @@ public class p1 : MonoBehaviour
     {
         amountInPot = mainPot.amountInPot;
         int amount = mainPot.getMaximumAmountPutIn() + raise; // - amountInPot;
-        if (chipStack <= amount)
-        {
-            AllIn(mainPot);
-            return;
-        }
+        //if (chipStack <= amount)
+        //{
+        //    AllIn(mainPot);
+        //    return;
+        //}
         chipStack -= amount;
         amountInPot += amount;
 		bank -= amount;
@@ -80,11 +80,11 @@ public class p1 : MonoBehaviour
         amountInPot = mainPot.amountInPot;
 
         int amount = mainPot.getMaximumAmountPutIn(); // - amountInPot;
-        if (chipStack <= amount)
-        {
-            AllIn(mainPot);
-            return;
-        }
+        //if (chipStack <= amount)
+        //{
+        //    AllIn(mainPot);
+        //    return;
+        //}
         chipStack -= amount;
         amountInPot += amount;
 		bank -= amount;
@@ -96,12 +96,12 @@ public class p1 : MonoBehaviour
     public void Bet(int bet, Pot mainPot) 
     {
         amountInPot = mainPot.amountInPot;
-
-        if (chipStack <= bet)
-        {
-            AllIn(mainPot);
-            return;
-        }
+        mainPot.AddPlayer(this);
+        //if (chipStack <= bet)
+        //{
+        //    AllIn(mainPot);
+        //    return;
+        //}
         chipStack -= bet;
         amountInPot += bet;
         mainPot.Add(bet);
@@ -116,9 +116,9 @@ public class p1 : MonoBehaviour
         mainPot.AddPlayer(this);
         mainPot.Add(chipStack);
         amountInPot += chipStack;
+        chipStack = 0;
 		bank = 0;
 		bank_amount.text = bank.ToString ();
-        chipStack = 0;
         if (amountInPot > mainPot.getMaximumAmountPutIn())
             mainPot.setMaximumAmount(amountInPot);
     }
