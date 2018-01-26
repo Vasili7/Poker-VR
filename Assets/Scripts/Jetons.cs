@@ -6,15 +6,11 @@ public class Jetons : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        WerteZuweisen();
+        SetAmountOfJetons();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     // 1 5 25 100
-    public void WerteZuweisen()
+    public void SetAmountOfJetons()
     {
         if(this.name == "v1(Clone)")
         {

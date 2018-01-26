@@ -193,6 +193,7 @@ public class RayCast : MonoBehaviour {
 					buttonEndNein.SetActive (false);
 					buttonRestart.SetActive (true);
 
+                    tisch.AddFirstJetons();
 					co = StartCoroutine (Beginn ());
 				}
 
@@ -1264,11 +1265,11 @@ public class RayCast : MonoBehaviour {
 	{
 		HUDMenuDeaktivieren();
 		yield return new WaitForSeconds(1f);
-		tisch.AddFirstJetons();
+		//tisch.AddFirstJetons();
+        // PRE FLOP Round
 		tisch.StartNewMatch();
         for (int i = 0; i < tisch.pList.Count(); i++)
 		{
-//            HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.pList[i].name == "Player1") 
@@ -1306,10 +1307,14 @@ public class RayCast : MonoBehaviour {
             }
 		}   
         yield return new WaitForSeconds(1f);
+        // FLOP Round
 		tisch.DealFlop();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
- //           HUDMenuDeaktivieren();
+            if(tisch.mainPot.playersInPot.Count() == 1)
+            {
+                tisch.mainPot.playersInPot[0].gewonnenRunden++;
+            }
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
@@ -1332,10 +1337,14 @@ public class RayCast : MonoBehaviour {
             }
 		}    
         yield return new WaitForSeconds(1f);
+        // TURN Round
 		tisch.DealTurn();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
-//            HUDMenuDeaktivieren();
+            if (tisch.mainPot.playersInPot.Count() == 1)
+            {
+                tisch.mainPot.playersInPot[0].gewonnenRunden++;
+            }
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
@@ -1358,10 +1367,14 @@ public class RayCast : MonoBehaviour {
             }
 		}                
         yield return new WaitForSeconds(1f);
+        // RIVER Round
 		tisch.DealRiver();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
-   //         HUDMenuDeaktivieren();
+            if (tisch.mainPot.playersInPot.Count() == 1)
+            {
+                tisch.mainPot.playersInPot[0].gewonnenRunden++;
+            }
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
@@ -1382,7 +1395,8 @@ public class RayCast : MonoBehaviour {
                 yield return new WaitForSeconds(1f);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
-		}                
+		}        
+        // SHOWDOWN Round
 		// t.ShowDown();
 		tisch.PotJetons();
 

@@ -30,6 +30,7 @@ public class p1 : MonoBehaviour
     {
         isBusted = false;
         folded = false;
+
     }
     
     // Update is called once per frame
@@ -184,10 +185,4 @@ public class p1 : MonoBehaviour
         // do something
         isBusted = true;
     }
-
-    //public void Sorting()
-    //{
-    //    myJetons.OrderBy(j1 => j1.name);
-    //    myHand.OrderBy(j1 => j1);
-    //}
 }
