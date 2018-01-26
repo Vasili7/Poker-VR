@@ -19,7 +19,7 @@ public class Tisch : MonoBehaviour
 
     public List<GameObject> deck = new List<GameObject>();
     public List<GameObject> tableHand = new List<GameObject>();
-    public int amountInPot;
+	public int amountInPot;
 
     public bool spielEnde, neuesSpiel, spielStart;
 

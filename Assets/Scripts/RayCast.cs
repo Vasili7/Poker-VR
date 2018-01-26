@@ -82,20 +82,20 @@ public class RayCast : MonoBehaviour {
 	public GameObject pot,pot_amount;
 	public TextMesh pot_amount_txt;
 	private static int pot_amount_int=0;
+	public GameObject WerIst;
 
 	public GameObject cardsButton;
 	static bool big = false;
 	public GameObject show_card1,show_card2;
 	public TextMesh insgesamt_gespielt;
 	static int insgesamt =0;
+	public GameObject play_again;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
 	public Tisch tisch = new Tisch() ;
 	public Pot mPot;
 	public List<p1> playersInMainpot = new List<p1>();
 	bool spielerAktion = false;
-
-	public p1 playerr;
 
 	public GameObject ausgang;
 
@@ -108,11 +108,13 @@ public class RayCast : MonoBehaviour {
 		HUDMenuDeaktivieren ();
 		pot.SetActive (false);
 		pot_amount.SetActive (false);
+		WerIst.SetActive (false);
 
 		buttonEnd.SetActive (false);
 		buttonEndJa.SetActive (false);
 		buttonEndNein.SetActive (false);
 		buttonRestart.SetActive (false);
+		play_again.SetActive (false);
 
 		buttonStart.SetActive (true);
 
@@ -173,13 +175,15 @@ public class RayCast : MonoBehaviour {
 
 					ExecuteEvents.Execute (lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
-					HUDMenuAktivieren ();
+//					HUDMenuAktivieren ();
 
 					buttonStart.SetActive (false);
 					pot.SetActive (true);
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
+					WerIst.SetActive (true);
+//					WerIst.transform.localPosition = new Vector3 (1.8f, 7.36f, 9.9f);
 
 					insgesamt++;
 					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
@@ -212,12 +216,14 @@ public class RayCast : MonoBehaviour {
 
 					ExecuteEvents.Execute (lastHit.transform.gameObject, pointer, ExecuteEvents.pointerExitHandler);
 
-					HUDMenuAktivieren ();
+//					HUDMenuAktivieren ();
 
 					pot.SetActive (true);
 					pot_amount.SetActive (true);
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
+					WerIst.SetActive (true);
+					play_again.SetActive (false);
 
 					insgesamt++;
 					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
@@ -254,6 +260,7 @@ public class RayCast : MonoBehaviour {
 
 							pot.SetActive (false);
 							pot_amount.SetActive (false);
+							WerIst.SetActive (false);
 
 							break;
 						case "Spiel abbrechen (JA)":
@@ -265,6 +272,7 @@ public class RayCast : MonoBehaviour {
 							buttonEndJa.SetActive (false);
 							buttonEndNein.SetActive (false);
 							buttonStart.SetActive (true);
+
 
 							// Tisch löschen
 							StopCoroutine (co);
@@ -280,8 +288,9 @@ public class RayCast : MonoBehaviour {
 							buttonEndJa.SetActive (false);
 							buttonEndNein.SetActive (false);
 							buttonRestart.SetActive (true);
+							WerIst.SetActive (true);
 
-							HUDMenuAktivieren ();
+//							HUDMenuAktivieren ();
 
 							pot.SetActive (true);
 							pot_amount.SetActive (true);
@@ -350,8 +359,8 @@ public class RayCast : MonoBehaviour {
 
 					bank -= int.Parse (Bet.text); //from Bank
 					pot_amount_int += int.Parse (Bet.text); //to pot
-					Bank_amount.text = bank.ToString ();
-					pot_amount_txt.text = pot_amount_int.ToString ();
+			//		Bank_amount.text = bank.ToString ();
+			//		pot_amount_txt.text = pot_amount_int.ToString ();
 					Bet.text = "0";
 					Set_Bet = 0;
 				}
@@ -442,7 +451,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet + 1 <= playerr.bank) {
+					if (new_bet + 1 <= bank) {
 						Set_Bet++;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -461,7 +470,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet + 5 <= playerr.bank) {
+					if (new_bet + 5 <= bank) {
 						Set_Bet += 5;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -480,7 +489,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet + 25 <= playerr.bank) {
+					if (new_bet + 25 <= bank) {
 						Set_Bet += 25;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -499,7 +508,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					int new_bet = int.Parse (Bet.text);
-					if (new_bet + 100 <= playerr.bank) {
+					if (new_bet + 100 <= bank) {
 						Set_Bet += 100;
 						Bet.text = Set_Bet.ToString ();
 					}
@@ -540,11 +549,11 @@ public class RayCast : MonoBehaviour {
 					//					Bet.text = Bank_amount.text;
 					//					Set_Bet = bank;
 					//					Bank_amount.text = "0";
-					//					bank = 0;
+										bank = 0;
 
 					//					int new_bet = int.Parse (Bet.text);
 					//					if (new_bet+bank <= bank) {
-					//					Set_Bet=0;
+										Set_Bet=0;
 					//					Set_Bet = bank;
 					//					Bet.text = Set_Bet.ToString ();
 
@@ -568,31 +577,20 @@ public class RayCast : MonoBehaviour {
 					timer = 0f; 
 
 					tisch.pp31.transform.Rotate (new Vector3 (130, 0, 0) * 10f);
-					//					tisch.pp31.transform.localScale += new Vector3(20f, 20f, 20f);
 					tisch.pp32.transform.Rotate (new Vector3 (130, 0, 0) * 10f);
-					//					tisch.pp32.transform.localScale += new Vector3 (20f, 20f, 20f);
 
 					tisch.pp31.transform.position = GameObject.FindGameObjectWithTag ("showed card 1").transform.position;
 					tisch.pp32.transform.position = GameObject.FindGameObjectWithTag ("showed card 2").transform.position;
 
 					cardsButton.SetActive (false);
 					big = true;
-//<<<<<<< HEAD
-				
-				}
-					
-//=======
 
-//				}
-//>>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
+				}
+
 
 				// FOR CARD FLIP BACK
 			} else if (big == true) {
 				StartCoroutine (WaitToFlipBack ());
-//<<<<<<< HEAD
-//=======
-
-//>>>>>>> 2068bb7b5bad3a45d1a4ea81008920deae7729e5
 				big = false;
 
 				//Application quit
@@ -609,6 +607,7 @@ public class RayCast : MonoBehaviour {
 					timer = 0f;
 
 					Application.Quit ();
+
 				} else {
 					if (aktiviert) {
 						for (int i = 0; i < angeseheneObjekte.Count; i++)
@@ -695,13 +694,13 @@ public class RayCast : MonoBehaviour {
 			if (beginner == 0) {
 				zugSpieler = true;
 				print ("Start Spieler");
-				werIstDran_txt.text = "Sie sind dran!";
-				werIstDran_txt.transform.localPosition = new Vector3 (15.673f, 0.177f, -7.725f);
+//				werIstDran_txt.text = "Sie sind dran!";
+//				werIstDran_txt.transform.localPosition = new Vector3 (15.673f, 0.177f, -7.725f);
 			} else {
 				zugSpieler = false;
 				print ("Start Computer");
-				werIstDran_txt.text = "Gegenspieler überlegt...";
-				werIstDran_txt.transform.localPosition = new Vector3 (-1.25f, 5.35f, 8f);
+//				werIstDran_txt.text = "Gegenspieler überlegt...";
+//				werIstDran_txt.transform.localPosition = new Vector3 (-1.25f, 5.35f, 8f);
 			}
 		}
 
@@ -717,8 +716,8 @@ public class RayCast : MonoBehaviour {
 			print ("Spieler 2 hat gewonnen!");
 			niederlagen++;
 			niederlage_txt.text = "Niederlagen: " + niederlagen;
-			werIstDran_txt.text = "Computer siegt!";
-			werIstDran_txt.transform.localPosition = new Vector3 (-1.95f, 5.35f, 8f);
+//			werIstDran_txt.text = "Computer siegt!";
+//			werIstDran_txt.transform.localPosition = new Vector3 (-1.95f, 5.35f, 8f);
 			zugSpieler = false;
 			return;
 		}
@@ -728,16 +727,16 @@ public class RayCast : MonoBehaviour {
 			print ("Spieler 1 hat gewonnen!");
 			siege++;
 			siege_txt.text = "Siege: " + siege;
-			werIstDran_txt.text = "GEWONNEN!";
-			werIstDran_txt.transform.localPosition = new Vector3 (-1.8f, 5.35f, 8f);
+//			werIstDran_txt.text = "GEWONNEN!";
+//			werIstDran_txt.transform.localPosition = new Vector3 (-1.8f, 5.35f, 8f);
 			zugSpieler = false;
 			return;
 		}
 		if (unentschieden != 0) {
 			spielende = true;
 			print ("Unentschieden!");
-			werIstDran_txt.text = "Unentschieden!";
-			werIstDran_txt.transform.localPosition = new Vector3 (-2f, 5.35f, 8f);
+//			werIstDran_txt.text = "Unentschieden!";
+//			werIstDran_txt.transform.localPosition = new Vector3 (-2f, 5.35f, 8f);
 			zugSpieler = false;
 			return;
 		}
@@ -794,8 +793,8 @@ public class RayCast : MonoBehaviour {
 			print("Spieler 2 hat gewonnen!");
 			niederlagen++;
 			niederlage_txt.text = "Niederlagen: " + niederlagen;
-			werIstDran_txt.text = "Computer siegt!";
-			werIstDran_txt.transform.localPosition = new Vector3 (-1.95f, 5.35f, 8f);
+//			werIstDran_txt.text = "Computer siegt!";
+//			werIstDran_txt.transform.localPosition = new Vector3 (-1.95f, 5.35f, 8f);
 			return true;
 		}
 
@@ -1147,11 +1146,11 @@ public class RayCast : MonoBehaviour {
 		ausgewaehlt = false;
 		zugSpieler = !zugSpieler;
 		if (zugSpieler) {
-			werIstDran_txt.text = "Sie sind dran!";
-			werIstDran_txt.transform.localPosition = new Vector3 (-2.2f, 5.35f, 8f);
+//			werIstDran_txt.text = "Sie sind dran!";
+//			werIstDran_txt.transform.localPosition = new Vector3 (-2.2f, 5.35f, 8f);
 		} else {
-			werIstDran_txt.text = "Gegenspieler überlegt...";
-			werIstDran_txt.transform.localPosition = new Vector3 (-1.25f, 5.35f, 8f);
+//			werIstDran_txt.text = "Gegenspieler überlegt...";
+//			werIstDran_txt.transform.localPosition = new Vector3 (-1.25f, 5.35f, 8f);
 		}
 	}
 
@@ -1269,17 +1268,20 @@ public class RayCast : MonoBehaviour {
 		tisch.StartNewMatch();
         for (int i = 0; i < tisch.pList.Count(); i++)
 		{
-            HUDMenuDeaktivieren();
+//            HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.pList[i].name == "Player1") 
             {
+				werIstDran_txt.text = "Wer is dran: Player 1";
                 yield return new WaitForSeconds(1f);
+
                 // SMALL BLIND
                 tisch.pList[i].PaySmallBlind(1, tisch.mainPot);
             }
             else if (tisch.pList[i].name == "Player2") 
             {
+				werIstDran_txt.text = "Wer is dran: Player 2";
                 yield return new WaitForSeconds(1f);
                 // BIG BLIND
                 tisch.pList[i].PayBigBlind(2, tisch.mainPot);
@@ -1287,6 +1289,7 @@ public class RayCast : MonoBehaviour {
             else if (tisch.pList[i].name == "Dive_Camera") 
             {
                 HUDMenuAktivieren();
+				werIstDran_txt.text = "DU BIST DRAN!";
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1294,7 +1297,10 @@ public class RayCast : MonoBehaviour {
             }
             else
             {
-                //HUDMenuDeaktivieren();
+                HUDMenuDeaktivieren();
+				int j = 0;
+				j = i + 1;
+				werIstDran_txt.text = "Wer is dran: Player "+j;
                 yield return new WaitForSeconds(1f);
                 tisch.RandomChoose(tisch.pList[i]);
             }
@@ -1303,12 +1309,13 @@ public class RayCast : MonoBehaviour {
 		tisch.DealFlop();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
-            HUDMenuDeaktivieren();
+ //           HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
                 HUDMenuAktivieren();
+				werIstDran_txt.text = "DU BIST DRAN!";
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1316,7 +1323,10 @@ public class RayCast : MonoBehaviour {
             }
             else
             {
-                //HUDMenuDeaktivieren();
+                HUDMenuDeaktivieren();
+				int j = 0;
+				j = i + 1;
+				werIstDran_txt.text = "Wer is dran: Player "+j;
                 yield return new WaitForSeconds(1f);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
@@ -1325,12 +1335,13 @@ public class RayCast : MonoBehaviour {
 		tisch.DealTurn();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
-            HUDMenuDeaktivieren();
+//            HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
                 HUDMenuAktivieren();
+				werIstDran_txt.text = "DU BIST DRAN!";
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1338,7 +1349,10 @@ public class RayCast : MonoBehaviour {
             }
             else
             {
-                //HUDMenuDeaktivieren();
+                HUDMenuDeaktivieren();
+				int j = 0;
+				j = i + 1;
+				werIstDran_txt.text = "Wer is dran: Player "+j;
                 yield return new WaitForSeconds(1f);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
@@ -1347,12 +1361,13 @@ public class RayCast : MonoBehaviour {
 		tisch.DealRiver();
 		for (int i = 0; i < tisch.mainPot.playersInPot.Count(); i++)
 		{
-            HUDMenuDeaktivieren();
+   //         HUDMenuDeaktivieren();
 			spielerAktion = false;
 			tisch.PotJetons();
             if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
             {
                 HUDMenuAktivieren();
+				werIstDran_txt.text = "DU BIST DRAN!";
                 while (spielerAktion == false)
                 {
                     yield return new WaitForSeconds(1f);
@@ -1360,7 +1375,10 @@ public class RayCast : MonoBehaviour {
             }
             else
             {
-                //HUDMenuDeaktivieren();
+                HUDMenuDeaktivieren();
+				int j = 0;
+				j = i + 1;
+				werIstDran_txt.text = "Wer is dran: Player "+j;
                 yield return new WaitForSeconds(1f);
                 tisch.RandomChoose(tisch.mainPot.playersInPot[i]);
             }
@@ -1373,7 +1391,9 @@ public class RayCast : MonoBehaviour {
 		tisch.mainPot.Reset();
 
 		// start button
-		buttonStart.SetActive(true);
+		play_again.SetActive(true);
+		HUDMenuDeaktivieren ();
+		werIstDran_txt.text = "";
 
 		StopCoroutine(co);
 	}

@@ -9,7 +9,8 @@ public class p1 : MonoBehaviour
     //private GameObject goJetons;
     public List<GameObject> myJetons = new List<GameObject>();
     public List<GameObject> myHand = new List<GameObject>();
-    public int chipStack = 0, amountInPot;
+	public int chipStack = 0;
+	public int amountInPot;
     public bool isBusted, folded;
 
     public Tisch tisch;
@@ -36,7 +37,8 @@ public class p1 : MonoBehaviour
     {
         //amountInPot = pot.amountInPot;
 		//bank_amount.text = bank.ToString();
-		pot_amount.text = amountInPot.ToString ();
+//		pot_amount.text = amountInPot.ToString ();
+		bank_amount.text = bank.ToString ();
     }
 
     //leave the round
@@ -65,7 +67,8 @@ public class p1 : MonoBehaviour
         chipStack -= amount;
         amountInPot += amount;
 		bank -= amount;
-		bank_amount.text = bank.ToString ();
+//		bank_amount.text = bank.ToString ();
+		pot_amount.text = amountInPot.ToString ();
         mainPot.Add(amount);
         //if (mainPot.getMaximumAmountPutIn() >= amount)
         //{ }
@@ -88,7 +91,8 @@ public class p1 : MonoBehaviour
         chipStack -= amount;
         amountInPot += amount;
 		bank -= amount;
-		bank_amount.text = bank.ToString ();
+//		bank_amount.text = bank.ToString ();
+		pot_amount.text = amountInPot.ToString ();
         mainPot.Add(amount);
         mainPot.AddPlayer(this);
     }
@@ -104,6 +108,7 @@ public class p1 : MonoBehaviour
         //}
         chipStack -= bet;
         amountInPot += bet;
+		pot_amount.text = amountInPot.ToString ();
         mainPot.Add(bet);
         mainPot.setMaximumAmount(amountInPot);
         mainPot.minimumRaise = bet;
@@ -119,6 +124,7 @@ public class p1 : MonoBehaviour
         chipStack = 0;
 		bank = 0;
 		bank_amount.text = bank.ToString ();
+		pot_amount.text = amountInPot.ToString ();
         if (amountInPot > mainPot.getMaximumAmountPutIn())
             mainPot.setMaximumAmount(amountInPot);
     }
@@ -139,6 +145,7 @@ public class p1 : MonoBehaviour
         }
         chipStack -= amount;
         amountInPot += amount;
+		pot_amount.text = amountInPot.ToString ();
         mainPot.Add(amount);
         mainPot.AddPlayer(this);
         mainPot.setMaximumAmount(amountInPot);
@@ -154,6 +161,7 @@ public class p1 : MonoBehaviour
         }
         chipStack -= amount;
         amountInPot += amount;
+		pot_amount.text = amountInPot.ToString ();
         mainPot.Add(amount);
         mainPot.AddPlayer(this);
         mainPot.setMaximumAmount(amountInPot);

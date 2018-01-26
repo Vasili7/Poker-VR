@@ -36,7 +36,7 @@ public class Pot : MonoBehaviour {
             return;
         amountInPot += amount;
 
-		pot_amount_txt.text = amountInPot.ToString (); // set pot ???
+	//	pot_amount_txt.text = amountInPot.ToString (); // set pot ???
     }
 
     //add player to pot
