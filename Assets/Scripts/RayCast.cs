@@ -8,14 +8,12 @@ using System.Linq;
 
 /* --------------------------------------------------------------------------------------------------------------------------
  * ERSTELLT VON:
- * Imran Mirza
- * Maurice Noll
+ * Mojdeh Aliakbarzadeh
+ * Vasilios Solkidis
  * --------------------------------------------------------------------------------------------------------------------------
  * BESCHREIBUNG:
  * - Skript für das Raycasting mit allen interagierbaren Elementen
- * - Betrachtete Objekte (Buttons, Spalten von "Vier gewinnt") leuchten bei Betrachtung auf
- * - Der Spieler kann sich die Spielstärke des Computers vor Spielbeginn und die Spalte für den Steineinwurf auswählen
- * - Zudem kann das Spiel auf demselben Schwierigkeitsgrad erneut gespielt oder vorzeitig beendet werden
+ * 
  * --------------------------------------------------------------------------------------------------------------------------
 */
 
@@ -183,6 +181,7 @@ public class RayCast : MonoBehaviour {
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
 					WerIst.SetActive (true);
+					werIstDran_txt.text = "";
 //					WerIst.transform.localPosition = new Vector3 (1.8f, 7.36f, 9.9f);
 
 					insgesamt++;
@@ -224,6 +223,7 @@ public class RayCast : MonoBehaviour {
 					pot_amount_txt.text = "0";
 					pot_amount_int = 0;
 					WerIst.SetActive (true);
+					werIstDran_txt.text = "";
 					play_again.SetActive (false);
 
 					insgesamt++;
@@ -1290,6 +1290,7 @@ public class RayCast : MonoBehaviour {
             else if (tisch.pList[i].name == "Dive_Camera") 
             {
                 HUDMenuAktivieren();
+				HUD_Check.SetActive (false);
 				werIstDran_txt.text = "DU BIST DRAN!";
                 while (spielerAktion == false)
                 {
