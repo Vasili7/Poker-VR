@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* --------------------------------------------------------------------------------------------------------------------------
+ * ERSTELLT VON:
+ * Vasilios Solkidis
+ * --------------------------------------------------------------------------------------------------------------------------
+ * BESCHREIBUNG:
+ * - Dieses Skript dient zur initialisierung des Pots
+ * - Hier werden Geldbeträge dem Pot hinzugefügt und entfernt
+ * - Spieler der Pot-Liste hinzugefügt
+ * - minimal und maximal Betrag je Runde
+ * --------------------------------------------------------------------------------------------------------------------------
+*/
+
 public class Pot : MonoBehaviour {
 
     public List<p1> playersInPot = new List<p1>();

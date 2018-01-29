@@ -1,18 +1,31 @@
 ﻿using UnityEngine;
 
+/* --------------------------------------------------------------------------------------------------------------------------
+ * ERSTELLT VON:
+ * Vasilios Solkidis
+ * --------------------------------------------------------------------------------------------------------------------------
+ * BESCHREIBUNG:
+ * - Dieses Skript initialisiert den Wert jeder Karte
+ * - Rank: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 = J = Bube, 12 = Q = Dame, 13 = K = König, 14 = A = Ass
+ * - SUIT: 1 = Diamonds(Karo), 2 = Clubs(Kreuz), 3 = Hearts(Herz), 4 = Spades(Pik)
+ * --------------------------------------------------------------------------------------------------------------------------
+*/
+
 public class Cards : MonoBehaviour {
 
     public int suit, rank;
 
-	// Klasse benutzt um den Wert einer einzelnen Karte zu definieren
 	void Start () {
         SetAmountOfThisCard();
 	}
 
+    // Sortierung nach RANK
     public int SortByRank() { return this.rank; }
 
+    // Sortierung nach SUIT
     public int SortBySuit() { return this.suit; }
 
+    // Den Wert einer einzelnen Karte zu definieren
     public void SetAmountOfThisCard()
     {
         switch(this.name)

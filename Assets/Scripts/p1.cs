@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/* --------------------------------------------------------------------------------------------------------------------------
+ * ERSTELLT VON:
+ * Vasilios Solkidis
+ * --------------------------------------------------------------------------------------------------------------------------
+ * BESCHREIBUNG:
+ * - Dieses Skript enthält alle notwendigen Aktionen eines Spielers
+ * - Fold, Call, Check, Raise, Bet, AllIn, CollectMoney, PaySmallBlind, PayBigBlind, Reset und Leave
+ * --------------------------------------------------------------------------------------------------------------------------
+*/
+
 public class p1 : MonoBehaviour 
 {
     //public GameObject j1, j5, j25, j100;
@@ -42,7 +52,7 @@ public class p1 : MonoBehaviour
 		bank_amount.text = bank.ToString ();
     }
 
-    //leave the round
+    //leave the round, removed from the list and cards send to burnedCards
     public void Fold(Pot mainPot) 
     {
         mainPot.getPlayersInPot().Remove(this);
@@ -55,6 +65,7 @@ public class p1 : MonoBehaviour
     }
     //don't bet
     public void Check(Pot mainPot) { }
+
     //call and bet additional amount of money
     public void Raise(int raise, Pot mainPot) 
     {
@@ -78,6 +89,7 @@ public class p1 : MonoBehaviour
         mainPot.AddPlayer(this);
         mainPot.minimumRaise = raise;
     }
+
     //bet enough to stay in the round
     public void Call(Pot mainPot) 
     {
@@ -97,6 +109,7 @@ public class p1 : MonoBehaviour
         mainPot.Add(amount);
         mainPot.AddPlayer(this);
     }
+
     //bet a certain amount of money
     public void Bet(int bet, Pot mainPot) 
     {
@@ -114,6 +127,7 @@ public class p1 : MonoBehaviour
         mainPot.setMaximumAmount(amountInPot);
         mainPot.minimumRaise = bet;
     }
+
     //all in, bet remaining chipstack
     public void AllIn(Pot mainPot) 
     {
@@ -136,7 +150,7 @@ public class p1 : MonoBehaviour
         chipStack += tisch.amountInPot;
     }
 
-    //pay the small and big blinds
+    //pay the small blinds
     public void PaySmallBlind(int amount, Pot mainPot)
     {
         if (chipStack <= amount)
@@ -153,6 +167,7 @@ public class p1 : MonoBehaviour
         mainPot.minimumRaise = amount;
     }
 
+    // pay the big blind
     public void PayBigBlind(int amount, Pot mainPot)
     {
         if (chipStack <= amount)

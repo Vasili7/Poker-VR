@@ -5,6 +5,17 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* --------------------------------------------------------------------------------------------------------------------------
+ * ERSTELLT VON:
+ * Vasilios Solkidis
+ * --------------------------------------------------------------------------------------------------------------------------
+ * BESCHREIBUNG:
+ * - Dieses Skript verbindet alle notwenigen Aktion im Poker
+ * - Hier werden Jetons, Pot, Karten und Spieler koordieniert
+ * - Es werden Jetons erzeugt, neue Runden gestartet, Karten verteilt, Spieler der Runde hinzugefügt und entfernt
+ * --------------------------------------------------------------------------------------------------------------------------
+*/
+
 public class Tisch : MonoBehaviour
 {
     public GameObject ca, c2, c3, c4, c5, c6, c7, c8, c9, c10, cj, cq, ck;
@@ -15,7 +26,7 @@ public class Tisch : MonoBehaviour
 	public GameObject j1, j5, j25, j100;
     public GameObject bigBlindBtn, smallBlindBtn, DealerBtn;
 
-    private GameObject goJetons;
+    private GameObject goJetons, potJetons;
 
     public List<GameObject> deck = new List<GameObject>();
     public List<GameObject> tableHand = new List<GameObject>();
@@ -41,14 +52,9 @@ public class Tisch : MonoBehaviour
 
     public void Start(){}
 
-    public void Update()
-    {
-        //amountInPot = mainPot.amountInPot;
-        //player3.pot_amount.text = amountInPot.ToString ();   //???show pot in HUD
-        //playersInMainpot = mainPot.playersInPot;
-        //PotJetons();
-    }
+    public void Update(){}
 
+    // Erzeugt je nach Wert des Pots die passenden Jetons auf dem Tisch
     public void PotJetons()
     {
         int i = mainPot.amountInPot;
@@ -56,25 +62,25 @@ public class Tisch : MonoBehaviour
         {
             if (i >= 100)
             {
-                goJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("pj100").transform.position, j100.transform.rotation);
+                potJetons = (GameObject)Instantiate(j100, GameObject.FindGameObjectWithTag("pj100").transform.position, j100.transform.rotation);
                 i -= 100;
                 continue;
             }
             if (i >= 25 && i < 100)
             {
-                goJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("pj25").transform.position, j25.transform.rotation);
+                potJetons = (GameObject)Instantiate(j25, GameObject.FindGameObjectWithTag("pj25").transform.position, j25.transform.rotation);
                 i -= 25;
                 continue;
             }
             if (i >= 5 && i < 25)
             {
-                goJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("pj5").transform.position, j5.transform.rotation);
+                potJetons = (GameObject)Instantiate(j5, GameObject.FindGameObjectWithTag("pj5").transform.position, j5.transform.rotation);
                 i -= 5;
                 continue;
             }
             if (i >= 1 && i < 5)
             {
-                goJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("pj1").transform.position, j1.transform.rotation);
+                potJetons = (GameObject)Instantiate(j1, GameObject.FindGameObjectWithTag("pj1").transform.position, j1.transform.rotation);
                 i--;
                 continue;
             }
@@ -82,7 +88,7 @@ public class Tisch : MonoBehaviour
 
     }
 
-	// Position-Tag is needed to instatiate jetons
+	// Die ersten Jetons für jeden Spieler werden erzeugt
     public void AddFirstJetons()
     {
         // Player 1
@@ -236,14 +242,17 @@ public class Tisch : MonoBehaviour
 		DealHoleCards(p51, p52, player5);
 	}
 
+    // Player added to Playerlist pList
     public void AddPlayer(p1 player)
     {
        
-        if (!pList.Contains(player))// && player.isBusted == false)
+        if (!pList.Contains(player))
         {
             pList.Add(player);
         }
     }
+
+    // Removes Player from List
     public void RemovePlayer(p1 player)
     {
         if (pList.Contains(player))
@@ -251,6 +260,8 @@ public class Tisch : MonoBehaviour
             pList.Remove(player);
         }
     }
+
+    // All players are added to Playerlist at the beginning
     public void AddAllPlayers()
     {
         // Alle Spieler hinzufügen
@@ -259,15 +270,11 @@ public class Tisch : MonoBehaviour
         AddPlayer(player3);
         AddPlayer(player4);
         AddPlayer(player5);
-        //mainPot.AddPlayer(player1);
-        //mainPot.AddPlayer(player2);
-        //mainPot.AddPlayer(player3);
-        //mainPot.AddPlayer(player4);
-        //mainPot.AddPlayer(player5);
     }
+
+    // Alle Spielkarten hinzufügen
     public void AddAllCardsToDeck()
     {
-        // Alle Spielkarten hinzufügen
         AddCardToDeck(ca);
         AddCardToDeck(c2);
         AddCardToDeck(c3);
@@ -324,7 +331,7 @@ public class Tisch : MonoBehaviour
         Shuffel();
  
     }
-
+    // Random shuffel all cards in the deck
     public void Shuffel()
     {
         for (int i = 0; i < deck.Count(); i++)
@@ -342,7 +349,7 @@ public class Tisch : MonoBehaviour
             abstand = abstand + 0.001f;
         }
     }
-
+    // Deal 2 cards to the players which are in the playerlist
     public void DealHoleCards(string a, string b, p1 p)
     {
         if (pList.Contains(p))
@@ -353,23 +360,17 @@ public class Tisch : MonoBehaviour
                 {
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(a).transform.position;
 					if (a == "p31") 
-					//	deck [i].transform.Rotate (-90, 0, 0);
 						pp31 = deck [i];
 
 					deck[i].transform.Rotate(0, 0, 0);
-                    //myHand.Add(deck[i]);
-                    //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);
                     deck.RemoveAt(i);
 
                     deck[i].transform.position = GameObject.FindGameObjectWithTag(b).transform.position;
 					if (b == "p32") 
-					//	deck [i].transform.Rotate (-90, 0, 0);
 						pp32 = deck [i];
 
 					deck[i].transform.Rotate(0, 0, 0);
-                    //myHand.Add(deck[i]);
-                    //player1.myHand.Add(deck[i]);
                     p.myHand.Add(deck[i]);
                     deck.RemoveAt(i);
 
@@ -377,6 +378,8 @@ public class Tisch : MonoBehaviour
             }
         }
     }
+
+    // Deal the Flop Cards on the table
     public void DealFlop()
     { 
         BurnCard();
@@ -386,6 +389,8 @@ public class Tisch : MonoBehaviour
         DealBoardCard("bc2");
         DealBoardCard("bc3");
     }
+
+    // Deal the Turn Card on the table
     public void DealTurn()
     {
         BurnCard();
@@ -393,6 +398,8 @@ public class Tisch : MonoBehaviour
         mainPot.maximumAmountPutIn = 0;
         DealBoardCard("bc4");
     }
+
+    // Deal the River Card on the table
     public void DealRiver()
     {
         BurnCard();
@@ -401,6 +408,7 @@ public class Tisch : MonoBehaviour
         DealBoardCard("bc5");
     }
 
+    // Main function to deal the 5 board cards
     public void DealBoardCard(string bc)
     {
         for (int i = 0; i < deck.Count; i++)
@@ -419,6 +427,8 @@ public class Tisch : MonoBehaviour
             }
         }
     }
+
+    // Burn the top card of the deck, before dealing the board cards
     public void BurnCard()
     {
         deck[0].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
@@ -428,7 +438,6 @@ public class Tisch : MonoBehaviour
 
     public void AddCardToDeck(GameObject card)
     {
-        //card.transform.localPosition = new Vector3(0,0,0);
         if (!deck.Contains(card))
         {
             card.transform.Rotate(0, 0, 0);
@@ -440,24 +449,32 @@ public class Tisch : MonoBehaviour
     public void ShowDown()
     {
 
-        /*		// HUD for gewonnere und verlorene Runden und bank
-                int bank = player3.bank_amount; 
-                // wenn gewonnen
-                player3.gewonnenRunden++;
-                player3.siege_txt.text = "Siege:" + player3.gewonnenRunden;
+        /*		
+         // Flip Hand-Cards from all players
+         for(int i = 0; i < pList.Count(); i++)
+         {
+             pList[i].myHand[0].transform.Rotate(-180, 0, 0);
+             pList[i].myHand[1].transform.Rotate(-180, 0, 0);
+         }
 
-                bank += amountInPot;
-                player3.bank_amount.text = bank.ToString ();
+         // HUD for gewonnere und verlorene Runden und bank
+        int bank = player3.bank_amount; 
+        // wenn gewonnen
+        player3.gewonnenRunden++;
+        player3.siege_txt.text = "Siege:" + player3.gewonnenRunden;
+
+        bank += amountInPot;
+        player3.bank_amount.text = bank.ToString ();
 
 
-                //wenn verloren
-                player3.verlorenenRunden++;
-                player3.Niederlagen_txt.text = "Niederlage:" + player3.verlorenenRunden;
+        //wenn verloren
+        player3.verlorenenRunden++;
+        player3.Niederlagen_txt.text = "Niederlage:" + player3.verlorenenRunden;
 
-                bank -= amountInPot;
-                player3.bank_amount.text = bank.ToString ();
+        bank -= amountInPot;
+        player3.bank_amount.text = bank.ToString ();
 
-                player.CollectMoney(); 
+        player.CollectMoney(); 
         */
       }
 
@@ -481,10 +498,9 @@ public class Tisch : MonoBehaviour
         }
     }
 
-
+    // Reset the table
     public void Reset()
     {
-        // Player müssen noch resetet werden!
         for (int i = 0; i < tableHand.Count(); i++)
         {
             tableHand[i].transform.Rotate(-180, 0, 0);

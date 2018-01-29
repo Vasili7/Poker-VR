@@ -1,5 +1,15 @@
 ﻿using UnityEngine;
 
+/* --------------------------------------------------------------------------------------------------------------------------
+ * ERSTELLT VON:
+ * Vasilios Solkidis
+ * --------------------------------------------------------------------------------------------------------------------------
+ * BESCHREIBUNG:
+ * - Dieses Skript initialisiert den Wert jeder erzeugten Jetons
+ * - Mögliche Jeton Werte: 1, 5, 25, 100
+ * --------------------------------------------------------------------------------------------------------------------------
+*/
+
 public class Jetons : MonoBehaviour {
 
     public int wert;
@@ -9,7 +19,7 @@ public class Jetons : MonoBehaviour {
         SetAmountOfJetons();
 	}
 	
-    // 1 5 25 100
+    // Hier wird der Wert des erzeugten Jetons gesetzt
     public void SetAmountOfJetons()
     {
         if(this.name == "v1(Clone)")

@@ -13,7 +13,6 @@ using System.Linq;
  * --------------------------------------------------------------------------------------------------------------------------
  * BESCHREIBUNG:
  * - Skript für das Raycasting mit allen interagierbaren Elementen
- * 
  * --------------------------------------------------------------------------------------------------------------------------
 */
 
@@ -1261,6 +1260,7 @@ public class RayCast : MonoBehaviour {
 		}
 	}
 
+    // Executes one round of Poker
 	IEnumerator Beginn()
 	{
 		HUDMenuDeaktivieren();
@@ -1398,7 +1398,7 @@ public class RayCast : MonoBehaviour {
             }
 		}        
         // SHOWDOWN Round
-		// t.ShowDown();
+		tisch.ShowDown();
 		tisch.PotJetons();
 
 
