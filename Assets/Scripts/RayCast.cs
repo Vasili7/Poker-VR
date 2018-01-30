@@ -87,6 +87,7 @@ public class RayCast : MonoBehaviour {
 	public TextMesh insgesamt_gespielt;
 	static int insgesamt =0;
 	public GameObject play_again;
+	public GameObject no_money_button;
 
 	KartenBewegungZumSpieler kbzs = new KartenBewegungZumSpieler();
 	public Tisch tisch = new Tisch() ;
@@ -112,16 +113,14 @@ public class RayCast : MonoBehaviour {
 		buttonEndNein.SetActive (false);
 		buttonRestart.SetActive (false);
 		play_again.SetActive (false);
+		no_money_button.SetActive (false);
 
 		buttonStart.SetActive (true);
 
 		Bet.text = Set_Bet.ToString ();
 
 		big = false;
-
-		//	Bank_amount = GetComponent<TextMesh> ();
-		//		Bank_amount.text = bank.ToString ();
-		//StartCoroutine(Beginn());   
+   
 		co = StartCoroutine(Beginn());
 		StopCoroutine(co);
 	}
@@ -130,7 +129,7 @@ public class RayCast : MonoBehaviour {
 	// ##########################################################################################################################
 	// --------------------------------------------------------- UPDATE ---------------------------------------------------------
 	// ##########################################################################################################################
-	// + Permanente Überwachung, ob ein Button oder eine Spalte von "Vier gewinnt" angesehen wurde, um eine Aktion auszuführen
+	// + Permanente Überwachung, ob ein Button oder eine Spalte von "Pker tisch" angesehen wurde, um eine Aktion auszuführen
 	// --------------------------------------------------------------------------------------------------------------------------
 	void Update () {
 		RaycastHit hit;
@@ -145,7 +144,7 @@ public class RayCast : MonoBehaviour {
 		if (Physics.Raycast (transform.position, forward, out hit)) {
 
 			// SPIELSTART
-			if (hit.collider.gameObject.tag == "Spiel starten") {
+			if (hit.collider.gameObject.tag == "Spiel starten" && Bank_amount.text != "0") {
 
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
@@ -160,10 +159,6 @@ public class RayCast : MonoBehaviour {
 
 					Bewegung.spielstart = true;
 					Bewegung.geschwindigkeit = 0;
-
-					// Tisch löschen
-					//		t.Reset();
-					//		t.RemoveJetons ();
 
 					// Einstellungen für den Spielstart
 					neuesSpiel = true;
@@ -181,7 +176,6 @@ public class RayCast : MonoBehaviour {
 					pot_amount_int = 0;
 					WerIst.SetActive (true);
 					werIstDran_txt.text = "";
-//					WerIst.transform.localPosition = new Vector3 (1.8f, 7.36f, 9.9f);
 
 					insgesamt++;
 					insgesamt_gespielt.text = "Insgesamt gespielt: " + insgesamt;
@@ -196,7 +190,7 @@ public class RayCast : MonoBehaviour {
 				}
 
 				// NEUSTART
-			} else if (hit.collider.gameObject.tag == "Neustart") {
+			} else if (hit.collider.gameObject.tag == "Neustart" && Bank_amount.text != "0") {
 				aktiviert = true;
 				timer = timer + Time.deltaTime;
 				this.lastHit = hit;
@@ -1318,7 +1312,7 @@ public class RayCast : MonoBehaviour {
             }
 			spielerAktion = false;
 			tisch.PotJetons();
-            if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
+			if (tisch.mainPot.playersInPot[i].name == "Dive_Camera" && Bank_amount.text != "0")
             {
                 HUDMenuAktivieren();
 				werIstDran_txt.text = "DU BIST DRAN!";
@@ -1348,7 +1342,7 @@ public class RayCast : MonoBehaviour {
             }
 			spielerAktion = false;
 			tisch.PotJetons();
-            if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
+			if (tisch.mainPot.playersInPot[i].name == "Dive_Camera" && Bank_amount.text != "0")
             {
                 HUDMenuAktivieren();
 				werIstDran_txt.text = "DU BIST DRAN!";
@@ -1378,7 +1372,7 @@ public class RayCast : MonoBehaviour {
             }
 			spielerAktion = false;
 			tisch.PotJetons();
-            if (tisch.mainPot.playersInPot[i].name == "Dive_Camera")
+			if (tisch.mainPot.playersInPot[i].name == "Dive_Camera" && Bank_amount.text != "0")
             {
                 HUDMenuAktivieren();
 				werIstDran_txt.text = "DU BIST DRAN!";
@@ -1406,7 +1400,10 @@ public class RayCast : MonoBehaviour {
 		tisch.mainPot.Reset();
 
 		// start button
-		play_again.SetActive(true);
+		if ((bank != 0) || (Bank_amount.text != "0"))
+			play_again.SetActive (true);
+		else
+			no_money_button.SetActive (true);
 		HUDMenuDeaktivieren ();
 		werIstDran_txt.text = "";
 

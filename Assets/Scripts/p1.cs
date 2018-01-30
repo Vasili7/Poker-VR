@@ -30,6 +30,7 @@ public class p1 : MonoBehaviour
 	public int verlorenenRunden = 0;
 	public TextMesh siege_txt; 
 	public TextMesh Niederlagen_txt;
+	public static int niederlagen = 0;
 	public TextMesh bank_amount;
 	public TextMesh pot_amount;
 	public int bank=200;
@@ -61,6 +62,8 @@ public class p1 : MonoBehaviour
         myHand[1].transform.position = GameObject.FindGameObjectWithTag("burnedCard").transform.position;
         myHand[1].transform.Rotate(0, 0, 0);
         this.myHand.Clear();
+//		niederlagen++;
+//		Niederlagen_txt.text = "Niederlagen: "+niederlagen;
         folded = true;
     }
     //don't bet
